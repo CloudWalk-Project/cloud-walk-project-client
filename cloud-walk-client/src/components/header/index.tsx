@@ -3,26 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
-interface HeaderProps {
-  path: "home" | "canvas" | "settings";
-}
 
-const Header = ({ path }: HeaderProps) => {
-  const navigate = useNavigate();
+const Header = () => {
+  // const navigate = useNavigate();
 
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
-  const handlehome = () => {
-    navigate("/");
-  };
+  // const handlehome = () => {
+  //   navigate("/");
+  // };
 
-  const handlecanvas = () => {
-    navigate("/canvas");
-  };
+  // const handlecanvas = () => {
+  //   navigate("/canvas");
+  // };
 
-  const handlesettings = () => {
-    navigate("/settings");
-  };
+  // const handlesettings = () => {
+  //   navigate("/settings");
+  // };
 
   return (
     <header>

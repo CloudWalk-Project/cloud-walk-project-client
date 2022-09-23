@@ -2,19 +2,16 @@ import "./App.css";
 import Router from "./router";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import theme from "./assets/styles/theme";
-
-const queryClient = new QueryClient();
+import Login from "./pages/login";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
+      {/* <BrowserRouter>
           <Router />
-        </QueryClientProvider>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <Login/>
     </ThemeProvider>
   );
 }
