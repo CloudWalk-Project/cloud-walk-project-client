@@ -5,7 +5,6 @@ import { FaSearch } from "react-icons/fa";
 
 interface HeaderProps {
   path: "home" | "canvas" | "settings";
-  // setLogged: Dispatch<SetStateAction<boolean>>;
 }
 
 const Header = ({ path }: HeaderProps) => {
