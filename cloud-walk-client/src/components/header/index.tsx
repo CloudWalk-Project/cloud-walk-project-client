@@ -11,17 +11,17 @@ const Header = () => {
 
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
-  const handlehome = () => {
-    navigate("/");
-  };
+  // const handlehome = () => {
+  //   navigate("/");
+  // };
 
   const handleabout = () => {
     navigate("/about");
   };
 
-  const handlesettings = () => {
-    navigate("/settings");
-  };
+  // const handlesettings = () => {
+  //   navigate("/settings");
+  // };
 
   return (
     <S.HeaderContainer>
