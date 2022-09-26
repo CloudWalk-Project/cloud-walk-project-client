@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 import theme from "../../assets/styles/theme";
 
-export const home = styled.section`
+export const home = styled.div`
   ${() => css`
     background-color: ${theme.colors.primaryColor};
     width: 100%;
-    height: 100%;
+    height: 100vh;
     color: ${theme.colors.textColor};
     display: flex;
     justify-content: space-between;
@@ -13,7 +13,7 @@ export const home = styled.section`
   `}
 `;
 
-export const HomeContent = styled.main`
+export const HomeContent = styled.div`
   ${() => css`
     width: 100%;
     overflow: auto;
