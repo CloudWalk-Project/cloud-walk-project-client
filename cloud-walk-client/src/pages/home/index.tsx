@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <S.home>
       <S.HomeContent>
-        <Header/>
+        <Header />
       </S.HomeContent>
     </S.home>
   );

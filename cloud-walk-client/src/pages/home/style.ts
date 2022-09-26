@@ -4,11 +4,12 @@ import theme from "../../assets/styles/theme";
 export const home = styled.section`
   ${() => css`
     background-color: ${theme.colors.primaryColor};
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     color: ${theme.colors.textColor};
     display: flex;
     justify-content: space-between;
+    border: 0;
   `}
 `;
 
