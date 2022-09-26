@@ -1,9 +1,8 @@
 import styled, { css } from "styled-components";
 import theme from "../../assets/styles/theme";
 
-export const home = styled.section`
+export const home = styled.div`
   ${() => css`
-    
     background-color: ${theme.colors.primaryColor};
     width: 100vw;
     height: 100vh;
@@ -14,7 +13,7 @@ export const home = styled.section`
   `}
 `;
 
-export const HomeContent = styled.main`
+export const HomeContent = styled.div`
   ${() => css`
     display: flex;
     justify-content: center; /* Tirar Justify e Align depois*/
