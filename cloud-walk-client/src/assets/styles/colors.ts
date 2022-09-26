@@ -5,7 +5,7 @@ export const colors = {
   background: "#1E1E1E",
 
   loginFormColor: "linear-gradient(43.38deg, rgba(56, 56, 61, 0.47) 0.52%, #231B1B 92.1%);",
-
+  loginFormButtonColor:"linear-gradient(270deg, #FF7337 0%, #FF9162 100%);",
   primaryColorOpacity: "rgba(108, 234, 105, 0.4)",
 
   shadowColor: "#121217",

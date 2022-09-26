@@ -1,0 +1,12 @@
+.login--input:focus + label,
+.login--input:valid + label
+{
+font-size: .8rem;
+top: 0;
+color: #FF7337;
+}
+.login--input:focus, 
+.login--input:valid 
+{
+border-color: #FF7337;
+}
