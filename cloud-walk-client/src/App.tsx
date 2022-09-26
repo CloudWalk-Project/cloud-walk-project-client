@@ -3,6 +3,7 @@ import Router from "./router";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "./assets/styles/theme";
+import Login from "./pages/login";
 
 function App() {
   return (
