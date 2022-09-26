@@ -4,20 +4,23 @@ import theme from "../../assets/styles/theme";
 export const home = styled.div`
   ${() => css`
     background-color: ${theme.colors.primaryColor};
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     color: ${theme.colors.textColor};
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     border: 0;
   `}
 `;
 
 export const HomeContent = styled.div`
   ${() => css`
+    display: flex;
+    justify-content: center; /* Tirar Justify e Align depois*/
+    align-items: center;
     width: 100%;
     overflow: auto;
-    height: 100vh;
+    height: 90vh;
     box-sizing: border-box;
   `}
 `;
