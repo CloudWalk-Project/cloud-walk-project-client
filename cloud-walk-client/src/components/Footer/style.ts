@@ -2,7 +2,8 @@ import styled from "styled-components";
 import theme from "../../assets/styles/theme";
 
 export const Box = styled.footer`
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
+  height: 7rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -28,7 +29,7 @@ export const Row = styled.div`
   display: grid;
   padding-left: 20rem;
   grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-  grid-gap: 1.25rem;
+  /* grid-gap: 1.25rem; */
   @media (max-width: 1000px) {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
@@ -41,16 +42,16 @@ export const Column = styled.div`
 `;
 
 export const Heading = styled.p`
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: ${theme.colors.textColor};
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   font-weight: bold;
 `;
 
 export const FooterLink = styled.a`
   color: ${theme.colors.textColor};
-  margin-bottom: 1.25rem;
-  font-size: 1.13rem;
+  /* margin-bottom: 1.25rem; */
+  font-size: 1rem;
   text-decoration: none;
 
   &:hover {
