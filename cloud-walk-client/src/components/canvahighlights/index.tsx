@@ -23,10 +23,10 @@ const CanvaHighLights = () => {
    speed={800}
    slidesPerView={3}
    className="Carousel"
-  //  autoplay={{
-  //   delay:5000,
-  //   disableOnInteraction:false
-  // }}
+   autoplay={{
+    delay:5000,
+    disableOnInteraction:false
+  }}
    
    >
     <SwiperSlide className="CanvaSlide">
