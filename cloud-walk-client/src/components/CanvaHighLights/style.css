@@ -2,6 +2,7 @@
     box-sizing: border-box;
     height: 100%;
     width: 90%;
+
 }
 
 .CanvaSlide{
@@ -12,6 +13,7 @@
     width: 20%;
     height: 100%;
 }
+
 
 
 .CanvaSlide > img{
@@ -53,6 +55,7 @@
     width: fit-content;
     font-size: 1.5rem;
 }
+
 
 .swiper-button-next{
   background-image: url('./../../assets/imgs/NextS.svg');
