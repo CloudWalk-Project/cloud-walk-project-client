@@ -27,7 +27,6 @@ const CanvaHighLights = () => {
     delay:5000,
     disableOnInteraction:false
   }}
-   
    >
     <SwiperSlide className="CanvaSlide">
       <img className="CanvaImg" src={TheDepths} alt="" />
