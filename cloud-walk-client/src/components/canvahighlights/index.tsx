@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css"
 import { Navigation, Autoplay,} from 'swiper'
 import "swiper/css/navigation"
-import "swiper/css/effect-fade"
 import TheDepths from "./../../assets/imgs/TheDepths.jpg";
 import DemonGod from "./../../assets/imgs/DemonGod.jpg";
 import Joy from "./../../assets/imgs/Joy.jpg";
