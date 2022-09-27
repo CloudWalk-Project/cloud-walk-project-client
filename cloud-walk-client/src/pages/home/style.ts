@@ -18,10 +18,16 @@ export const HomeContent = styled.main`
   ${() => css`
     display: flex;
     justify-content: center; /* Tirar Justify e Align depois*/
-    align-items: center;
     width: 100%;
     overflow: auto;
     height: 90vh;
     box-sizing: border-box;
   `}
 `;
+
+export const HomeHighLightsContainer = styled.section`
+ display: flex;
+ align-items: flex-end;
+ height: 30%;
+ width: 95%;
+`
