@@ -1,21 +1,57 @@
 .Carousel{
     height: 100%;
-    width: 100%;
+    width: 80%;
 }
 
 .CanvaSlide{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 20%;
     height: 100%;
 }
 
+
 .CanvaSlide > img{
-    width: 95%;
-    height: 100%;
+    margin:0;
+    width: 90%;
+    height: 80%;
 }
 
+.CanvaSlide > .SlideInfo{
+    position: relative;
+    display: flex;
+    height: 20%;
+    width: 90%;
+
+}
+
+.CanvaInfo::after{
+    content: "";
+    
+}
+
+.CanvaNameCategory{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.CanvaPrice{
+    display: flex;
+    height: 100%;
+    width: 50%;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.CanvaPrice > span {
+    height: fit-content;
+    width: fit-content;
+    font-size: 1.5rem;
+}
 
 .swiper-button-next{
   background-image: url('./../../assets/imgs/NextS.svg');
