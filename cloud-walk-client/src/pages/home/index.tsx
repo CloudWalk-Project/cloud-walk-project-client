@@ -2,6 +2,7 @@ import * as S from "./style";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CanvaCard from "../../components/CanvaCard";
+import CanvaHighLights from "../../components/CanvaHighLights";
 
 
 const Home = () => {
@@ -9,7 +10,10 @@ const Home = () => {
     <S.home>
         <Header />
       <S.HomeContent>
-        <CanvaCard/>
+        <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
+        <S.HomeHighLightsContainer>
+         <CanvaHighLights></CanvaHighLights>
+        </S.HomeHighLightsContainer>
       </S.HomeContent>
     </S.home>
   );
