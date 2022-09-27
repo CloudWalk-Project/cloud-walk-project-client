@@ -8,6 +8,7 @@ const Home = () => {
     <S.home>
         <Header />
       <S.HomeContent>
+        <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
         <S.HomeHighLightsContainer>
          <CanvaHighLights></CanvaHighLights>
         </S.HomeHighLightsContainer>

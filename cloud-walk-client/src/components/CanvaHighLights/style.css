@@ -1,6 +1,7 @@
 .Carousel{
+    box-sizing: border-box;
     height: 100%;
-    width: 80%;
+    width: 90%;
 }
 
 .CanvaSlide{
@@ -15,7 +16,7 @@
 
 .CanvaSlide > img{
     margin:0;
-    width: 90%;
+    width: 85%;
     height: 80%;
 }
 
