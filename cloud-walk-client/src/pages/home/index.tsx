@@ -26,7 +26,7 @@ const Home = () => {
       <Footer />
       
     </S.home>
-    {/* <CanvaModal type='dasd'></CanvaModal> */}
+    <CanvaModal type='create'></CanvaModal>
     </>
   );
 };
