@@ -7,6 +7,7 @@ import { Canva, Category, User } from "../../types/interfaces";
 import { mockedCanva } from "../../mocks/canva";
 
 import CanvaHighLights from "../../components/CanvaHighLights";
+import CanvaModal from "../../components/CanvaModal";
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
       <Footer />
       
     </S.home>
+    {/* <CanvaModal type='dasd'></CanvaModal> */}
     </>
   );
 };
