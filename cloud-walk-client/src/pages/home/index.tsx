@@ -10,6 +10,7 @@ import CanvaHighLights from "../../components/CanvaHighLights";
 
 const Home = () => {
   return (
+    <>
     <S.home>
       <Header />
       <S.HomeContent>
@@ -18,11 +19,13 @@ const Home = () => {
         <S.HomeHighLightsContainer>
          <CanvaHighLights></CanvaHighLights>
         </S.HomeHighLightsContainer>
-
+          
         <CanvaList list={mockedCanva}></CanvaList>
       </S.HomeContent>
       <Footer />
+      
     </S.home>
+    </>
   );
 };
 

@@ -3,16 +3,14 @@ import theme from "../../assets/styles/theme";
 
 export const Box = styled.footer`
   /* padding-top: 1rem; */
-  height: 7rem;
+  height: 10vh;
+  width: 100%;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   background: ${theme.colors.primaryColor};
   border-top: 1px solid ${theme.colors.textColor};
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   @media (max-width: 1000px) {
     padding: 70px 30px;
   }

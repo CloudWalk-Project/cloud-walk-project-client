@@ -32,11 +32,11 @@ const CanvaHighLights = () => {
       <img className="CanvaImg" src={TheDepths} alt="" />
        <S.CardInfoContainer className="SlideInfo">
        <S.CardInfoNameCategory>
-             <S.CardInfoCategory>Wallpaper</S.CardInfoCategory>
-              <S.CardInfoName>"TheDepths"</S.CardInfoName>
+             <S.CardInfoCategory className="SlideCategory">Wallpaper</S.CardInfoCategory>
+              <S.CardInfoName className="SlideName">"TheDepths"</S.CardInfoName>
             </S.CardInfoNameCategory>
             <S.CardInfoPriceContainer>
-                <S.CardInfoPrice>R$400,00</S.CardInfoPrice>
+                <S.CardInfoPrice className="SlidePrice">R$400,00</S.CardInfoPrice>
             </S.CardInfoPriceContainer>
        </S.CardInfoContainer>
     </SwiperSlide>

@@ -10,6 +10,7 @@ export const home = styled.div`
     display: flex;
     flex-direction: column;
     border: 0;
+    overflow: auto;
   `}
 `;
 
@@ -19,8 +20,6 @@ export const HomeContent = styled.div`
     padding: 5rem 0 0 5rem;
     flex-direction: column;
     width: 100%;
-    overflow: auto;
-    height: 90vh;
     box-sizing: border-box;
   `}
 `;
