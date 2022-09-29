@@ -21,7 +21,9 @@ const CanvaHighLights = () => {
    modules={[Navigation, Autoplay]}
    navigation
    speed={800}
+   spaceBetween={-55}
    slidesPerView={3}
+   centeredSlides={true}
    className="Carousel"
    autoplay={{
     delay:5000,

@@ -1,7 +1,9 @@
 .Carousel{
+    display: flex;
+    justify-content: flex-start;
     box-sizing: border-box;
-    height: 100%;
-    width: 95%;
+    height: 85%;
+    width: 80%;
 
 }
 
@@ -82,7 +84,7 @@
 }
 
 .SlideName{
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
 }
 
 .SlidePrice{

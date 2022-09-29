@@ -9,6 +9,8 @@ export const colors = {
   
   canvaModalFormColor: "linear-gradient(43.38deg, rgba(0, 0, 0, 0.85) 0%, #1D2128 90.24%);",
 
+  loginFormButtonColor:"linear-gradient(270deg, #FF7337 0%, #FF9162 100%);",
+
   primaryColorOpacity: "rgba(108, 234, 105, 0.4)",
 
   shadowColor: "#121217",

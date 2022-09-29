@@ -15,12 +15,25 @@ export const CanvaModalConatiner = styled.section`
 export const CanvaModalForm = styled.form`
   display: flex;
   flex-direction: column;
-  height: 60%;
-  width: 28%;
+  height: 65%;
+  width: 30%;
   background: ${theme.colors.canvaModalFormColor};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 2px;
 `;
+
+export const modalCloseIconContainer = styled.div`
+display: flex;
+justify-content: end;
+height: 5%;
+width: 100%;
+.close-icon{
+  cursor: pointer;
+  height: 2.5rem;
+  color: ${theme.colors.textColor};
+  width: 10%;
+}
+`
 
 export const canvaImgLabelInputContainer = styled.div`
   display: flex;
@@ -51,9 +64,11 @@ export const canvaCameraImg = styled.img`
 
 export const canvaInputsContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50%;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 2rem;
+  justify-content: space-between;
+  height: 45%;
   width: 100%;
 `;
 
@@ -68,16 +83,87 @@ export const canvaLabel = styled.label`
   position: relative;
   z-index: 0;
   top: .8rem;
-  font-size: 1rem;
+  font-size: .9rem;
   color: ${theme.colors.textColor};
+  transition: all 0.4s;
 `;
 
 export const canvaInput = styled.input`
  z-index: 1;
- color: white;
- font-size: 1rem;
+ color: ${theme.colors.textColor} !important;
+ font-size: 1rem !important;
  background: none;
  outline-style: none;
  border: none;
  border-bottom: 1px solid ${theme.colors.textColor};
+ transition: all 0.4s;
+ :valid,:focus ~ label{
+  top: 0;
+  font-size: .7rem;
+  color: ${theme.colors.secondaryColor};
+ }
+ :valid,:focus {
+   border-color:${theme.colors.secondaryColor};
+ }
+`
+
+export const inputTextAreaContainer = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  height: 30%;
+  width: 80%;
+`;
+
+export const canvaTextAreaLabel = styled.label`
+  position: relative;
+  z-index: 0;
+  font-size: .8rem;
+  color: ${theme.colors.textColor};
+  transition: all 0.4s;
+`;
+
+export const canvaTextArea = styled.textarea`
+ z-index: 1;
+ color: ${theme.colors.textColor} !important;
+ height: 70%;
+ font-size: 1rem;
+ background: none;
+ outline-style: none;
+ border: 1px solid ${theme.colors.textColor};
+ transition: all 0.4s;
+ :valid,:focus ~ label{
+  top: 0;
+  color: ${theme.colors.secondaryColor};
+ }
+ :valid,:focus {
+   border-color:${theme.colors.secondaryColor};
+ }
+
+`
+export const canvaListInput = styled.datalist`
+`
+
+export const sendButtonContainer = styled.div`
+display: flex;
+justify-content: start;
+align-items: center;
+box-sizing: border-box;
+padding-left: 2rem;
+height: 10%;
+width: 100%;
+`
+export const sendButton = styled.button`
+ border: none;
+ color:${theme.colors.textColor};
+ background: ${theme.colors.loginFormButtonColor};
+ font-size:1.5rem;
+ height: 70%;
+ width: 40%;
+ cursor: pointer;
+ transition: all 0.4s;
+ :hover{
+   transform: scale(1.05);
+   border-radius: .2rem;
+   font-size: 1.7rem;
+ }
 `
