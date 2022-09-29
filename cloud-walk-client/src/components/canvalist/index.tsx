@@ -1,6 +1,6 @@
 import * as S from "./style";
 import { Canva } from "../../types/interfaces";
-import CanvaCard from "../CanvaCard";
+import CanvaCard from "../Canvacard";
 
 interface CanvasListProps {
   list: Canva[];

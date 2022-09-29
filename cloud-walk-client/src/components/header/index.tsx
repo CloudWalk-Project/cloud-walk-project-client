@@ -26,9 +26,9 @@ const Header = () => {
   return (
     <S.HeaderContainer>
       <S.Header1>
-        <p>
+        {/* <p>
           <IoMdMenu color="#fff" size="2rem" />
-        </p>
+        </p> */}
         <img alt="Name" src={Icon} />
         <S.SearchInputContainer>
           <form>

@@ -25,26 +25,26 @@ export const HomeContent = styled.div`
 `;
 
 export const HighLightsHeading = styled.h1`
- position: relative;
- height: fit-content;
- width: 100%;
- font-size: 3.5rem;
- ::after{
-  content: "";
-  position: absolute;
-  background-color: ${theme.colors.textColor} ;
-  height: 2px;
-  width: 350px;
-  top: 65px;
-  left: 15px;
- }
-`
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  font-size: 3.5rem;
+  ::after {
+    content: "";
+    position: absolute;
+    background-color: ${theme.colors.textColor};
+    height: 2px;
+    width: 350px;
+    top: 65px;
+    left: 15px;
+  }
+`;
 
 export const HomeHighLightsContainer = styled.section`
- display: flex;
- flex-direction: column;
- margin-top: 5rem;
- align-items: flex-end;
- height: 40%;
- width: 95%;
-`
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  align-items: flex-end;
+  height: 40%;
+  width: 95%;
+`;
