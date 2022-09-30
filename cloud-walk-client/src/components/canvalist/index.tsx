@@ -7,6 +7,7 @@ interface CanvasListProps {
 }
 
 const CanvasList = ({ list }: CanvasListProps) => {
+  console.log(list)
   return (
     <S.CanvasListContainer>
       {list.map((element) => (

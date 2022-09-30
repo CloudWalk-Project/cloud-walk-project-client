@@ -33,7 +33,7 @@ export const mockedCanva: T.Canva[] = [
     id: 3,
     name: "DemonGod",
     price: 600,
-    genre: "Banner",
+    genre: "Malevolent",
     description: "The worshipped god of all demons.",
     inStock: true,
     image: DemonGod,
@@ -41,4 +41,5 @@ export const mockedCanva: T.Canva[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
+  
 ];
