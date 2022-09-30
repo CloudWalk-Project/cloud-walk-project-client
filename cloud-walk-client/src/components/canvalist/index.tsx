@@ -1,12 +1,13 @@
 import * as S from "./style";
 import { Canva } from "../../types/interfaces";
-import CanvaCard from "../Canvacard";
+import CanvaCard from "../CanvaCard";
 
 interface CanvasListProps {
   list: Canva[];
 }
 
 const CanvasList = ({ list }: CanvasListProps) => {
+  console.log(list)
   return (
     <S.CanvasListContainer>
       {list.map((element) => (
