@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "./assets/styles/theme";
 import Login from "./pages/login";
+import Category from "./pages/category";
 
 function App() {
   return (
