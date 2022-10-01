@@ -28,8 +28,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
 `;
 
 export const Heading = styled.p`
