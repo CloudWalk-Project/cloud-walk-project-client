@@ -40,68 +40,68 @@ export const HighLightsHeading = styled.h1`
   }
 `;
 
-export const listOptionsContainer = styled.div`
-  display: flex;
-  margin-top: 5rem;
-  box-sizing: border-box;
-  height: 4rem;
-  width: 100%;
-`;
+// export const listOptionsContainer = styled.div`
+//   display: flex;
+//   margin-top: 5rem;
+//   box-sizing: border-box;
+//   height: 4rem;
+//   width: 100%;
+// `;
 
-export const listFiltersContainer = styled.div`
-  display: flex;
-  position: relative;
-  height: 100%;
-  width: 50%;
-  .active {
-    display: flex;
-    color: black;
-    flex-direction: column;
-  }
-`;
+// export const listFiltersContainer = styled.div`
+//   display: flex;
+//   position: relative;
+//   height: 100%;
+//   width: 50%;
+//   .active {
+//     display: flex;
+//     color: black;
+//     flex-direction: column;
+//   }
+// `;
 
-export const filterButton = styled.div`
-  display: flex;
-  cursor: pointer;
-  background-color: #d8d8d8;
-  margin-right: 2rem;
-  height: 100%;
-  width: 10rem;
-  transition: all 0.4s;
-  :hover {
-    background-color: ${theme.colors.secondaryColor};
-    .filter-span {
-      color: white;
-    }
-    .filter-icon {
-      color: white;
-    }
-  }
-`;
-export const filterArrowContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  .filter-icon {
-    transition: all 0.4s;
-    transform: rotate(180deg);
-    height: 50%;
-    width: 100%;
-    color: black;
-  }
-`;
+// export const filterButton = styled.div`
+//   display: flex;
+//   cursor: pointer;
+//   background-color: #d8d8d8;
+//   margin-right: 2rem;
+//   height: 100%;
+//   width: 10rem;
+//   transition: all 0.4s;
+//   :hover {
+//     background-color: ${theme.colors.secondaryColor};
+//     .filter-span {
+//       color: white;
+//     }
+//     .filter-icon {
+//       color: white;
+//     }
+//   }
+// `;
+// export const filterArrowContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100%;
+//   width: 100%;
+//   .filter-icon {
+//     transition: all 0.4s;
+//     transform: rotate(180deg);
+//     height: 50%;
+//     width: 100%;
+//     color: black;
+//   }
+// `;
 
-export const filterNameSpan = styled.span`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: fit-content;
-  font-size: 1.5rem;
-  color: black;
-  transition: all 0.4s;
-`;
+// export const filterNameSpan = styled.span`
+//   display: flex;
+//   align-items: center;
+//   height: 100%;
+//   width: fit-content;
+//   font-size: 1.5rem;
+//   color: black;
+//   transition: all 0.4s;
+// `;
 
 export const HomeHighLightsContainer = styled.section`
   display: flex;
@@ -141,8 +141,8 @@ export const adminSettingsContainer = styled.div`
   justify-content: end;
   height: 100%;
   width: 50%;
-  .active{
-    span{
+  .active {
+    span {
       font-size: 1.5rem;
     }
   }
@@ -155,19 +155,19 @@ export const adminOptions = styled.div`
   height: 100%;
   width: 50%;
   transition: all 0.4s;
-  span{
+  span {
     font-size: 0;
   }
   .span-delete-:hover,
-  .span-delete-delete{
+  .span-delete-delete {
     color: red;
   }
   .span-update-:hover,
-  .span-update-update{
+  .span-update-update {
     color: green;
   }
   .span-add-:hover,
-  .span-add-add{
+  .span-add-add {
     color: cyan;
   }
 `;
@@ -190,9 +190,9 @@ export const gearContainer = styled.div`
     height: 100%;
     width: 50%;
     transition: all 0.4s;
-    color: ${theme.colors.textColor}
+    color: ${theme.colors.textColor};
   }
-  .gear-active{
+  .gear-active {
     transform: rotate(-180deg);
   }
 `;

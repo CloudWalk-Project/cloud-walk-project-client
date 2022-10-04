@@ -28,6 +28,7 @@ export const Header1 = styled.div`
     width: 5rem;
     margin-left: 2rem;
     margin-right: 3rem;
+    cursor: pointer;
   }
 `;
 
@@ -39,11 +40,12 @@ export const SearchInputContainer = styled.form`
   display: flex;
   justify-content: left;
   align-items: center;
+  color: ${theme.colors.primaryColor};
 
   input {
     background-color: ${theme.colors.terciaryColor};
     width: 21.875rem;
-    color: ${theme.colors.textColor};
+    color: ${theme.colors.primaryColor};
     font-size: 0.9rem;
     height: 1.6rem;
     padding-left: 0.75rem;
@@ -66,6 +68,10 @@ export const About = styled.button`
   color: ${theme.colors.textColor};
   border-bottom: 1px solid ${theme.colors.textColor};
   cursor: pointer;
+  &:hover {
+    color: ${theme.colors.secondaryColor};
+    transition: 200ms ease-in;
+  }
 `;
 
 export const Header2 = styled.div`
@@ -98,9 +104,17 @@ export const Login = styled.button`
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
   cursor: pointer;
+  &:hover {
+    color: ${theme.colors.secondaryColor};
+    transition: 200ms ease-in;
+  }
 `;
 export const Register = styled.button`
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
   cursor: pointer;
+  &:hover {
+    color: ${theme.colors.secondaryColor};
+    transition: 200ms ease-in;
+  }
 `;
