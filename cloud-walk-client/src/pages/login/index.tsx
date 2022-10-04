@@ -1,15 +1,52 @@
 import * as S from "./style";
 import "./style.css";
+
 import Header from "../../components/Header";
 import regImage from "./../../assets/imgs/registerImage.png";
 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { loginObj } from "../../types/interfaces";
+import loginService from "../../services/auth";
+
+import { toast } from "react-toastify"
+
 const Login = () => {
+  
+  const navigate = useNavigate()
+  
+  const [values, setValues] = useState<loginObj>({
+    email: "",
+    password: "",
+  });
+
+  const handleChanges = (event:React.ChangeEvent<HTMLInputElement>) => {
+    setValues({
+      ...values,
+     [event.target.name]: event.target.value
+    });
+    console.log(event.target.name)
+  };
+
+  const handleLogin = async (event:React.FormEvent<HTMLFormElement>)=>{
+    event.preventDefault()
+    const response = await loginService.login(values);
+    if(response.token){
+      localStorage.setItem('jwt', response.token)
+      navigate('/')
+    }
+    else{
+      toast.error(response.message);
+    }
+  }
+
   return (
     <S.loginContainer>
       <Header />
       <S.loginContent>
         <S.loginFormContainer>
-          <S.loginForm>
+          <S.loginForm onSubmit={handleLogin}>
             <S.loginFormHeadingContainer>
               <S.loginFormHeading>FAZER LOGIN</S.loginFormHeading>
             </S.loginFormHeadingContainer>
@@ -17,11 +54,13 @@ const Login = () => {
               <S.loginFormInputs>
                 <S.loginFormInput
                   required
+                  name="email"
                   type="text"
-                  className="login--input" /*onChange={}*/
+                  onChange={handleChanges}
+                  className="login--input"
                 />
                 <S.loginFormInputLabel className="login-input--label">
-                  Username
+                  E-mail
                 </S.loginFormInputLabel>
               </S.loginFormInputs>
               <S.loginFormInputs>
@@ -30,8 +69,10 @@ const Login = () => {
                 </S.loginFormForgotPasswordSpan>
                 <S.loginFormInput
                   required
+                  name="password"
                   type="password"
-                  className="login--input" /*onChange={}*/
+                  onChange={handleChanges}
+                  className="login--input" 
                 />
                 <S.loginFormInputLabel>Password</S.loginFormInputLabel>
               </S.loginFormInputs>
@@ -56,7 +97,7 @@ const Login = () => {
             <S.loginRegisterThidText>de nossas artes!</S.loginRegisterThidText>
           </S.loginRegisterThirdTextContainer>
           <S.loginRegisterImageContainer>
-            <S.loginRegisterImage src={regImage}/>
+            <S.loginRegisterImage src={regImage} />
           </S.loginRegisterImageContainer>
           <S.loginRegisterButtonContainer>
             <S.loginRegisterButton>Cadastre-se</S.loginRegisterButton>

@@ -11,9 +11,27 @@ import { BsGear } from "react-icons/bs"
 import CanvaHighLights from "../../components/CanvaHighLights";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Canva } from "../../types/interfaces";
+import loginService from "../../services/auth";
 
 const Home = () => {
   
+  const token = localStorage.getItem('jwt')
+  
+  const [loggedUserRole,setLoggedUserRole] = useState()
+
+  const getLoggedUser = async ()=>{
+    const response = await loginService.loggedUser()
+    if(response.role){
+      setLoggedUserRole(response.role)
+    }
+  }
+  
+  useEffect(()=>{
+    if(token){
+      getLoggedUser()
+    }
+  },[])
+
   let genre: string[] = mockedCanva.map((elem) => elem.genre);
   genre = genre.filter((c, index) => {
     return genre.indexOf(c) === index;
@@ -114,6 +132,7 @@ const Home = () => {
                 ))}
               </S.dropDownContainer2>
             </S.listFiltersContainer>
+           {loggedUserRole=='Owner'?
             <S.adminSettingsContainer>
               <S.adminOptions className={settingsActive}>
                 <S.adminOptionsSpan id="add" onClick={(event:any)=>changeManageType(event.target.id)} className={`span-add-${canvaManageType}`}>ADICIONAR</S.adminOptionsSpan>
@@ -124,7 +143,9 @@ const Home = () => {
               <BsGear onClick={changeSettingsMode} className={`gear-${settingsActive} gear`}/>
               </S.gearContainer>
             </S.adminSettingsContainer>
+            : ""}
           </S.listOptionsContainer>
+              
           <CanvaList list={filteredCanvas}></CanvaList>
         </S.HomeContent>
         <Footer />

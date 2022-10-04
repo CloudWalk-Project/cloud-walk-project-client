@@ -11,6 +11,11 @@ export interface Canva {
   categoryName: string;
 }
 
+export interface loginObj{
+  email: string;
+  password:string;
+}
+
 export interface Category {}
 
 export interface User {}
