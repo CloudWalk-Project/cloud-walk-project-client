@@ -92,6 +92,13 @@ export const Header3 = styled.div`
     margin-left: 1rem;
     margin-right: 1rem;
   }
+
+  .log-out{
+    cursor: pointer;
+    margin-left: 1rem;
+    height: 2rem;
+    width: 3rem;
+  }
 `;
 
 export const Login = styled.button`
