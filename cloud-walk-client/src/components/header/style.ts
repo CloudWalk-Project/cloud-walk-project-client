@@ -105,9 +105,18 @@ export const Login = styled.button`
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
   cursor: pointer;
+  &:hover {
+    color: ${theme.colors.secondaryColor};
+    transition: 200ms ease-in;
+  }
 `;
+
 export const Register = styled.button`
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
   cursor: pointer;
+  &:hover {
+    color: ${theme.colors.secondaryColor};
+    transition: 200ms ease-in;
+  }
 `;
