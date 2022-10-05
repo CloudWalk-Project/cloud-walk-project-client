@@ -6,7 +6,6 @@ import theme from "../../assets/styles/theme";
 export const center = styled.body`
   display: flex;
   flex-direction: column;
-  height:100%;
   width:100%;
   background: ${theme.colors.primaryColor};
 `;
@@ -28,6 +27,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  font-size: 1vw;
 `;
 
 export const Heading = styled.p`
@@ -44,7 +44,7 @@ export const Heading = styled.p`
 `;
 
 export const Button = styled.button`
-  font-size: 3rem;
+  font-size: 100%;
   font-weight:bolder;
   background: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
@@ -64,7 +64,6 @@ export const Button = styled.button`
 `;
 
 export const ButtonPage1 = styled.button`
-  font-size: 3rem;
   font-weight:bolder;
   background: #FF7438;
   color: ${theme.colors.primaryColor};
@@ -75,7 +74,8 @@ export const ButtonPage1 = styled.button`
   padding: 1rem;
   border: 10px solid #FF7438;
   border-radius: 5px;
-  width: 30%;
+  width: 20%;
+  font-size:2vw;
 
   :hover{
     background: #FF7438;
@@ -93,4 +93,5 @@ export const centerbutton = styled.div`
   background: ${theme.colors.primaryColor};
   margin-left: 3rem;
   margin-right: 3rem;
+  width: 100%;
 `;
