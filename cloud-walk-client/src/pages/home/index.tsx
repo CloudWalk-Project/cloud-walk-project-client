@@ -15,9 +15,14 @@ import loginService from "../../services/auth";
 
 const Home = () => {
   
+  useEffect(()=>{
+    if(token){
+      getLoggedUser()
+    }
+  },[])
   const token = localStorage.getItem('jwt')
   
-  const [loggedUserRole,setLoggedUserRole] = useState()
+  const [loggedUserRole,setLoggedUserRole] = useState<string>('')
 
   const getLoggedUser = async ()=>{
     const response = await loginService.loggedUser()
@@ -26,12 +31,11 @@ const Home = () => {
     }
   }
   
-  useEffect(()=>{
-    if(token){
-      getLoggedUser()
-    }
-  },[])
-
+  const userLoggedOut = () =>{
+    setLoggedUserRole('') 
+    console.log(loggedUserRole)
+  }
+ 
   let genre: string[] = mockedCanva.map((elem) => elem.genre);
   genre = genre.filter((c, index) => {
     return genre.indexOf(c) === index;
@@ -87,7 +91,7 @@ const Home = () => {
   return (
     <>
       <S.home>
-        <Header />
+        <Header loggedOut={userLoggedOut} />
         <S.HomeContent>
           <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
           <S.HomeHighLightsContainer>

@@ -25,6 +25,7 @@ export const Header1 = styled.div`
     margin-left: 2rem;
   }
   img {
+    cursor: pointer;
     width: 5rem;
     margin-left: 2rem;
     margin-right: 3rem;
@@ -66,6 +67,11 @@ export const About = styled.button`
   color: ${theme.colors.textColor};
   border-bottom: 1px solid ${theme.colors.textColor};
   cursor: pointer;
+  transition: all 0.4s;
+  :hover{
+    color:${theme.colors.secondaryColor};
+    border-color: ${theme.colors.secondaryColor} ;
+  }
 `;
 
 export const Header2 = styled.div`
@@ -75,7 +81,7 @@ export const Header2 = styled.div`
   align-items: center;
 
   img {
-    width: 90%;
+    width: 80%;
     margin-top: 3rem;
   }
 `;
