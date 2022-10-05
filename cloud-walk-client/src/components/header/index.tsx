@@ -3,9 +3,11 @@ import Icon from "../../assets/imgs/Icon.svg";
 import Logo from "../../assets/imgs/Logo.svg";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import { useAuth } from "../../contexts/auth";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { logged } = useAuth();
 
   const handlehome = () => {
     navigate("/");

@@ -1,18 +1,14 @@
-import "./App.css";
+import { Toaster } from "react-hot-toast";
 import Router from "./router";
-import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import theme from "./assets/styles/theme";
-import Login from "./pages/login";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    </ThemeProvider>
+    <div>
+      <Toaster position="bottom-center" reverseOrder={false} />
+      <Router />
+    </div>
   );
-}
+};
 
 export default App;

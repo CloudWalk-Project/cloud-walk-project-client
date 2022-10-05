@@ -6,11 +6,20 @@ export interface Canva {
   description: string;
   inStock: boolean;
   image: string;
+  categoryName: string;
   createdAt: Date;
   updatedAt: Date;
-  categoryName: string;
 }
 
 export interface Category {}
 
-export interface User {}
+export interface User {
+  id: number;
+  name: string;
+  image: string;
+  password: string;
+  email: string;
+  role: string;
+  createdAt: Date;
+  updatedAt: Date;
+}

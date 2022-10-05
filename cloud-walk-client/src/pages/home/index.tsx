@@ -3,20 +3,24 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 import CanvaList from "../../components/Canvalist";
-import { mockedCanva } from "../../mocks/canva";
 
 import CanvaHighLights from "../../components/Canvahighlights";
 import { useEffect, useState } from "react";
 import { Canva } from "../../types/interfaces";
+import { useCanvas } from "../../contexts/canvas";
+import { useUsers } from "../../contexts/users";
 
 const Home = () => {
-  let genre: string[] = mockedCanva.map((elem) => elem.genre);
+  const { canvas } = useCanvas();
+  // const { user } = useUsers();
+
+  let genre: string[] = canvas.map((elem) => elem.genre);
   genre = genre.filter((c, index) => {
     return genre.indexOf(c) === index;
   });
   genre = ["Todos", ...genre];
 
-  let categories: string[] = mockedCanva.map((elem) => elem.categoryName);
+  let categories: string[] = canvas.map((elem) => elem.categoryName);
   categories = categories.filter((c, index) => {
     return categories.indexOf(c) === index;
   });
@@ -25,7 +29,8 @@ const Home = () => {
   const [selectedGenre, setSelectedGenre] = useState<string>("Todos");
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
 
-  let filteredCanvas: Canva[] = mockedCanva;
+  let filteredCanvas: Canva[] = canvas;
+  console.log(filteredCanvas);
 
   const handleChange = async () => {
     if (
@@ -38,9 +43,9 @@ const Home = () => {
         selectedCategory == "" ||
         selectedCategory == "Todos"
       ) {
-        filteredCanvas = mockedCanva;
+        filteredCanvas = canvas;
       } else {
-        filteredCanvas = mockedCanva.filter(
+        filteredCanvas = canvas.filter(
           (element) => element.categoryName === selectedCategory
         );
       }
@@ -50,14 +55,11 @@ const Home = () => {
         selectedCategory == "" ||
         selectedCategory == "Todos"
       ) {
-        console.log(selectedGenre);
-        filteredCanvas = mockedCanva.filter(
+        filteredCanvas = canvas.filter(
           (element) => element.genre === selectedGenre
         );
-        console.log(filteredCanvas);
       } else {
-        console.log(selectedGenre);
-        filteredCanvas = mockedCanva.filter(
+        filteredCanvas = canvas.filter(
           (element) => element.genre === selectedGenre
         );
         filteredCanvas = filteredCanvas.filter(
@@ -65,6 +67,8 @@ const Home = () => {
         );
       }
     }
+    // console.log(selectedGenre);
+    // console.log(filteredCanvas);
   };
 
   useEffect(() => {
