@@ -42,8 +42,6 @@ const Home = () => {
     return categories.indexOf(c) === index;
   });
   const [filteredCanvas,setFilteredCanvas] = useState<Canva[]>(mockedCanva)
-  const [selectedGenre, setSelectedGenre] = useState<string>("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [filterButton1Active,setFilterButton1Active] = useState<string>("")
   const [filterButton2Active,setFilterButton2Active] = useState<string>("")
   
