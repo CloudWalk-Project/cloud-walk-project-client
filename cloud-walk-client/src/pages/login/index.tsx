@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { loginObj } from "../../types/interfaces";
-import loginService from "../../services/auth";
+import loginService from "../../services/authService";
 
 import { toast } from "react-toastify"
 

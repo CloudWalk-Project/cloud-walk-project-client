@@ -6,8 +6,8 @@ export interface Canva {
   description: string;
   inStock: boolean;
   image: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
   categoryName: string;
 }
 

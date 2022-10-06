@@ -4,7 +4,7 @@ import Logo from "../../assets/imgs/Logo.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import loginService from "../../services/auth";
+import loginService from "../../services/authService";
 import { IoIosLogOut } from "react-icons/io"
 
 const Header = (props:{loggedOut:Function}) => {

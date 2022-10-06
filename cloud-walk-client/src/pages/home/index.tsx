@@ -1,4 +1,5 @@
 import * as S from "./style";
+import './style.css'
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -11,7 +12,8 @@ import { BsGear } from "react-icons/bs"
 import CanvaHighLights from "../../components/CanvaHighLights";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Canva } from "../../types/interfaces";
-import loginService from "../../services/auth";
+import loginService from "../../services/authService";
+import { canvaService } from "../../services/productsService";
 
 const Home = () => {
   
@@ -19,10 +21,12 @@ const Home = () => {
     if(token){
       getLoggedUser()
     }
+  getAllProducts();
   },[])
   const token = localStorage.getItem('jwt')
   
   const [loggedUserRole,setLoggedUserRole] = useState<string>('')
+  const [products,setProducts] = useState<Canva[]>([])
 
   const getLoggedUser = async ()=>{
     const response = await loginService.loggedUser()
@@ -30,28 +34,42 @@ const Home = () => {
       setLoggedUserRole(response.role)
     }
   }
+
+  const getAllProducts = async ()=>{
+    const response = await canvaService.getAllArts(1);
+    setProducts(response.data);
+  } 
   
   const userLoggedOut = () =>{
     setLoggedUserRole('') 
     console.log(loggedUserRole)
   }
  
-  let genre: string[] = mockedCanva.map((elem) => elem.genre);
+  let genre: string[] = products.map((elem) => elem.genre);
   genre = genre.filter((c, index) => {
     return genre.indexOf(c) === index;
   });
- 
-  let categories: string[] = mockedCanva.map((elem) => elem.categoryName);
+  
+  let categories: string[] = products.map((elem) => elem.categoryName);
   categories = categories.filter((c, index) => {
     return categories.indexOf(c) === index;
   });
-  const [filteredCanvas,setFilteredCanvas] = useState<Canva[]>(mockedCanva)
+  
   const [filterButton1Active,setFilterButton1Active] = useState<string>("")
   const [filterButton2Active,setFilterButton2Active] = useState<string>("")
   
   const [canvaManageType,setCanvaManageType] = useState<string>("")
   const [settingsActive,setSettingsActive] = useState<string>("");
   
+  const [selectedGenre, setSelectedGenre] = useState<string>("Todos");
+  const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
+
+  const ChangeGenre = (event: any) => {
+    setSelectedGenre(event.target.value);
+  };
+  const ChangeCategory = (event: any) => {
+    setSelectedCategory(event.target.value);
+  };
   const changeManageType = (type:string)=>{
     if(type==canvaManageType){
       setCanvaManageType("");
@@ -87,6 +105,7 @@ const Home = () => {
       setSettingsActive('active')
     }
   }
+
  
   return (
     <>
@@ -99,40 +118,32 @@ const Home = () => {
           </S.HomeHighLightsContainer>
           <S.listOptionsContainer>
             <S.listFiltersContainer>
-              <S.filterButton onClick={changeButton1Active}>
-                <S.filterNameSpan className="filter-span">
-                  Categoria
-                </S.filterNameSpan>
-                <S.filterArrowContainer>
-                  <IoIosArrowUp className="filter-icon" />
-                </S.filterArrowContainer>
-              </S.filterButton>
-              <S.dropDownContainer className={filterButton1Active}>
-                {categories.map((element) => (
-                  <div
-                    className=""
-                  >
-                    {element}
-                  </div>
-                ))}
-              </S.dropDownContainer>
-              <S.filterButton onClick={changeButton2Active}>
-                <S.filterNameSpan className="filter-span">
-                  Gênero
-                </S.filterNameSpan>
-                <S.filterArrowContainer>
-                  <IoIosArrowUp className="filter-icon" />
-                </S.filterArrowContainer>
-              </S.filterButton>
-              <S.dropDownContainer2 className={filterButton2Active}>
-                {genre.map((element) => (
-                  <div
-                    className=""
-                  >
-                    {element}
-                  </div>
-                ))}
-              </S.dropDownContainer2>
+
+          <select value={selectedCategory} onChange={ChangeCategory}>
+          <option key='Todos' value='Todos'>
+                Categorias
+              </option>
+            {categories.map((element) => {
+              return (
+                <option key={element} value={element}>
+                  {element}
+                </option>
+              );
+            })}
+            ;
+            </select>
+           
+            <select value={selectedGenre} onChange={ChangeGenre}>
+            <option key='Todos' value='Todos'>
+                Gêneros
+              </option>
+            {genre.map((element) => (
+              <option key={element} value={element}>
+                {element}
+              </option>
+            ))}
+            ;
+          </select>
             </S.listFiltersContainer>
            {loggedUserRole=='Owner'?
             <S.adminSettingsContainer>
@@ -148,7 +159,7 @@ const Home = () => {
             : ""}
           </S.listOptionsContainer>
               
-          <CanvaList list={filteredCanvas}></CanvaList>
+          <CanvaList></CanvaList>
         </S.HomeContent>
         <Footer />
       </S.home>
