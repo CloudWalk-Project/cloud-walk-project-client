@@ -80,13 +80,14 @@
 }
 
 .SlideCategory{
+    margin-top: 1rem;
     font-size: 1.5rem !important;
 }
 
 .SlideName{
-    font-size: 2rem !important;
+    font-size: 2.2rem !important;
 }
 
 .SlidePrice{
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
 }
