@@ -7,6 +7,7 @@ import { Navigation, Autoplay } from "swiper";
 import { mockedCanva } from "../../mocks/canva";
 
 const CanvaHighLights = () => {
+
   return (
     <>
       <Swiper

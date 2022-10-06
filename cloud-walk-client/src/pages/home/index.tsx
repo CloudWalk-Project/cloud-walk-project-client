@@ -15,6 +15,7 @@ import { Canva } from "../../types/interfaces";
 import loginService from "../../services/authService";
 import { canvaService } from "../../services/productsService";
 
+
 const Home = () => {
   
   useEffect(()=>{

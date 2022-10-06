@@ -1,7 +1,9 @@
 .Carousel{
+    display: flex;
+    justify-content: flex-start;
     box-sizing: border-box;
-    height: 100%;
-    width: 90%;
+    height: 85%;
+    width: 80%;
 
 }
 
