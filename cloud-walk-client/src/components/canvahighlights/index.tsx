@@ -23,7 +23,7 @@ const CanvaHighLights = () => {
         }}
       >
         {mockedCanva.map((canva) => (
-          <SwiperSlide className="CanvaSlide">
+          <SwiperSlide key={canva.id} className="CanvaSlide">
             <img className="CanvaImg" src={canva.image} alt={``} />
           </SwiperSlide>
         ))}

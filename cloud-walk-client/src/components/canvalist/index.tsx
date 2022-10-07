@@ -11,7 +11,9 @@ const CanvasList = () => {
   
   const getAllProducts = async ()=>{
     const response = await canvaService.getAllArts(1);
-    setProducts(response.data)
+    if(response.data){
+      setProducts(response.data)
+    }
   } 
 
   useEffect(()=>{ 
@@ -20,12 +22,12 @@ const CanvasList = () => {
    
   return (
     <S.CanvasListContainer>
-      {products.map((element) => (
-        <Link className="product-link" to={`/product/${element.id}`}>
+      {products.length>0 ? products.map((element) => (
+        <Link key={`product-${element.id}-link`} className="product-link" to={`/product/${element.id}`}>
         <CanvaCard canva={element} key={element.id} />
         </Link>
         
-      ))}
+      )):""}
     </S.CanvasListContainer>
   );
 };

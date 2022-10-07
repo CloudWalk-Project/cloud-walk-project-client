@@ -83,7 +83,7 @@ export const canvaLabel = styled.label`
   position: relative;
   z-index: 0;
   top: .8rem;
-  font-size: .9rem;
+  font-size: .8rem;
   color: ${theme.colors.textColor};
   transition: all 0.4s;
 `;
@@ -97,12 +97,17 @@ export const canvaInput = styled.input`
  border: none;
  border-bottom: 1px solid ${theme.colors.textColor};
  transition: all 0.4s;
- :valid,:focus ~ label{
+ :valid ~ label{
   top: 0;
   font-size: .7rem;
   color: ${theme.colors.secondaryColor};
  }
- :valid,:focus {
+ :focus ~ label{
+  top: 0;
+  font-size: .7rem;
+  color: ${theme.colors.secondaryColor};
+ }
+ :valid, :focus {
    border-color:${theme.colors.secondaryColor};
  }
 `
@@ -131,7 +136,11 @@ export const canvaTextArea = styled.textarea`
  outline-style: none;
  border: 1px solid ${theme.colors.textColor};
  transition: all 0.4s;
- :valid,:focus ~ label{
+ :valid ~ label{
+  top: 0;
+  color: ${theme.colors.secondaryColor};
+ }
+ :focus ~ label{
   top: 0;
   color: ${theme.colors.secondaryColor};
  }
