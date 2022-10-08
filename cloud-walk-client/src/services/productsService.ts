@@ -11,5 +11,5 @@ export const canvaService ={
     .catch((error)=>error.response.data),
     createArt: (data:createCanvaObj)=>api.post('canva',data)
     .then((response)=>response)
-    .catch((error)=>error.data)
+    .catch((error)=>error)
 }

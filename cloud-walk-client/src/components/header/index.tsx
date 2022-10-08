@@ -84,7 +84,6 @@ const Header = (props:{loggedOut:Function}) => {
         !token?
         <>
         <S.Login onClick={goToLogin}>Entrar</S.Login>
-        <p>|</p>
         <S.Register>Cadastre-se</S.Register>
         </>
         :

@@ -12,6 +12,7 @@ const CanvaModal = (props: {
   categories: categoriesObj[];
   type: string;
   closeModal: Function;
+  updateList: Function;
 }) => {
   const [values, setValues] = useState<createCanvaObj>({
     name: "",
@@ -19,11 +20,11 @@ const CanvaModal = (props: {
     description: "",
     genre: "",
     image:
-      "https://s2.glbimg.com/SkyLTd6VJy8WiUMg5L6EeUwgyMw=/0x0:620x548/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/B/t/limPwzQmSeI4WJO7haZg/2012-08-15-mf1.jpg",
+    "https://s2.glbimg.com/SkyLTd6VJy8WiUMg5L6EeUwgyMw=/0x0:620x548/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/B/t/limPwzQmSeI4WJO7haZg/2012-08-15-mf1.jpg",
     price: 0,
     inStock: false,
   });
-  
+
   const [inStockConv, setInStockConv] = useState<string>("");
 
   const handleCloseModal = () => {
@@ -49,14 +50,14 @@ const CanvaModal = (props: {
       price: Number(values.price),
     });
 
-    console.log(response.data);
-
-    // if(response.status==201){
-    //   toast.success('Produto criado com sucesso!')
-    // }
-    // else{
-    //   toast.error(response.message)
-    // }
+    if(response.data){
+      toast.success('Produto criado com sucesso!')
+      props.closeModal()
+      props.updateList()
+    }
+    else{
+     toast.error(response.response.data.message)
+    }
   };
 
   return (

@@ -22,14 +22,14 @@ const Home = () => {
     if (token) {
       getLoggedUser();
     }
-    getAllProducts();
+
     getCategories();
   }, []);
   const token = localStorage.getItem("jwt");
 
-  const [loggedUserRole, setLoggedUserRole] = useState<string>("");
-  const [products, setProducts] = useState<Canva[]>([]);
+  const [updtList,setUpdtList] = useState<boolean>(false)
 
+  const [loggedUserRole, setLoggedUserRole] = useState<string>("");
   
   const [categories,setCategories] = useState<categoriesObj[]>([]);
   
@@ -44,17 +44,10 @@ const Home = () => {
   setCategories(response.data.data)
 }
 
-  const getAllProducts = async () => {
-    const response = await canvaService.getAllArts(1);
-    setProducts(response.data);
-  };
 
   const userLoggedOut = () => {
     setLoggedUserRole("");
-    console.log(loggedUserRole);
   };
-
-
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -94,8 +87,11 @@ const Home = () => {
   const handleManageActions = (type: string) => {
     changeManageType(type);
     handleCanvaModal();
-    console.log(isModalOpen);
   };
+
+const updateList = ()=>{
+  setUpdtList(!updtList)
+}
 
   return (
     <>
@@ -182,12 +178,13 @@ const Home = () => {
             )}
           </S.listOptionsContainer>
 
-          <CanvaList></CanvaList>
+          <CanvaList updateList={updateList} updtListState={updtList}></CanvaList>
         </S.HomeContent>
         <Footer />
       </S.home>
       {isModalOpen ? (
         <CanvaModal
+          updateList={updateList}
           categories={categories}
           closeModal={handleCanvaModal}
           type={canvaManageType}
