@@ -1,6 +1,9 @@
 .Carousel{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
     box-sizing: border-box;
-    height: 100%;
+    height: 85%;
     width: 90%;
 
 }
@@ -11,7 +14,7 @@
     justify-content: center;
     align-items: center;
     width: 20%;
-    height: 100%;
+    height: fit-content;
 }
 
 
@@ -19,17 +22,16 @@
 .CanvaSlide > img{
     margin:0;
     width: 85%;
-    height: 80%;
+    height: fit-content;
 }
 
-.CanvaSlide > .SlideInfo{
-    position: relative;
-    display: flex;
-    height: 20%;
-    width: 85%;
 
+.swiper-pagination-bullet{
+    background-color: rgba(255, 255, 255, 0.499) !important;
 }
-
+.swiper-pagination-bullet-active{
+    background-color: white !important;
+  }
 .CanvaInfo::after{
     content: "";
     
@@ -78,13 +80,14 @@
 }
 
 .SlideCategory{
+    margin-top: 1rem;
     font-size: 1.5rem !important;
 }
 
 .SlideName{
-    font-size: 2.5rem !important;
+    font-size: 2.2rem !important;
 }
 
 .SlidePrice{
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
 }

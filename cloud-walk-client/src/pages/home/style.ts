@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import theme from "../../assets/styles/theme";
+import downArrow from "./../../assets/imgs/DownArrow.svg";
 
 export const home = styled.div`
   ${() => css`
@@ -53,10 +54,21 @@ export const listFiltersContainer = styled.div`
   position: relative;
   height: 100%;
   width: 50%;
-  .active {
-    display: flex;
-    color: black;
-    flex-direction: column;
+  select {
+    position: relative;
+    width: 10rem;
+    margin-left: 2rem;
+    background-color: ${theme.colors.secondaryColor};
+    color: ${theme.colors.textColor};
+    font-size: 1.5rem;
+    cursor: pointer;
+    option {
+      max-height: 0.5rem;
+      overflow: auto;
+      background-color: ${theme.colors.textColor};
+      color: black;
+      font-size: 1.2rem;
+    }
   }
 `;
 
@@ -141,8 +153,8 @@ export const adminSettingsContainer = styled.div`
   justify-content: end;
   height: 100%;
   width: 50%;
-  .active{
-    span{
+  .active {
+    span {
       font-size: 1.5rem;
     }
   }
@@ -155,19 +167,19 @@ export const adminOptions = styled.div`
   height: 100%;
   width: 50%;
   transition: all 0.4s;
-  span{
+  span {
     font-size: 0;
   }
   .span-delete-:hover,
-  .span-delete-delete{
+  .span-delete-delete {
     color: red;
   }
   .span-update-:hover,
-  .span-update-update{
+  .span-update-update {
     color: green;
   }
   .span-add-:hover,
-  .span-add-add{
+  .span-add-add {
     color: cyan;
   }
 `;
@@ -190,9 +202,9 @@ export const gearContainer = styled.div`
     height: 100%;
     width: 50%;
     transition: all 0.4s;
-    color: ${theme.colors.textColor}
+    color: ${theme.colors.textColor};
   }
-  .gear-active{
+  .gear-active {
     transform: rotate(-180deg);
   }
 `;

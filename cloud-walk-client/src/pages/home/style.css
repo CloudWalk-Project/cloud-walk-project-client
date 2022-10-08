@@ -1,0 +1,11 @@
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("./../../assets/imgs/DownArrow.svg");
+  padding-left: 2px;
+  outline: none;
+  box-sizing: none;
+  background-position: calc(100% - 3px) center;
+  background-repeat: no-repeat;
+  background-size: 25px;
+}

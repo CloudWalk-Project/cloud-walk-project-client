@@ -25,6 +25,7 @@ export const Header1 = styled.div`
     margin-left: 2rem;
   }
   img {
+    cursor: pointer;
     width: 5rem;
     margin-left: 2rem;
     margin-right: 3rem;
@@ -66,6 +67,11 @@ export const About = styled.button`
   color: ${theme.colors.textColor};
   border-bottom: 1px solid ${theme.colors.textColor};
   cursor: pointer;
+  transition: all 0.4s;
+  :hover{
+    color:${theme.colors.secondaryColor};
+    border-color: ${theme.colors.secondaryColor} ;
+  }
 `;
 
 export const Header2 = styled.div`
@@ -75,7 +81,7 @@ export const Header2 = styled.div`
   align-items: center;
 
   img {
-    width: 90%;
+    width: 80%;
     margin-top: 3rem;
   }
 `;
@@ -102,13 +108,27 @@ export const Header3 = styled.div`
 `;
 
 export const Login = styled.button`
+  position: relative;
+  padding-right: 20px;
+  margin-right: 1rem;
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
+  border-right: 1px solid;
   cursor: pointer;
   &:hover {
     color: ${theme.colors.secondaryColor};
     transition: 200ms ease-in;
+    border-color: ${theme.colors.textColor};
   }
+  /* ::after{
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 2px;
+    border-radius: .1rem;
+    height: 90%;
+    left: 55px;
+  } */
 `;
 
 export const Register = styled.button`
