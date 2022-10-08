@@ -2,8 +2,8 @@ import * as S from "./../CanvaCard/style";
 import "./style.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation, Autoplay } from "swiper";
+import "swiper/css/pagination";
+import { Autoplay, Pagination } from "swiper";
 import { mockedCanva } from "../../mocks/canva";
 
 const CanvaHighLights = () => {
@@ -11,8 +11,8 @@ const CanvaHighLights = () => {
   return (
     <>
       <Swiper
-        modules={[Navigation, Autoplay]}
-        navigation
+        modules={[Pagination, Autoplay]}
+        pagination
         speed={800}
         slidesPerView={3}
         className="Carousel"
