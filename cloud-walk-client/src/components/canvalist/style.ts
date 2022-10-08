@@ -8,4 +8,8 @@ export const CanvasListContainer = styled.div`
   gap: 4rem;
   margin-top: 3rem;
   justify-content: center;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;

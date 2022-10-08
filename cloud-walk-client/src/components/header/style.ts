@@ -103,6 +103,8 @@ export const Header3 = styled.div`
 export const Login = styled.button`
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
+  border-right: 2px solid ${theme.colors.textColor};
+  padding-right: 9px;
   cursor: pointer;
   &:hover {
     color: ${theme.colors.secondaryColor};
@@ -112,6 +114,7 @@ export const Login = styled.button`
 export const Register = styled.button`
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
+  padding-left: 9px;
   cursor: pointer;
   &:hover {
     color: ${theme.colors.secondaryColor};

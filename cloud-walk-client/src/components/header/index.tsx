@@ -17,9 +17,9 @@ const Header = () => {
     navigate("/about");
   };
 
-  // const handlesettings = () => {
-  //   navigate("/settings");
-  // };
+  const handlelogin = () => {
+    navigate("/login");
+  };
 
   return (
     <S.HeaderContainer>
@@ -43,8 +43,7 @@ const Header = () => {
         <img alt="logo" src={Logo} />
       </S.Header2>
       <S.Header3>
-        <S.Login>Entrar</S.Login>
-        <p>|</p>
+        <S.Login onClick={handlelogin}>Entrar</S.Login>
         <S.Register>Cadastre-se</S.Register>
       </S.Header3>
     </S.HeaderContainer>
