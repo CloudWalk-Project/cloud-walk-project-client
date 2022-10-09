@@ -4,6 +4,9 @@ import Logo from "../../assets/imgs/Logo.svg";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { useAuth } from "../../contexts/auth";
+import loginService from "../../service/authService";
+import { useEffect, useState } from "react";
+import { IoIosLogOut } from "react-icons/io";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -20,6 +23,28 @@ const Header = () => {
   const handlelogin = () => {
     navigate("/login");
   };
+
+  const [loggedUser, setLoggedUser] = useState<any>({});
+  const [token, setToken] = useState(localStorage.getItem("jwt"));
+
+  const getLoggedUser = async () => {
+    const response = await loginService.loggedUser();
+    if (response) {
+      setLoggedUser(response);
+    }
+  };
+
+  const logOut = () => {
+    localStorage.clear();
+    setToken(null);
+    setLoggedUser(null);
+  };
+
+  useEffect(() => {
+    if (token) {
+      getLoggedUser();
+    }
+  }, [token]);
 
   return (
     <S.HeaderContainer>
@@ -43,8 +68,19 @@ const Header = () => {
         <img alt="logo" src={Logo} />
       </S.Header2>
       <S.Header3>
-        <S.Login onClick={handlelogin}>Entrar</S.Login>
-        <S.Register>Cadastre-se</S.Register>
+        {!token ? (
+          <>
+            <S.Login onClick={handlelogin}>Entrar</S.Login>
+            <S.Register>Cadastre-se</S.Register>
+          </>
+        ) : (
+          <>
+            Bem vindo, {loggedUser.name}
+            <S.User>
+              <IoIosLogOut onClick={logOut} className="log-out" />
+            </S.User>
+          </>
+        )}
       </S.Header3>
     </S.HeaderContainer>
   );

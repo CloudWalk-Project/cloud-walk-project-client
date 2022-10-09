@@ -39,6 +39,7 @@ const Home = () => {
       setLoggedUserRole(response.role);
     }
   };
+
   const getCategories = async () => {
     const response = await categoriesService.getAllCategories();
     setCategories(response.data.data);

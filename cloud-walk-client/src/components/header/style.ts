@@ -121,3 +121,14 @@ export const Register = styled.button`
     transition: 200ms ease-in;
   }
 `;
+
+export const User = styled.button`
+  background-color: ${theme.colors.primaryColor};
+  color: ${theme.colors.textColor};
+  padding-left: 9px;
+  cursor: pointer;
+  &:hover {
+    color: ${theme.colors.secondaryColor};
+    transition: 200ms ease-in;
+  }
+`;
