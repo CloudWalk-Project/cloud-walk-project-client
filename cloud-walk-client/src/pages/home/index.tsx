@@ -74,7 +74,6 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
 
   let filteredCanvas: Canva[] = canvas;
-  console.log(filteredCanvas);
 
   const handleChange = async () => {
     if (

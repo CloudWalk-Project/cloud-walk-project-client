@@ -16,4 +16,10 @@ export const canvaService = {
       .post("canva", data)
       .then((response) => response)
       .catch((error) => error.data),
+
+  searchArt: (name: string) =>
+    api
+      .get(`canva/name/${name}`)
+      .then((response) => response.data)
+      .catch((error) => error.response.data),
 };
