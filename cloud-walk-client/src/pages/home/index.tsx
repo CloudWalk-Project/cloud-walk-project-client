@@ -30,8 +30,9 @@ const Home = () => {
 
   const [loggedUserRole, setLoggedUserRole] = useState<string>("");
   const [canvas, setCanvas] = useState<Canva[]>([]);
-
   const [categories, setCategories] = useState<categoriesObj[]>([]);
+
+  const [Searchlist, setSearchlist] = useState<Canva[]>([]);
 
   const getLoggedUser = async () => {
     const response = await loginService.loggedUser();
@@ -73,53 +74,58 @@ const Home = () => {
   const [selectedGenre, setSelectedGenre] = useState<string>("Todos");
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
 
-  let filteredCanvas: Canva[] = canvas;
+  // let filteredCanvas: Canva[] = canvas;
+  let [filteredCanvas, setfilteredCanvas] = useState<Canva[]>([]);
 
-  const handleChange = async () => {
-    if (
-      selectedGenre == null ||
-      selectedGenre == "" ||
-      selectedGenre == "Todos"
-    ) {
-      if (
-        selectedCategory == null ||
-        selectedCategory == "" ||
-        selectedCategory == "Todos"
-      ) {
-        filteredCanvas = canvas;
-      } else {
-        filteredCanvas = canvas.filter(
-          (element) => element.categoryName === selectedCategory
-        );
-      }
-    } else {
-      if (
-        selectedCategory == null ||
-        selectedCategory == "" ||
-        selectedCategory == "Todos"
-      ) {
-        filteredCanvas = canvas.filter(
-          (element) => element.genre === selectedGenre
-        );
-      } else {
-        filteredCanvas = canvas.filter(
-          (element) => element.genre === selectedGenre
-        );
-        filteredCanvas = filteredCanvas.filter(
-          (element) => element.categoryName === selectedCategory
-        );
-      }
-    }
-    // console.log(selectedGenre);
-    // console.log(filteredCanvas);
-  };
+  // const handleChange = async () => {
+  //   if (
+  //     selectedGenre == null ||
+  //     selectedGenre == "" ||
+  //     selectedGenre == "Todos"
+  //   ) {
+  //     if (
+  //       selectedCategory == null ||
+  //       selectedCategory == "" ||
+  //       selectedCategory == "Todos"
+  //     ) {
+  //       filteredCanvas = canvas;
+  //     } else {
+  //       filteredCanvas = canvas.filter(
+  //         (element) => element.categoryName === selectedCategory
+  //       );
+  //     }
+  //   } else {
+  //     if (
+  //       selectedCategory == null ||
+  //       selectedCategory == "" ||
+  //       selectedCategory == "Todos"
+  //     ) {
+  //       filteredCanvas = canvas.filter(
+  //         (element) => element.genre === selectedGenre
+  //       );
+  //     } else {
+  //       filteredCanvas = canvas.filter(
+  //         (element) => element.genre === selectedGenre
+  //       );
+  //       filteredCanvas = filteredCanvas.filter(
+  //         (element) => element.categoryName === selectedCategory
+  //       );
+  //     }
+  //   }
+  //   // console.log(selectedGenre);
+  //   // console.log(filteredCanvas);
+  // };
+
+  // useEffect(() => {
+  //   handleChange();
+  // }, [selectedGenre]);
+  // useEffect(() => {
+  //   handleChange();
+  // }, [selectedCategory]);
 
   useEffect(() => {
-    handleChange();
-  }, [selectedGenre]);
-  useEffect(() => {
-    handleChange();
-  }, [selectedCategory]);
+    setfilteredCanvas(Searchlist);
+  }, [Searchlist]);
 
   const ChangeGenre = (event: any) => {
     setSelectedGenre(event.target.value);
@@ -163,12 +169,19 @@ const Home = () => {
   return (
     <>
       <S.home>
-        <Header />
+        <Header setSearchlist={setSearchlist} />
         <S.HomeContent>
-          <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
-          <S.HomeHighLightsContainer>
-            <CanvaHighLights></CanvaHighLights>
-          </S.HomeHighLightsContainer>
+          {Searchlist.length == 0 ? (
+            <>
+              <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
+              <S.HomeHighLightsContainer>
+                <CanvaHighLights></CanvaHighLights>
+              </S.HomeHighLightsContainer>
+            </>
+          ) : (
+            ""
+          )}
+
           <S.listOptionsContainer>
             <S.listFiltersContainer>
               <select value={selectedGenre} onChange={ChangeGenre}>

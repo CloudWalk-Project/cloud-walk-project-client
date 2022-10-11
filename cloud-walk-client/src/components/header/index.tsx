@@ -12,14 +12,14 @@ import React from "react";
 import { Canva } from "../../types/interfaces";
 import CanvaList from "../Canvalist";
 
-const Header = () => {
-  const [canvas, setCanvas] = useState<Canva[]>([]);
+const Header = ({ setSearchlist }) => {
+  // const [canvas, setCanvas] = useState<Canva[]>([]);
   const [name, setName] = useState("");
 
   const search = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await canvaService.searchArt(name);
-    setCanvas(response.data);
+    setSearchlist(response.data);
   };
 
   const navigate = useNavigate();
@@ -96,13 +96,13 @@ const Header = () => {
           )}
         </S.Header3>
       </S.HeaderContainer>
-      {canvas ? (
+      {/* {canvas ? (
         <>
           <CanvaList list={canvas}></CanvaList>
         </>
       ) : (
         <></>
-      )}
+      )} */}
     </div>
   );
 };
