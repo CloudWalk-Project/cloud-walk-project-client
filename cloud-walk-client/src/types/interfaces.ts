@@ -11,11 +11,7 @@ export interface Canva {
   categoryName: string;
 }
 
-<<<<<<< HEAD
 export interface createUpdateCanvaObj {
-=======
-export interface createCanvaObj {
->>>>>>> home
   name: string;
   price: number;
   genre: string;
@@ -27,11 +23,7 @@ export interface createCanvaObj {
 
 export interface categoriesObj {
   cost: number;
-<<<<<<< HEAD
   createdAt?: string;
-=======
-  createdAt?: Date;
->>>>>>> home
   description: string;
   id: number;
   name: string;
@@ -44,7 +36,6 @@ export interface loginObj {
   password: string;
 }
 
-<<<<<<< HEAD
 export interface metaObj {
   hasNextPage: boolean;
   hasPreviousPage: boolean;
@@ -55,8 +46,6 @@ export interface metaObj {
   take: number;
 }
 
-=======
->>>>>>> home
 export interface Category {}
 
 export interface User {}

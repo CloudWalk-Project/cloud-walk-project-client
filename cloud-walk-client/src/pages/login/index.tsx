@@ -8,50 +8,18 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { loginObj } from "../../types/interfaces";
-<<<<<<< HEAD
 import loginService from "../../services/authService";
-
-import { toast } from "react-toastify"
-
-const Login = () => {
-  
-  const navigate = useNavigate()
-  
-=======
-import loginService from "../../service/authService";
 
 import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
 
->>>>>>> home
   const [values, setValues] = useState<loginObj>({
     email: "",
     password: "",
   });
 
-<<<<<<< HEAD
-  const handleChanges = (event:React.ChangeEvent<HTMLInputElement>) => {
-    setValues({
-      ...values,
-     [event.target.name]: event.target.value
-    });
-    console.log(event.target.name)
-  };
-
-  const handleLogin = async (event:React.FormEvent<HTMLFormElement>)=>{
-    event.preventDefault()
-    const response = await loginService.login(values);
-    if(response.token){
-      localStorage.setItem('jwt', response.token)
-      navigate('/')
-    }
-    else{
-      toast.error(response.message);
-    }
-  }
-=======
   const handleChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({
       ...values,
@@ -70,7 +38,6 @@ const Login = () => {
       toast.error(response.message);
     }
   };
->>>>>>> home
 
   return (
     <S.loginContainer>
@@ -103,11 +70,7 @@ const Login = () => {
                   name="password"
                   type="password"
                   onChange={handleChanges}
-<<<<<<< HEAD
-                  className="login--input" 
-=======
                   className="login--input"
->>>>>>> home
                 />
                 <S.loginFormInputLabel>Password</S.loginFormInputLabel>
               </S.loginFormInputs>

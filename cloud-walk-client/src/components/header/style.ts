@@ -69,16 +69,10 @@ export const About = styled.button`
   color: ${theme.colors.textColor};
   border-bottom: 1px solid ${theme.colors.textColor};
   cursor: pointer;
-<<<<<<< HEAD
   transition: all 0.4s;
-  :hover{
-    color:${theme.colors.secondaryColor};
-    border-color: ${theme.colors.secondaryColor} ;
-=======
-  &:hover {
+  :hover {
     color: ${theme.colors.secondaryColor};
-    transition: 200ms ease-in;
->>>>>>> home
+    border-color: ${theme.colors.secondaryColor};
   }
 `;
 
@@ -107,7 +101,7 @@ export const Header3 = styled.div`
     margin-right: 1rem;
   }
 
-  .log-out{
+  .log-out {
     cursor: pointer;
     margin-left: 1rem;
     height: 2rem;
@@ -121,17 +115,11 @@ export const Login = styled.button`
   margin-right: 1rem;
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
-<<<<<<< HEAD
   border-right: 1px solid;
-=======
-  border-right: 2px solid ${theme.colors.textColor};
-  padding-right: 9px;
->>>>>>> home
   cursor: pointer;
   &:hover {
     color: ${theme.colors.secondaryColor};
     transition: 200ms ease-in;
-<<<<<<< HEAD
     border-color: ${theme.colors.textColor};
   }
   /* ::after{
@@ -143,9 +131,6 @@ export const Login = styled.button`
     height: 90%;
     left: 55px;
   } */
-=======
-  }
->>>>>>> home
 `;
 
 export const Register = styled.button`
@@ -157,9 +142,6 @@ export const Register = styled.button`
     color: ${theme.colors.secondaryColor};
     transition: 200ms ease-in;
   }
-<<<<<<< HEAD
-`;
-=======
 `;
 
 export const User = styled.button`
@@ -172,4 +154,3 @@ export const User = styled.button`
     transition: 200ms ease-in;
   }
 `;
->>>>>>> home

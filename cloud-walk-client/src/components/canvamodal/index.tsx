@@ -2,59 +2,41 @@ import * as S from "./style";
 import Camera from "./../../assets/imgs/Camera.png";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
-<<<<<<< HEAD
-import { Canva, categoriesObj, createUpdateCanvaObj } from "../../types/interfaces";
+import {
+  Canva,
+  categoriesObj,
+  createUpdateCanvaObj,
+} from "../../types/interfaces";
 import { categoriesService } from "../../services/categoriesService";
 import { canvaService } from "../../services/productsService";
 import { toast } from "react-toastify";
 
-=======
-import { FcCamera } from "react-icons/fc";
-import { categoriesObj, createCanvaObj } from "../../types/interfaces";
-import { canvaService } from "../../service/canvaService";
->>>>>>> home
 const CanvaModal = (props: {
   categories: categoriesObj[];
   type: string;
   closeModal: Function;
-<<<<<<< HEAD
   updateList: Function;
-  setCanvaContent: Canva|null;
-  canvaId: number|null;
+  setCanvaContent: Canva | null;
+  canvaId: number | null;
 }) => {
-
- 
   const [values, setValues] = useState<createUpdateCanvaObj>({
-=======
-}) => {
-  const [values, setValues] = useState<createCanvaObj>({
->>>>>>> home
     name: "",
     categoryName: "",
     description: "",
     genre: "",
     image:
-<<<<<<< HEAD
-    "https://s2.glbimg.com/SkyLTd6VJy8WiUMg5L6EeUwgyMw=/0x0:620x548/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/B/t/limPwzQmSeI4WJO7haZg/2012-08-15-mf1.jpg",
-=======
       "https://s2.glbimg.com/SkyLTd6VJy8WiUMg5L6EeUwgyMw=/0x0:620x548/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/B/t/limPwzQmSeI4WJO7haZg/2012-08-15-mf1.jpg",
->>>>>>> home
     price: 0,
     inStock: false,
   });
 
-<<<<<<< HEAD
-  useEffect(()=>{
-    if(props.setCanvaContent){
-      setValues(props.setCanvaContent)
+  useEffect(() => {
+    if (props.setCanvaContent) {
+      setValues(props.setCanvaContent);
     }
-    console.log(props.type)
-  },[])
+    console.log(props.type);
+  }, []);
 
-
-
-=======
->>>>>>> home
   const [inStockConv, setInStockConv] = useState<string>("");
 
   const handleCloseModal = () => {
@@ -75,52 +57,35 @@ const CanvaModal = (props: {
     } else {
       values.inStock = false;
     }
-<<<<<<< HEAD
-   
-   let response;
 
-   if(props.setCanvaContent==null){
+    let response;
 
+    if (props.setCanvaContent == null) {
       response = await canvaService.createArt({
-       ...values,
-       price: Number(values.price),
+        ...values,
+        price: Number(values.price),
       });
-    }
-    else{
-      if(props.canvaId!=null){
-        response = await canvaService.updateArt({
-          ...values,
-          price: Number(values.price),
-         },props.canvaId)
+    } else {
+      if (props.canvaId != null) {
+        response = await canvaService.updateArt(
+          {
+            ...values,
+            price: Number(values.price),
+          },
+          props.canvaId
+        );
       }
-      console.log(values)
+      console.log(values);
       console.log(response);
     }
 
-    if(response.data){
-      toast.success('Sucesso!')
-      props.closeModal()
-      props.updateList()
+    if (response.data) {
+      toast.success("Sucesso!");
+      props.closeModal();
+      props.updateList();
+    } else {
+      toast.error(response.response.data.message);
     }
-    else{
-     toast.error(response.response.data.message)
-    }
-
-=======
-    const response = await canvaService.createArt({
-      ...values,
-      price: Number(values.price),
-    });
-
-    console.log(response.data);
-
-    // if(response.status==201){
-    //   toast.success('Produto criado com sucesso!')
-    // }
-    // else{
-    //   toast.error(response.message)
-    // }
->>>>>>> home
   };
 
   return (
@@ -134,12 +99,10 @@ const CanvaModal = (props: {
         </S.modalCloseIconContainer>
         <S.canvaImgLabelInputContainer>
           <S.canvaImgLabelInput>
-<<<<<<< HEAD
-            <S.canvaCameraImg src={props.setCanvaContent? values.image : Camera} className={props.setCanvaContent? 'thumbnail':''} />
-=======
-            {/* <S.canvaCameraImg src={Camera} /> */}
-            <FcCamera></FcCamera>
->>>>>>> home
+            <S.canvaCameraImg
+              src={props.setCanvaContent ? values.image : Camera}
+              className={props.setCanvaContent ? "thumbnail" : ""}
+            />
             <S.canvaFileInput type="file" />
           </S.canvaImgLabelInput>
         </S.canvaImgLabelInputContainer>
@@ -147,10 +110,7 @@ const CanvaModal = (props: {
         <S.canvaInputsContainer>
           <S.inputLabelContainer>
             <S.canvaInput
-<<<<<<< HEAD
-              value={props.setCanvaContent? values.name : values.name}
-=======
->>>>>>> home
+              value={props.setCanvaContent ? values.name : values.name}
               name="name"
               onChange={getValues}
               required
@@ -161,10 +121,7 @@ const CanvaModal = (props: {
 
           <S.inputLabelContainer>
             <S.canvaInput
-<<<<<<< HEAD
-              value={props.setCanvaContent? values.price : values.price}
-=======
->>>>>>> home
+              value={props.setCanvaContent ? values.price : values.price}
               name="price"
               onChange={getValues}
               required
@@ -175,21 +132,17 @@ const CanvaModal = (props: {
 
           <S.inputLabelContainer>
             <S.canvaInput
-<<<<<<< HEAD
-              value={props.setCanvaContent? values.categoryName : values.categoryName}
-=======
->>>>>>> home
+              value={
+                props.setCanvaContent
+                  ? values.categoryName
+                  : values.categoryName
+              }
               name="categoryName"
               onChange={getValues}
               required
               list="categories"
             />
-<<<<<<< HEAD
-            <S.canvaListInput
-             id="categories">
-=======
             <S.canvaListInput id="categories">
->>>>>>> home
               {props.categories.map((category) => (
                 <option value={category.name} />
               ))}
@@ -199,10 +152,7 @@ const CanvaModal = (props: {
 
           <S.inputLabelContainer>
             <S.canvaInput
-<<<<<<< HEAD
-              value={props.setCanvaContent? values.genre : values.genre}
-=======
->>>>>>> home
+              value={props.setCanvaContent ? values.genre : values.genre}
               name="genre"
               onChange={getValues}
               required
@@ -234,14 +184,14 @@ const CanvaModal = (props: {
             <S.canvaLabel>Em estoque?</S.canvaLabel>
           </S.inputLabelContainer>
 
-<<<<<<< HEAD
-          <S.inputTextAreaContainer 
-          onChange={getValues}>
-            <S.canvaTextArea value={props.setCanvaContent? values.description:values.description} name="description" required />
-=======
           <S.inputTextAreaContainer onChange={getValues}>
-            <S.canvaTextArea name="description" required />
->>>>>>> home
+            <S.canvaTextArea
+              value={
+                props.setCanvaContent ? values.description : values.description
+              }
+              name="description"
+              required
+            />
             <S.canvaTextAreaLabel>Descrição</S.canvaTextAreaLabel>
           </S.inputTextAreaContainer>
         </S.canvaInputsContainer>

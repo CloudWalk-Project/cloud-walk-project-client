@@ -58,7 +58,6 @@ export const listFiltersContainer = styled.div`
     position: relative;
     width: 10rem;
     margin-left: 2rem;
-<<<<<<< HEAD
     background-color: ${theme.colors.secondaryColor};
     color: ${theme.colors.textColor};
     font-size: 1.5rem;
@@ -82,8 +81,6 @@ export const filterButton = styled.div`
   width: 10rem;
   transition: all 0.4s;
   :hover {
-=======
->>>>>>> home
     background-color: ${theme.colors.secondaryColor};
     color: ${theme.colors.textColor};
     font-size: 1.5rem;

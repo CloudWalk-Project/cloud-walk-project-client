@@ -13,11 +13,10 @@ export const CanvasListContainer = styled.div`
     color: inherit;
     text-decoration: none;
   }
-<<<<<<< HEAD
-  .update{
+  .update {
     filter: grayscale(1);
   }
-  .updt-mode-container{
+  .updt-mode-container {
     cursor: pointer;
   }
 `;
@@ -28,7 +27,7 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  .pagination{
+  .pagination {
     z-index: 0;
   }
   .active > .page-link {
@@ -39,6 +38,4 @@ export const PaginationContainer = styled.div`
     box-shadow: 0 0 0 0.25rem rgba(253, 145, 95, 0.31),
       0px 4px 4px rgba(0, 0, 0, 0.25);
   }
-=======
->>>>>>> home
 `;
