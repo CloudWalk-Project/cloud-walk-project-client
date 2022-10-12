@@ -11,7 +11,7 @@ export interface Canva {
   categoryName: string;
 }
 
-export interface createCanvaObj {
+export interface createUpdateCanvaObj {
   name: string;
   price: number;
   genre: string;

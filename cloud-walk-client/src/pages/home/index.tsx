@@ -16,6 +16,7 @@ import loginService from "../../services/authService";
 import { canvaService } from "../../services/productsService";
 import CanvaModal from "../../components/CanvaModal";
 import { categoriesService } from "../../services/categoriesService";
+import DeleteModal from "../../components/DeleteModal";
 
 const Home = () => {
   useEffect(() => {
@@ -27,29 +28,42 @@ const Home = () => {
   }, []);
   const token = localStorage.getItem("jwt");
 
-  const [updtList,setUpdtList] = useState<boolean>(false)
+  const [updtList, setUpdtList] = useState<boolean>(false);
 
   const [loggedUserRole, setLoggedUserRole] = useState<string>("");
-  
-  const [categories,setCategories] = useState<categoriesObj[]>([]);
-  
+
+  const [categories, setCategories] = useState<categoriesObj[]>([]);
+
   const getLoggedUser = async () => {
     const response = await loginService.loggedUser();
     if (response.role) {
       setLoggedUserRole(response.role);
     }
   };
-  const getCategories = async ()=>{
+  const getCategories = async () => {
     const response = await categoriesService.getAllCategories();
-  setCategories(response.data.data)
-}
-
+    setCategories(response.data.data);
+  };
 
   const userLoggedOut = () => {
     setLoggedUserRole("");
   };
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
+  const [canvaId,setCanvaId] = useState<number|null>(null)
+
+  const [toUpdateCanva, setToUpdateCanva] = useState<Canva | null>(null);
+  const [toDeleteCanva,setToDeleteCanva] = useState<Canva>({
+    id:0,
+    categoryName:"",
+    description:"",
+    genre:"",
+    image:"",
+    inStock: false,
+    name:"",
+    price: 0,
+  })
 
   const [canvaManageType, setCanvaManageType] = useState<string>("");
   const [settingsActive, setSettingsActive] = useState<string>("");
@@ -72,6 +86,9 @@ const Home = () => {
   };
 
   const handleCanvaModal = () => {
+    if (isModalOpen) {
+      setToUpdateCanva(null);
+    }
     setIsModalOpen(!isModalOpen);
     changeManageType("");
   };
@@ -89,9 +106,24 @@ const Home = () => {
     handleCanvaModal();
   };
 
-const updateList = ()=>{
-  setUpdtList(!updtList)
-}
+  const updateList = () => {
+    setUpdtList(!updtList);
+  };
+
+  const openUpdateModal = (canva: Canva) => {
+    setToUpdateCanva(canva);
+    setCanvaId(canva.id)
+    handleCanvaModal();
+  };
+  
+  const handleCanvaToDelete = (canva:Canva)=>{
+    setToDeleteCanva(canva)
+    handleDeleteModal()
+  }
+
+  const handleDeleteModal = ()=>{
+    setIsDeleteModalOpen(!isDeleteModalOpen)
+  }
 
   return (
     <>
@@ -119,24 +151,12 @@ const updateList = ()=>{
               </select>
 
               <select value={selectedGenre} onChange={ChangeGenre}>
-                <option  value="Todos">
-                  Gêneros
-                </option>
-                <option value="Realism" >
-                  Realism
-                </option>
-                <option value="Abstract" >
-                 Abstract
-                </option>
-                <option value="Fantasy" >
-                 Fantasy
-                </option>
-                <option value="Gothic" >
-                 Gothic
-                </option>
-                <option value="PopArt" >
-                 PopArt
-                </option>
+                <option value="Todos">Gêneros</option>
+                <option value="Realism">Realism</option>
+                <option value="Abstract">Abstract</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Gothic">Gothic</option>
+                <option value="PopArt">PopArt</option>
               </select>
             </S.listFiltersContainer>
             {loggedUserRole == "Owner" ? (
@@ -178,12 +198,21 @@ const updateList = ()=>{
             )}
           </S.listOptionsContainer>
 
-          <CanvaList updateList={updateList} updtListState={updtList}></CanvaList>
+          <CanvaList
+            canvaToDelete={handleCanvaToDelete}
+            openUpdtModal={openUpdateModal}
+            type={canvaManageType}
+            updateList={updateList}
+            updtListState={updtList}
+          ></CanvaList>
         </S.HomeContent>
         <Footer />
       </S.home>
       {isModalOpen ? (
         <CanvaModal
+          
+          canvaId={canvaId}
+          setCanvaContent={toUpdateCanva}
           updateList={updateList}
           categories={categories}
           closeModal={handleCanvaModal}
@@ -192,6 +221,15 @@ const updateList = ()=>{
       ) : (
         ""
       )}
+      {
+        isDeleteModalOpen?
+        <DeleteModal
+         updtList={updateList}
+         closeModal={handleDeleteModal}
+         item={toDeleteCanva}
+        />
+        :""
+      }
     </>
   );
 };

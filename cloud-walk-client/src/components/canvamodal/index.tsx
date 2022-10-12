@@ -2,10 +2,9 @@ import * as S from "./style";
 import Camera from "./../../assets/imgs/Camera.png";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
-import { categoriesObj, createCanvaObj } from "../../types/interfaces";
+import { Canva, categoriesObj, createUpdateCanvaObj } from "../../types/interfaces";
 import { categoriesService } from "../../services/categoriesService";
 import { canvaService } from "../../services/productsService";
-import { privateDecrypt } from "crypto";
 import { toast } from "react-toastify";
 
 const CanvaModal = (props: {
@@ -13,8 +12,12 @@ const CanvaModal = (props: {
   type: string;
   closeModal: Function;
   updateList: Function;
+  setCanvaContent: Canva|null;
+  canvaId: number|null;
 }) => {
-  const [values, setValues] = useState<createCanvaObj>({
+
+ 
+  const [values, setValues] = useState<createUpdateCanvaObj>({
     name: "",
     categoryName: "",
     description: "",
@@ -24,6 +27,15 @@ const CanvaModal = (props: {
     price: 0,
     inStock: false,
   });
+
+  useEffect(()=>{
+    if(props.setCanvaContent){
+      setValues(props.setCanvaContent)
+    }
+    console.log(props.type)
+  },[])
+
+
 
   const [inStockConv, setInStockConv] = useState<string>("");
 
@@ -45,19 +57,36 @@ const CanvaModal = (props: {
     } else {
       values.inStock = false;
     }
-    const response = await canvaService.createArt({
-      ...values,
-      price: Number(values.price),
-    });
+   
+   let response;
+
+   if(props.setCanvaContent==null){
+
+      response = await canvaService.createArt({
+       ...values,
+       price: Number(values.price),
+      });
+    }
+    else{
+      if(props.canvaId!=null){
+        response = await canvaService.updateArt({
+          ...values,
+          price: Number(values.price),
+         },props.canvaId)
+      }
+      console.log(values)
+      console.log(response);
+    }
 
     if(response.data){
-      toast.success('Produto criado com sucesso!')
+      toast.success('Sucesso!')
       props.closeModal()
       props.updateList()
     }
     else{
      toast.error(response.response.data.message)
     }
+
   };
 
   return (
@@ -71,7 +100,7 @@ const CanvaModal = (props: {
         </S.modalCloseIconContainer>
         <S.canvaImgLabelInputContainer>
           <S.canvaImgLabelInput>
-            <S.canvaCameraImg src={Camera} />
+            <S.canvaCameraImg src={props.setCanvaContent? values.image : Camera} className={props.setCanvaContent? 'thumbnail':''} />
             <S.canvaFileInput type="file" />
           </S.canvaImgLabelInput>
         </S.canvaImgLabelInputContainer>
@@ -79,6 +108,7 @@ const CanvaModal = (props: {
         <S.canvaInputsContainer>
           <S.inputLabelContainer>
             <S.canvaInput
+              value={props.setCanvaContent? values.name : values.name}
               name="name"
               onChange={getValues}
               required
@@ -89,6 +119,7 @@ const CanvaModal = (props: {
 
           <S.inputLabelContainer>
             <S.canvaInput
+              value={props.setCanvaContent? values.price : values.price}
               name="price"
               onChange={getValues}
               required
@@ -99,12 +130,14 @@ const CanvaModal = (props: {
 
           <S.inputLabelContainer>
             <S.canvaInput
+              value={props.setCanvaContent? values.categoryName : values.categoryName}
               name="categoryName"
               onChange={getValues}
               required
               list="categories"
             />
-            <S.canvaListInput id="categories">
+            <S.canvaListInput
+             id="categories">
               {props.categories.map((category) => (
                 <option value={category.name} />
               ))}
@@ -114,6 +147,7 @@ const CanvaModal = (props: {
 
           <S.inputLabelContainer>
             <S.canvaInput
+              value={props.setCanvaContent? values.genre : values.genre}
               name="genre"
               onChange={getValues}
               required
@@ -145,8 +179,9 @@ const CanvaModal = (props: {
             <S.canvaLabel>Em estoque?</S.canvaLabel>
           </S.inputLabelContainer>
 
-          <S.inputTextAreaContainer onChange={getValues}>
-            <S.canvaTextArea name="description" required />
+          <S.inputTextAreaContainer 
+          onChange={getValues}>
+            <S.canvaTextArea value={props.setCanvaContent? values.description:values.description} name="description" required />
             <S.canvaTextAreaLabel>Descrição</S.canvaTextAreaLabel>
           </S.inputTextAreaContainer>
         </S.canvaInputsContainer>

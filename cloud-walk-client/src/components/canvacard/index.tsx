@@ -1,14 +1,19 @@
 import * as S from "./style";
+import './style.css'
 import { Canva } from "../../types/interfaces";
+import { useEffect } from "react";
 
 interface CanvaCardProps {
   canva: Canva;
+  type: string;
 }
 
-const CanvaCard = ({ canva }: CanvaCardProps) => {
+const CanvaCard = ({ canva, type }: CanvaCardProps) => {
   return (
-    <S.Card>
-      <S.CardImg alt={canva.name} src={canva.image}></S.CardImg>
+    <>
+    {type=='update'? <div className={`typeUP-${type} types`} >ATUALIZAR</div> : type=='delete'? <div className={`typeDEL-${type} types`}>DELETAR</div> :"" }
+    <S.Card className={type}>
+      <S.CardImg  alt={canva.name} src={canva.image}></S.CardImg>
       <S.CardInfoContainer>
         <S.CardInfoNameCategory>
           <S.CardInfoCategory>{canva.categoryName}</S.CardInfoCategory>
@@ -19,6 +24,7 @@ const CanvaCard = ({ canva }: CanvaCardProps) => {
         </S.CardInfoPriceContainer>
       </S.CardInfoContainer>
     </S.Card>
+    </> 
   );
 };
 

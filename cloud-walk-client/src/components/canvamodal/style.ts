@@ -43,6 +43,10 @@ export const canvaImgLabelInputContainer = styled.div`
   padding-top: 1rem;
   height: 35%;
   width: 100%;
+  .thumbnail{
+    height: 100%;
+    width: 100%;
+  }
 `;
 export const canvaImgLabelInput = styled.label`
   display: flex;

@@ -13,6 +13,12 @@ export const CanvasListContainer = styled.div`
     color: inherit;
     text-decoration: none;
   }
+  .update{
+    filter: grayscale(1);
+  }
+  .updt-mode-container{
+    cursor: pointer;
+  }
 `;
 
 export const PaginationContainer = styled.div`
@@ -21,6 +27,9 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  .pagination{
+    z-index: 0;
+  }
   .active > .page-link {
     background-color: ${theme.colors.secondaryColor};
     border-color: ${theme.colors.secondaryColor};
