@@ -6,6 +6,13 @@ export const Card = styled.section`
     flex-direction: column;
     height: 350px;
     width: 350px;
+    transition: all 0.4s;
+    .update{
+      filter: grayscale(1);
+    }
+    .types{
+  filter: grayscale(0%);
+}
   `}
 `;
 export const CardImg = styled.img`
