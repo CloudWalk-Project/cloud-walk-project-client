@@ -5,38 +5,46 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import loginService from "../../services/authService";
-import { IoIosLogOut } from "react-icons/io"
+import { IoIosLogOut } from "react-icons/io";
+import { Canva } from "../../types/interfaces";
+import { canvaService } from "../../service/canvaService";
 
-const Header = (props:{loggedOut:Function}) => {
-  
-
+const Header = (props: { loggedOut: Function; setSearchlist: any }) => {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
 
   const pathName = location.pathname;
 
-  const [token,setToken] = useState(localStorage.getItem('jwt'))
-  
-  const [loggedUser,setLoggedUser] = useState<any>({})
+  const [name, setName] = useState("");
 
-  const getLoggedUser = async ()=>{
-    const response = await loginService.loggedUser()
-    if(response){
-      setLoggedUser(response)
+  const search = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const response = await canvaService.searchArt(name);
+    props.setSearchlist(response.data);
+  };
+
+  const [token, setToken] = useState(localStorage.getItem("jwt"));
+
+  const [loggedUser, setLoggedUser] = useState<any>({});
+
+  const getLoggedUser = async () => {
+    const response = await loginService.loggedUser();
+    if (response) {
+      setLoggedUser(response);
     }
-  }
-  
-  const logOut = ()=>{
-    localStorage.clear()
-    setToken(null)
-    props.loggedOut()
-  }
-  
-  useEffect(()=>{
-    if(token){
-      getLoggedUser()
+  };
+
+  const logOut = () => {
+    localStorage.clear();
+    setToken(null);
+    props.loggedOut();
+  };
+
+  useEffect(() => {
+    if (token) {
+      getLoggedUser();
     }
-  },[token])
+  }, [token]);
 
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
@@ -52,46 +60,42 @@ const Header = (props:{loggedOut:Function}) => {
     navigate("/login");
   };
 
-  
-
   return (
     <S.HeaderContainer>
       <S.Header1>
-        <img onClick={goToHome}  alt="Name" src={Icon} />
-          {pathName!='/login'?
-        <S.SearchInputContainer>
-          <form>
-          <input
-              id="search-input"
-              type="string"
+        <img onClick={goToHome} alt="Name" src={Icon} />
+        {pathName != "/login" ? (
+          <S.SearchInputContainer onSubmit={search}>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Procure sua arte"
             />
-            <button>
+            <button className="search-button" type="submit">
               <FaSearch color="#555" />
             </button>
-          </form>
-        </S.SearchInputContainer>
-         :
-         ""  
-        }
+          </S.SearchInputContainer>
+        ) : (
+          ""
+        )}
         <S.About onClick={goToAbout}>Sobre nós</S.About>
       </S.Header1>
       <S.Header2>
         <img alt="logo" src={Logo} />
       </S.Header2>
       <S.Header3>
-        {
-        !token?
-        <>
-        <S.Login onClick={goToLogin}>Entrar</S.Login>
-        <S.Register>Cadastre-se</S.Register>
-        </>
-        :
-        <>
-        Bem vindo, {loggedUser.name}
-        <IoIosLogOut onClick={logOut} className="log-out"/>
-        </>
-        }
+        {!token ? (
+          <>
+            <S.Login onClick={goToLogin}>Entrar</S.Login>
+            <S.Register>Cadastre-se</S.Register>
+          </>
+        ) : (
+          <>
+            Bem vindo, {loggedUser.name}
+            <IoIosLogOut onClick={logOut} className="log-out" />
+          </>
+        )}
       </S.Header3>
     </S.HeaderContainer>
   );

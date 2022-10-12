@@ -1,13 +1,18 @@
-import "./App.css";
+import { Toaster } from "react-hot-toast";
 import Router from "./router";
-import { BrowserRouter } from "react-router-dom";
+import "./App.css";
 import { ThemeProvider } from "styled-components";
+import { BrowserRouter } from "react-router-dom";
 import theme from "./assets/styles/theme";
+<<<<<<< HEAD
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+=======
+>>>>>>> home
 
-function App() {
+const App = () => {
   return (
+<<<<<<< HEAD
     <>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
@@ -27,7 +32,26 @@ function App() {
          pauseOnHover
       />
     </>
+=======
+    <div>
+      <Toaster position="bottom-center" reverseOrder={false} />
+      <Router />
+    </div>
+>>>>>>> home
   );
-}
+};
+
+// function App() {
+//   return (
+//     <>
+//       <ThemeProvider theme={theme}>
+//         <BrowserRouter>
+//           <Toaster position="bottom-center" reverseOrder={false} />
+//           <Router />
+//         </BrowserRouter>
+//       </ThemeProvider>
+//     </>
+//   );
+// }
 
 export default App;

@@ -29,16 +29,16 @@ export const HighLightsHeading = styled.h1`
   position: relative;
   height: fit-content;
   width: 100%;
+  font-size: 2.5rem;
+  border-bottom: 1px solid white;
+`;
+
+export const HomeHighLightsContainer = styled.section`
+  position: relative;
+  height: 35rem;
+  width: 100%;
   font-size: 3.5rem;
-  ::after {
-    content: "";
-    position: absolute;
-    background-color: ${theme.colors.textColor};
-    height: 2px;
-    width: 350px;
-    top: 65px;
-    left: 15px;
-  }
+  justify-content: center;
 `;
 
 export const listOptionsContainer = styled.div`
@@ -58,6 +58,7 @@ export const listFiltersContainer = styled.div`
     position: relative;
     width: 10rem;
     margin-left: 2rem;
+<<<<<<< HEAD
     background-color: ${theme.colors.secondaryColor};
     color: ${theme.colors.textColor};
     font-size: 1.5rem;
@@ -81,71 +82,20 @@ export const filterButton = styled.div`
   width: 10rem;
   transition: all 0.4s;
   :hover {
+=======
+>>>>>>> home
     background-color: ${theme.colors.secondaryColor};
-    .filter-span {
-      color: white;
-    }
-    .filter-icon {
-      color: white;
+    color: ${theme.colors.textColor};
+    font-size: 1.5rem;
+    cursor: pointer;
+    option {
+      max-height: 0.5rem;
+      overflow: auto;
+      background-color: ${theme.colors.primaryColor};
+      color: ${theme.colors.textColor};
+      font-size: 1.2rem;
     }
   }
-`;
-export const filterArrowContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  .filter-icon {
-    transition: all 0.4s;
-    transform: rotate(180deg);
-    height: 50%;
-    width: 100%;
-    color: black;
-  }
-`;
-
-export const filterNameSpan = styled.span`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: fit-content;
-  font-size: 1.5rem;
-  color: black;
-  transition: all 0.4s;
-`;
-
-export const HomeHighLightsContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin-top: 5rem;
-  align-items: flex-end;
-  height: 40%;
-  width: 95%;
-`;
-
-export const dropDownContainer = styled.div`
-  display: none;
-  position: absolute;
-  top: 63px;
-  left: 0px;
-  height: fit-content;
-  max-height: 10rem;
-  overflow: auto;
-  width: 10rem;
-  background-color: white;
-`;
-export const dropDownContainer2 = styled.div`
-  display: none;
-  position: absolute;
-  top: 63px;
-  right: 469px;
-  height: 10rem;
-  width: 10rem;
-  background-color: white;
-  height: fit-content;
-  max-height: 10rem;
-  overflow: auto;
 `;
 
 export const adminSettingsContainer = styled.div`

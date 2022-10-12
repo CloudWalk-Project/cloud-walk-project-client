@@ -12,7 +12,8 @@ const CanvasList = (props: {
   updateList: Function;
   type: string;
   openUpdtModal: Function;
-  canvaToDelete:Function;
+  canvaToDelete: Function;
+  list: Canva[];
 }) => {
   const [products, setProducts] = useState<Canva[]>([]);
   const [metaData, setMetaData] = useState<metaObj>({

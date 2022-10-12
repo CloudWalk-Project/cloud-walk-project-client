@@ -2,11 +2,12 @@ import * as S from "./style";
 import "./style.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { BsGear } from "react-icons/bs";
 
 import CanvaList from "../../components/Canvalist";
-import { mockedCanva } from "../../mocks/canva";
-import { IoIosArrowUp } from "react-icons/io";
+import CanvaHighLights from "../../components/Canvahighlights";
 
+<<<<<<< HEAD
 import { BsGear } from "react-icons/bs";
 
 import CanvaHighLights from "../../components/CanvaHighLights";
@@ -19,32 +20,65 @@ import { categoriesService } from "../../services/categoriesService";
 import DeleteModal from "../../components/DeleteModal";
 
 const Home = () => {
+=======
+import React, { SyntheticEvent, useEffect, useState } from "react";
+import { Canva, categoriesObj } from "../../types/interfaces";
+
+import loginService from "../../service/authService";
+import { canvaService } from "../../service/canvaService";
+import CanvaModal from "../../components/Canvamodal";
+import { categoriesService } from "../../service/categoriesService";
+
+import { useCanvas } from "../../contexts/canvas";
+import { useUsers } from "../../contexts/users";
+
+const Home = () => {
+  // Connecting:
+>>>>>>> home
   useEffect(() => {
     if (token) {
       getLoggedUser();
     }
+<<<<<<< HEAD
 
+=======
+    getAllProducts();
+>>>>>>> home
     getCategories();
   }, []);
   const token = localStorage.getItem("jwt");
 
+<<<<<<< HEAD
   const [updtList, setUpdtList] = useState<boolean>(false);
 
   const [loggedUserRole, setLoggedUserRole] = useState<string>("");
 
   const [categories, setCategories] = useState<categoriesObj[]>([]);
 
+=======
+  const [loggedUserRole, setLoggedUserRole] = useState<string>("");
+  const [canvas, setCanvas] = useState<Canva[]>([]);
+  const [categories, setCategories] = useState<categoriesObj[]>([]);
+
+  const [Searchlist, setSearchlist] = useState<Canva[]>([]);
+
+>>>>>>> home
   const getLoggedUser = async () => {
     const response = await loginService.loggedUser();
     if (response.role) {
       setLoggedUserRole(response.role);
     }
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> home
   const getCategories = async () => {
     const response = await categoriesService.getAllCategories();
     setCategories(response.data.data);
   };
 
+<<<<<<< HEAD
   const userLoggedOut = () => {
     setLoggedUserRole("");
   };
@@ -67,16 +101,107 @@ const Home = () => {
 
   const [canvaManageType, setCanvaManageType] = useState<string>("");
   const [settingsActive, setSettingsActive] = useState<string>("");
+=======
+  const getAllProducts = async () => {
+    const response = await canvaService.getAllArts(1);
+    setCanvas(response.data);
+  };
+
+  const userLoggedOut = () => {
+    setLoggedUserRole("");
+    console.log(loggedUserRole);
+  };
+
+  // const { canvas } = useCanvas();
+  // const { user } = useUsers();
+
+  let genre: string[] = canvas.map((elem) => elem.genre);
+  genre = genre.filter((c, index) => {
+    return genre.indexOf(c) === index;
+  });
+  genre = ["Todos", ...genre];
+
+  let categorieslist: string[] = canvas.map((elem) => elem.categoryName);
+  categorieslist = categorieslist.filter((c, index) => {
+    return categorieslist.indexOf(c) === index;
+  });
+  categorieslist = ["Todos", ...categorieslist];
+>>>>>>> home
 
   const [selectedGenre, setSelectedGenre] = useState<string>("Todos");
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
 
+<<<<<<< HEAD
+=======
+  // let filteredCanvas: Canva[] = canvas;
+  let [filteredCanvas, setfilteredCanvas] = useState<Canva[]>([]);
+
+  // const handleChange = async () => {
+  //   if (
+  //     selectedGenre == null ||
+  //     selectedGenre == "" ||
+  //     selectedGenre == "Todos"
+  //   ) {
+  //     if (
+  //       selectedCategory == null ||
+  //       selectedCategory == "" ||
+  //       selectedCategory == "Todos"
+  //     ) {
+  //       filteredCanvas = canvas;
+  //     } else {
+  //       filteredCanvas = canvas.filter(
+  //         (element) => element.categoryName === selectedCategory
+  //       );
+  //     }
+  //   } else {
+  //     if (
+  //       selectedCategory == null ||
+  //       selectedCategory == "" ||
+  //       selectedCategory == "Todos"
+  //     ) {
+  //       filteredCanvas = canvas.filter(
+  //         (element) => element.genre === selectedGenre
+  //       );
+  //     } else {
+  //       filteredCanvas = canvas.filter(
+  //         (element) => element.genre === selectedGenre
+  //       );
+  //       filteredCanvas = filteredCanvas.filter(
+  //         (element) => element.categoryName === selectedCategory
+  //       );
+  //     }
+  //   }
+  //   // console.log(selectedGenre);
+  //   // console.log(filteredCanvas);
+  // };
+
+  // useEffect(() => {
+  //   handleChange();
+  // }, [selectedGenre]);
+  // useEffect(() => {
+  //   handleChange();
+  // }, [selectedCategory]);
+
+  useEffect(() => {
+    setfilteredCanvas(Searchlist);
+  }, [Searchlist]);
+
+>>>>>>> home
   const ChangeGenre = (event: any) => {
     setSelectedGenre(event.target.value);
   };
   const ChangeCategory = (event: any) => {
     setSelectedCategory(event.target.value);
   };
+<<<<<<< HEAD
+=======
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const [canvaManageType, setCanvaManageType] = useState<string>("");
+  const [settingsActive, setSettingsActive] = useState<string>("");
+
+>>>>>>> home
   const changeManageType = (type: string) => {
     if (type == canvaManageType) {
       setCanvaManageType("");
@@ -84,6 +209,7 @@ const Home = () => {
       setCanvaManageType(type);
     }
   };
+<<<<<<< HEAD
 
   const handleCanvaModal = () => {
     if (isModalOpen) {
@@ -129,13 +255,47 @@ const Home = () => {
     <>
       <S.home>
         <Header loggedOut={userLoggedOut} />
+=======
+
+  const handleCanvaModal = () => {
+    setIsModalOpen(!isModalOpen);
+    changeManageType("");
+  };
+
+  const changeSettingsMode = () => {
+    if (settingsActive == "active") {
+      setSettingsActive("");
+    } else {
+      setSettingsActive("active");
+    }
+  };
+
+  const handleManageActions = (type: string) => {
+    changeManageType(type);
+    handleCanvaModal();
+    console.log(isModalOpen);
+  };
+
+  return (
+    <>
+      <S.home>
+        <Header setSearchlist={setSearchlist} />
+>>>>>>> home
         <S.HomeContent>
-          <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
-          <S.HomeHighLightsContainer>
-            <CanvaHighLights></CanvaHighLights>
-          </S.HomeHighLightsContainer>
+          {Searchlist.length == 0 ? (
+            <>
+              <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
+              <S.HomeHighLightsContainer>
+                <CanvaHighLights></CanvaHighLights>
+              </S.HomeHighLightsContainer>
+            </>
+          ) : (
+            ""
+          )}
+
           <S.listOptionsContainer>
             <S.listFiltersContainer>
+<<<<<<< HEAD
               <select value={selectedCategory} onChange={ChangeCategory}>
                 <option key="Todos" value="Todos">
                   Categorias
@@ -144,11 +304,28 @@ const Home = () => {
                   return (
                     <option key={element.id} value={element.name}>
                       {element.name}
+=======
+              <select value={selectedGenre} onChange={ChangeGenre}>
+                {genre.map((element) => (
+                  <option key={element} value={element}>
+                    {element}
+                  </option>
+                ))}
+                ;
+              </select>
+
+              <select value={selectedCategory} onChange={ChangeCategory}>
+                {categorieslist.map((element) => {
+                  return (
+                    <option key={element} value={element}>
+                      {element}
+>>>>>>> home
                     </option>
                   );
                 })}
                 ;
               </select>
+<<<<<<< HEAD
 
               <select value={selectedGenre} onChange={ChangeGenre}>
                 <option value="Todos">Gêneros</option>
@@ -159,6 +336,10 @@ const Home = () => {
                 <option value="PopArt">PopArt</option>
               </select>
             </S.listFiltersContainer>
+=======
+            </S.listFiltersContainer>
+
+>>>>>>> home
             {loggedUserRole == "Owner" ? (
               <S.adminSettingsContainer>
                 <S.adminOptions className={settingsActive}>
@@ -198,6 +379,7 @@ const Home = () => {
             )}
           </S.listOptionsContainer>
 
+<<<<<<< HEAD
           <CanvaList
             canvaToDelete={handleCanvaToDelete}
             openUpdtModal={openUpdateModal}
@@ -205,15 +387,21 @@ const Home = () => {
             updateList={updateList}
             updtListState={updtList}
           ></CanvaList>
+=======
+          <CanvaList list={filteredCanvas}></CanvaList>
+>>>>>>> home
         </S.HomeContent>
         <Footer />
       </S.home>
       {isModalOpen ? (
         <CanvaModal
+<<<<<<< HEAD
           
           canvaId={canvaId}
           setCanvaContent={toUpdateCanva}
           updateList={updateList}
+=======
+>>>>>>> home
           categories={categories}
           closeModal={handleCanvaModal}
           type={canvaManageType}
@@ -221,6 +409,7 @@ const Home = () => {
       ) : (
         ""
       )}
+<<<<<<< HEAD
       {
         isDeleteModalOpen?
         <DeleteModal
@@ -230,6 +419,8 @@ const Home = () => {
         />
         :""
       }
+=======
+>>>>>>> home
     </>
   );
 };
