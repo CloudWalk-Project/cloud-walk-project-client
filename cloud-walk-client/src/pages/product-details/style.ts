@@ -9,7 +9,7 @@ export const Product = styled.div`
     align-itens: center;
     justify-content:center;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
   `}
 `;
 
@@ -25,6 +25,9 @@ export const center = styled.div`
     justify-content: center;
     height: 100vh;
   `}
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 
 export const Left = styled.div`
@@ -38,6 +41,9 @@ export const Left = styled.div`
     border-radius: 1rem;
     height: 55%;
   `}
+  @media only screen and (max-width: 800px) {
+    margin: 1rem;
+  }
 `;
 
 export const Right = styled.div`
@@ -51,8 +57,10 @@ export const Right = styled.div`
     padding: 2rem;
     margin: 1rem;
     height: 50%;
-    width: 30%;
   `}
+  @media only screen and (max-width: 800px) {
+    margin: 1rem;
+  }
 `;
 export const BtnAlign = styled.button`
   ${() => css`
