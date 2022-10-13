@@ -21,6 +21,7 @@ export const Box = styled.div`
   height:100%;
   margin:1rem 3rem 5rem 3rem;
   border-radius: 5px;
+  border: 20px solid #FF7438;
 `;
 
 export const Container = styled.div`
@@ -79,6 +80,28 @@ export const ButtonPage1 = styled.button`
 
   :hover{
     background: #FF7438;
+    opacity: 0.3;
+    color: ${theme.colors.primaryColor};
+    cursor:pointer;
+  }
+`;
+
+export const ButtonPage2 = styled.button`
+  font-weight:bolder;
+  background: #ffad8a;
+  color: ${theme.colors.primaryColor};
+  align-items:center;
+  justify-content:center;
+  display:flex;
+  margin:0rem 0.5rem 0rem 0rem;
+  padding: 1rem;
+  border: 10px solid #ffad8a;
+  border-radius: 5px;
+  width: 20%;
+  font-size:2vw;
+
+  :hover{
+    background: #ffad8a;
     opacity: 0.3;
     color: ${theme.colors.primaryColor};
     cursor:pointer;

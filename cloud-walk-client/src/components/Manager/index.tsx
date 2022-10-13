@@ -13,14 +13,11 @@ const Manager = () => {
 
       <S.centerbutton>
         <S.ButtonPage1>Categorias</S.ButtonPage1>
-        <S.ButtonPage1>Usuarios</S.ButtonPage1>
+        <S.ButtonPage2>Usuarios</S.ButtonPage2>
       </S.centerbutton>
 
           <S.Box>
               <S.Container>
-                <Category/>
-                <Category/>
-                <Category/>
                 <Category/>
               </S.Container>
           </S.Box>
