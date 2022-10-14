@@ -1,11 +1,11 @@
 import * as S from "./style";
 import { Canva, metaObj } from "../../types/interfaces";
-import CanvaCard from "../CanvaCard";
+import CanvaCard from "../Canvacard";
 import { useEffect, useState } from "react";
 import { canvaService } from "../../services/productsService";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import CanvaModal from "../CanvaModal";
+import CanvaModal from "../Canvamodal";
 import { listFiltersContainer } from "../../pages/home/style";
 
 const CanvasList = (props: {

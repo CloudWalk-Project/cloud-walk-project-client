@@ -9,7 +9,7 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Canva, categoriesObj } from "../../types/interfaces";
 import loginService from "../../services/authService";
 import { canvaService } from "../../services/productsService";
-import CanvaModal from "../../components/CanvaModal";
+import CanvaModal from "../../components/Canvamodal";
 import { categoriesService } from "../../services/categoriesService";
 import DeleteModal from "../../components/DeleteModal";
 
