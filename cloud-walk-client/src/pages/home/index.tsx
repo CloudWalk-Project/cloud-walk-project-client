@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { BsGear } from "react-icons/bs";
 import CanvaList from "../../components/Canvalist";
-import CanvaHighLights from "../../components/Canvahighlights";
+import CanvaHighLights from "../../components/CanvaHighLights";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Canva, categoriesObj } from "../../types/interfaces";
 import loginService from "../../services/authService";

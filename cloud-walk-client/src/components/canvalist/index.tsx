@@ -1,11 +1,11 @@
 import * as S from "./style";
 import { Canva, metaObj } from "../../types/interfaces";
-import CanvaCard from "../Canvacard";
+import CanvaCard from "../CanvaCard";
 import { useEffect, useState } from "react";
 import { canvaService } from "../../services/productsService";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import CanvaModal from "../Canvamodal";
+import CanvaModal from "../CanvaModal";
 import { listFiltersContainer } from "../../pages/home/style";
 
 const CanvasList = (props: {
@@ -89,7 +89,7 @@ const CanvasList = (props: {
               </div>
             ))
           : ""}
-      </S.CanvasListContainer>
+
       <S.PaginationContainer>
         <ReactPaginate
           pageCount={metaData.pageCount}
@@ -113,6 +113,7 @@ const CanvasList = (props: {
           activeClassName={"active"}
         />
       </S.PaginationContainer>
+      </S.CanvasListContainer>
     </>
   );
 };

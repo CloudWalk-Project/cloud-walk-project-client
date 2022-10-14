@@ -2,6 +2,7 @@ import styled from "styled-components";
 import theme from "../../assets/styles/theme";
 
 export const CanvasListContainer = styled.div`
+  position: relative;
   height: 60%;
   width: 100%;
   display: flex;
@@ -22,6 +23,7 @@ export const CanvasListContainer = styled.div`
 `;
 
 export const PaginationContainer = styled.div`
+  top: 20rem;
   height: 50px;
   width: 100%;
   display: flex;
@@ -29,7 +31,9 @@ export const PaginationContainer = styled.div`
   align-items: center;
   .pagination {
     z-index: 0;
+    color: black;
   }
+
   .active > .page-link {
     background-color: ${theme.colors.secondaryColor};
     border-color: ${theme.colors.secondaryColor};
@@ -37,5 +41,8 @@ export const PaginationContainer = styled.div`
   .active > .page-link:focus {
     box-shadow: 0 0 0 0.25rem rgba(253, 145, 95, 0.31),
       0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .page-link:hover {
+    color: ${theme.colors.secondaryColor};
   }
 `;
