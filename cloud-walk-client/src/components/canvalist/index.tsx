@@ -6,6 +6,7 @@ import { canvaService } from "../../services/productsService";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import CanvaModal from "../CanvaModal";
+import { listFiltersContainer } from "../../pages/home/style";
 
 const CanvasList = (props: {
   updtListState: boolean;
@@ -49,6 +50,12 @@ const CanvasList = (props: {
     const page = selectedItem.selected + 1;
     getAllProducts(page);
   };
+
+  useEffect(() => {
+    if (props.list.length > 0) {
+      setProducts(props.list);
+    }
+  }, [props.list]);
 
   return (
     <>

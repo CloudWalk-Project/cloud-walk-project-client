@@ -154,7 +154,7 @@ export const canvaTextArea = styled.textarea`
     border-color: ${theme.colors.secondaryColor};
   }
 `;
-export const canvaListInput = styled.datalist``;
+export const canvaListInput = styled.input``;
 
 export const sendButtonContainer = styled.div`
   display: flex;

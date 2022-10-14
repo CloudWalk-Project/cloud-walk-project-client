@@ -21,6 +21,7 @@ const Header = (props: { loggedOut: Function; setSearchlist: any }) => {
     event.preventDefault();
     const response = await canvaService.searchArt(name);
     props.setSearchlist(response.data);
+    console.log(response.data);
   };
 
   const [token, setToken] = useState(localStorage.getItem("jwt"));

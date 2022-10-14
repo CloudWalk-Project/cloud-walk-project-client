@@ -54,7 +54,7 @@ const CanvaModal = (props: {
     event.preventDefault();
     if (inStockConv == "Sim") {
       values.inStock = true;
-    } else {
+    } else if (inStockConv == "Não") {
       values.inStock = false;
     }
 
@@ -169,17 +169,9 @@ const CanvaModal = (props: {
           </S.inputLabelContainer>
 
           <S.inputLabelContainer>
-            <S.canvaInput
-              name="inStock"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setInStockConv(event.target.value)
-              }
-              required
-              list="inStock"
-            />
-            <S.canvaListInput id="inStock">
-              <option value="Sim" />
-              <option value="Não" />
+            <S.canvaListInput type="checkbox" id="inStock">
+              <option value="Sim" label="Sim" />
+              <option value="Não" label="Não" />
             </S.canvaListInput>
             <S.canvaLabel>Em estoque?</S.canvaLabel>
           </S.inputLabelContainer>
