@@ -88,6 +88,23 @@ const CanvaModal = (props: {
     }
   };
 
+  const [checkedOne, setCheckedOne] = React.useState(false);
+  const [checkedTwo, setCheckedTwo] = React.useState(false);
+
+  const handleChangeOne = () => {
+    setCheckedOne(!checkedOne);
+    if (checkedTwo) {
+      setCheckedTwo(!checkedTwo);
+    }
+  };
+
+  const handleChangeTwo = () => {
+    setCheckedTwo(!checkedTwo);
+    if (checkedOne) {
+      setCheckedOne(!checkedOne);
+    }
+  };
+
   return (
     <S.CanvaModalConatiner>
       <S.CanvaModalForm onSubmit={handleSubmit}>
@@ -170,8 +187,24 @@ const CanvaModal = (props: {
 
           <S.inputLabelContainer>
             <S.canvaListInput id="inStock">
-              <option value="Sim" />
-              <option value="Não" />
+              <label>
+                <input
+                  name="group1"
+                  type="radio"
+                  checked={checkedOne}
+                  onChange={handleChangeOne}
+                />
+                Sim
+              </label>
+              <label>
+                <input
+                  name="group1"
+                  type="radio"
+                  checked={checkedTwo}
+                  onChange={handleChangeTwo}
+                />
+                Não
+              </label>
             </S.canvaListInput>
             <S.canvaLabel>Em estoque?</S.canvaLabel>
           </S.inputLabelContainer>
