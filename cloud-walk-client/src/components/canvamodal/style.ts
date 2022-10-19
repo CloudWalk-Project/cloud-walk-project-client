@@ -154,7 +154,28 @@ export const canvaTextArea = styled.textarea`
     border-color: ${theme.colors.secondaryColor};
   }
 `;
-export const canvaListInput = styled.div``;
+export const canvaListInput = styled.datalist``;
+
+export const canvaRadioInputContainer = styled.div`
+height: fit-content;
+width: 30%;
+display: flex;
+margin-left: 1.5rem;
+justify-content: space-evenly;
+.radio-label{
+  display: flex;
+  width: fit-content;
+  padding-right: 1rem;
+  color: ${theme.colors.textColor};
+  justify-content: space-evenly;
+  align-items: center;
+}
+`
+export const canvaRadioInputLabel = styled.label`
+font-size: .8rem;
+width: 100%;
+color: ${theme.colors.textColor};
+`
 
 export const sendButtonContainer = styled.div`
   display: flex;

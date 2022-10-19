@@ -31,6 +31,7 @@ const Login = () => {
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await loginService.login(values);
+    console.log(response)
     if (response.token) {
       localStorage.setItem("jwt", response.token);
       navigate("/");
@@ -41,7 +42,7 @@ const Login = () => {
 
   return (
     <S.loginContainer>
-      <Header />
+      <Header/>
       <S.loginContent>
         <S.loginFormContainer>
           <S.loginForm onSubmit={handleLogin}>

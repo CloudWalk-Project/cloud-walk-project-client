@@ -1,15 +1,15 @@
 import * as S from "./style";
 import Camera from "./../../assets/imgs/Camera.png";
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState, useMemo } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import {
   Canva,
   categoriesObj,
   createUpdateCanvaObj,
 } from "../../types/interfaces";
-import { categoriesService } from "../../services/categoriesService";
 import { canvaService } from "../../services/productsService";
 import { toast } from "react-toastify";
+import { uploadService } from "../../services/uploadService";
 
 const CanvaModal = (props: {
   categories: categoriesObj[];
@@ -24,20 +24,18 @@ const CanvaModal = (props: {
     categoryName: "",
     description: "",
     genre: "",
-    image:
-      "https://s2.glbimg.com/SkyLTd6VJy8WiUMg5L6EeUwgyMw=/0x0:620x548/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/B/t/limPwzQmSeI4WJO7haZg/2012-08-15-mf1.jpg",
+    image: "",
     price: 0,
     inStock: false,
   });
+
+  const [inStock, setInStock] = useState<string>("");
 
   useEffect(() => {
     if (props.setCanvaContent) {
       setValues(props.setCanvaContent);
     }
-    console.log(props.type);
   }, []);
-
-  const [inStockConv, setInStockConv] = useState<string>("");
 
   const handleCloseModal = () => {
     props.closeModal();
@@ -48,14 +46,25 @@ const CanvaModal = (props: {
       ...values,
       [event.target.name]: event.target.value,
     });
+
+    console.log(event.target.value);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (inStockConv == "Sim") {
+    const formData = new FormData();
+    let imageResponse;
+    if (thumbnail) {
+      formData.append("file", thumbnail[0], thumbnail[0].name);
+      imageResponse = await uploadService.uploadImage(formData);
+      values.image = imageResponse.data.url
+    }
+
+    if (inStock == "true") {
       values.inStock = true;
     } else {
       values.inStock = false;
+      console.log(values);
     }
 
     let response;
@@ -67,6 +76,7 @@ const CanvaModal = (props: {
       });
     } else {
       if (props.canvaId != null) {
+        console.log(values.image);
         response = await canvaService.updateArt(
           {
             ...values,
@@ -75,9 +85,9 @@ const CanvaModal = (props: {
           props.canvaId
         );
       }
-      console.log(values);
-      console.log(response);
     }
+
+    console.log(response);
 
     if (response.data) {
       toast.success("Sucesso!");
@@ -88,22 +98,15 @@ const CanvaModal = (props: {
     }
   };
 
-  const [checkedOne, setCheckedOne] = React.useState(false);
-  const [checkedTwo, setCheckedTwo] = React.useState(false);
+  const [thumbnail, setThumbnail] = useState<FileList | null>(null);
+  let preview = useMemo(() => {
+    return thumbnail
+      ? URL.createObjectURL(thumbnail[0])
+      : props.setCanvaContent
+      ? props.setCanvaContent.image
+      : null;
+  }, [thumbnail]);
 
-  const handleChangeOne = () => {
-    setCheckedOne(!checkedOne);
-    if (checkedTwo) {
-      setCheckedTwo(!checkedTwo);
-    }
-  };
-
-  const handleChangeTwo = () => {
-    setCheckedTwo(!checkedTwo);
-    if (checkedOne) {
-      setCheckedOne(!checkedOne);
-    }
-  };
 
   return (
     <S.CanvaModalConatiner>
@@ -117,47 +120,55 @@ const CanvaModal = (props: {
         <S.canvaImgLabelInputContainer>
           <S.canvaImgLabelInput>
             <S.canvaCameraImg
-              src={props.setCanvaContent ? values.image : Camera}
-              className={props.setCanvaContent ? "thumbnail" : ""}
+              src={
+                props.setCanvaContent || thumbnail
+                  ? preview?.toString()
+                  : Camera
+              }
+              className={props.setCanvaContent || thumbnail ? "thumbnail" : ""}
             />
-            <S.canvaFileInput type="file" />
+            <S.canvaFileInput
+              onChange={(event) => setThumbnail(event.target.files)}
+              type="file"
+            />
           </S.canvaImgLabelInput>
         </S.canvaImgLabelInputContainer>
 
         <S.canvaInputsContainer>
           <S.inputLabelContainer>
             <S.canvaInput
-              value={props.setCanvaContent ? values.name : values.name}
+              defaultValue={props.setCanvaContent ? values.name : ""}
               name="name"
               onChange={getValues}
               required
               type="text"
+              autoComplete="off"
             />
             <S.canvaLabel>Nome</S.canvaLabel>
           </S.inputLabelContainer>
 
           <S.inputLabelContainer>
             <S.canvaInput
-              value={props.setCanvaContent ? values.price : values.price}
+              defaultValue={
+                props.setCanvaContent ? props.setCanvaContent.price : ""
+              }
               name="price"
               onChange={getValues}
               required
               type="text"
+              autoComplete="off"
             />
             <S.canvaLabel>Preço</S.canvaLabel>
           </S.inputLabelContainer>
 
           <S.inputLabelContainer>
             <S.canvaInput
-              value={
-                props.setCanvaContent
-                  ? values.categoryName
-                  : values.categoryName
-              }
+              defaultValue={props.setCanvaContent ? values.categoryName : ""}
               name="categoryName"
               onChange={getValues}
               required
               list="categories"
+              autoComplete="off"
             />
             <S.canvaListInput id="categories">
               {props.categories.map((category) => (
@@ -169,11 +180,12 @@ const CanvaModal = (props: {
 
           <S.inputLabelContainer>
             <S.canvaInput
-              value={props.setCanvaContent ? values.genre : values.genre}
+              defaultValue={props.setCanvaContent ? values.genre : ""}
               name="genre"
               onChange={getValues}
               required
               list="genres"
+              autoComplete="off"
             />
             <S.canvaListInput id="genres">
               <option value="Realism" />
@@ -186,34 +198,36 @@ const CanvaModal = (props: {
           </S.inputLabelContainer>
 
           <S.inputLabelContainer>
-            <S.canvaListInput id="inStock">
-              <label>
+            <S.canvaRadioInputContainer
+              onChange={(event: any) => setInStock(event.target.value)}
+            >
+              <label className="radio-label">
                 <input
-                  name="group1"
+                  name="inStock"
                   type="radio"
-                  checked={checkedOne}
-                  onChange={handleChangeOne}
+                  required
+                  defaultChecked={props.setCanvaContent? props.setCanvaContent.inStock:false}
+                  value={"true"}
                 />
                 Sim
               </label>
-              <label>
+              <label className="radio-label">
                 <input
-                  name="group1"
+                  name="inStock"
                   type="radio"
-                  checked={checkedTwo}
-                  onChange={handleChangeTwo}
+                  required
+                  defaultChecked={props.setCanvaContent? !props.setCanvaContent.inStock:false}
+                  value={"false"}
                 />
                 Não
               </label>
-            </S.canvaListInput>
-            <S.canvaLabel>Em estoque?</S.canvaLabel>
+              <S.canvaRadioInputLabel>Em estoque?</S.canvaRadioInputLabel>
+            </S.canvaRadioInputContainer>
           </S.inputLabelContainer>
 
           <S.inputTextAreaContainer onChange={getValues}>
             <S.canvaTextArea
-              value={
-                props.setCanvaContent ? values.description : values.description
-              }
+              defaultValue={props.setCanvaContent ? values.description : ""}
               name="description"
               required
             />
