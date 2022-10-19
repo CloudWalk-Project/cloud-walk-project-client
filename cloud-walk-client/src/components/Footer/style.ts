@@ -2,40 +2,34 @@ import styled from "styled-components";
 import theme from "../../assets/styles/theme";
 
 export const Box = styled.footer`
-  /* padding-top: 1rem; */
-  height: 10vh;
-  width: 100%;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   background: ${theme.colors.primaryColor};
   border-top: 1px solid ${theme.colors.textColor};
-  @media (max-width: 1000px) {
-    padding: 70px 30px;
-  }
+  position: fixed;
+  padding: 1rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-itens: center;
   margin: 0 auto;
 `;
 
 export const Row = styled.div`
-  display: grid;
-  padding-left: 20rem;
-  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-  /* grid-gap: 1.25rem; */
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
+  display: flex;
+  align-items: center;
 `;
 
 export const Column = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: left;
 `;
 
@@ -51,6 +45,8 @@ export const FooterLink = styled.a`
   /* margin-bottom: 1.25rem; */
   font-size: 1rem;
   text-decoration: none;
+  display: flex;
+
 
   &:hover {
     color: ${theme.colors.secondaryColor};

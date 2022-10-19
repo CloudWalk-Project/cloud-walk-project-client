@@ -5,7 +5,7 @@ import downArrow from "./../../assets/imgs/DownArrow.svg";
 export const home = styled.div`
   ${() => css`
     background-color: ${theme.colors.primaryColor};
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     color: ${theme.colors.textColor};
     display: flex;
