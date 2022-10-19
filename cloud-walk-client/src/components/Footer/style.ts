@@ -8,7 +8,7 @@ export const Box = styled.footer`
   justify-content: center;
   background: ${theme.colors.primaryColor};
   border-top: 1px solid ${theme.colors.textColor};
-  position: fixed;
+  position: relative;
   padding: 1rem;
   left: 0;
   bottom: 0;
