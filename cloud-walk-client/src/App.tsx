@@ -4,6 +4,8 @@ import "./App.css";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
 import theme from "./assets/styles/theme";
+import Login from "./pages/login";
+import Category from "./pages/category";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
