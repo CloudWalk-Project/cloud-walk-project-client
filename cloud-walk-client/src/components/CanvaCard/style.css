@@ -1,0 +1,14 @@
+.delete{
+    filter: grayscale(1);
+  }
+.typeUP-update{
+    color:green;
+}  
+.typeDEL-delete{
+    color: red;
+} 
+
+.types{
+  filter: grayscale(0);
+  font-weight: bold;
+}

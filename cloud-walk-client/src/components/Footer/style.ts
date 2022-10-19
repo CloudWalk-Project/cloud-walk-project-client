@@ -47,6 +47,7 @@ export const FooterLink = styled.a`
   text-decoration: none;
   display: flex;
 
+
   &:hover {
     color: ${theme.colors.secondaryColor};
     transition: 200ms ease-in;
