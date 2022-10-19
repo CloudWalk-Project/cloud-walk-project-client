@@ -6,7 +6,6 @@ import { canvaService } from "../../services/productsService";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import CanvaModal from "../CanvaModal";
-import { listFiltersContainer } from "../../pages/home/style";
 
 const CanvasList = (props: {
   updtListState: boolean;
@@ -14,8 +13,32 @@ const CanvasList = (props: {
   type: string;
   openUpdtModal: Function;
   canvaToDelete: Function;
-  list: Canva[];
+  searchItem:string|undefined;
 }) => {
+  useEffect(() => {
+    if(props.searchItem){
+     getSearchedProducts(1)
+     console.log(props.searchItem)
+    }
+    else {
+      getAllProducts(1);
+    }
+
+  }, []);
+
+  useEffect(() => {
+    getAllProducts(1);
+  }, [props.updtListState]);
+
+  useEffect(() => {
+    if(props.searchItem){
+      getSearchedProducts(1)
+    }
+    else{
+      getAllProducts(1)
+    }
+  }, [props.searchItem]);
+  
   const [products, setProducts] = useState<Canva[]>([]);
   const [metaData, setMetaData] = useState<metaObj>({
     hasNextPage: false,
@@ -26,6 +49,14 @@ const CanvasList = (props: {
     pageCount: 0,
     take: 20,
   });
+  
+
+  const getSearchedProducts = async (page:number)=>{
+    const response = await canvaService.searchArt(props.searchItem , page)
+    setProducts(response.data)
+    setMetaData(response.meta)
+  }
+
 
   const getAllProducts = async (page: number) => {
     const response = await canvaService.getAllArts(page);
@@ -38,24 +69,19 @@ const CanvasList = (props: {
     }
   };
 
-  useEffect(() => {
-    getAllProducts(1);
-  }, []);
 
-  useEffect(() => {
-    getAllProducts(1);
-  }, [props.updtListState]);
 
   const handleClick = (selectedItem: { selected: number }) => {
     const page = selectedItem.selected + 1;
-    getAllProducts(page);
+    if(props.searchItem){
+      getSearchedProducts(page)
+      console.log('CAIU')
+    }
+    else{
+      getAllProducts(page);
+    }
   };
 
-  useEffect(() => {
-    if (props.list.length > 0) {
-      setProducts(props.list);
-    }
-  }, [props.list]);
 
   return (
     <>

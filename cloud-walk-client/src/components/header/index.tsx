@@ -6,22 +6,18 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import loginService from "../../services/authService";
 import { IoIosLogOut } from "react-icons/io";
-import { Canva } from "../../types/interfaces";
-import { canvaService } from "../../service/canvaService";
 
-const Header = (props: { loggedOut: Function; setSearchlist: any }) => {
+const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const pathName = location.pathname;
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState<string|undefined>();
 
   const search = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await canvaService.searchArt(name);
-    props.setSearchlist(response.data);
-    console.log(response.data);
+    props.setSearchItem(name)
   };
 
   const [token, setToken] = useState(localStorage.getItem("jwt"));
@@ -38,7 +34,9 @@ const Header = (props: { loggedOut: Function; setSearchlist: any }) => {
   const logOut = () => {
     localStorage.clear();
     setToken(null);
-    props.loggedOut();
+    if(props.loggedOut){
+      props.loggedOut();
+    }
   };
 
   useEffect(() => {
@@ -51,6 +49,8 @@ const Header = (props: { loggedOut: Function; setSearchlist: any }) => {
 
   const goToHome = () => {
     navigate("/");
+    props.setSearchItem()
+    setName(undefined)
   };
 
   const goToAbout = () => {

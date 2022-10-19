@@ -9,7 +9,7 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Canva, categoriesObj } from "../../types/interfaces";
 import loginService from "../../services/authService";
 import { canvaService } from "../../services/productsService";
-import CanvaModal from "../../components/Canvamodal";
+import CanvaModal from "../../components/CanvaModal";
 import { categoriesService } from "../../services/categoriesService";
 import DeleteModal from "../../components/DeleteModal";
 
@@ -31,7 +31,7 @@ const Home = () => {
 
   const [canvas, setCanvas] = useState<Canva[]>([]);
 
-  const [Searchlist, setSearchlist] = useState<Canva[]>([]);
+  const [searchItem, setSearchItem] = useState<string|undefined>();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -82,22 +82,22 @@ const Home = () => {
   genre = genre.filter((c, index) => {
     return genre.indexOf(c) === index;
   });
-  genre = ["Todos", ...genre];
+  genre = ["Gênero", ...genre];
 
-  let categorieslist: string[] = canvas.map((elem) => elem.categoryName);
+  let categorieslist: string[] = categories.map((elem) => elem.name);
   categorieslist = categorieslist.filter((c, index) => {
     return categorieslist.indexOf(c) === index;
   });
-  categorieslist = ["Todos", ...categorieslist];
+  categorieslist = ["Categorias", ...categorieslist];
 
   const [selectedGenre, setSelectedGenre] = useState<string>("Todos");
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
 
   let [filteredCanvas, setfilteredCanvas] = useState<Canva[]>([]);
 
-  useEffect(() => {
-    setfilteredCanvas(Searchlist);
-  }, [Searchlist]);
+  // useEffect(() => {
+  //   setfilteredCanvas(Searchlist);
+  // }, [Searchlist]);
 
   const ChangeGenre = (event: any) => {
     setSelectedGenre(event.target.value);
@@ -157,9 +157,9 @@ const Home = () => {
   return (
     <>
       <S.home>
-        <Header loggedOut={userLoggedOut} setSearchlist={setSearchlist} />
+        <Header loggedOut={userLoggedOut} setSearchItem={setSearchItem} />
         <S.HomeContent>
-          {Searchlist.length == 0 ? (
+          {!searchItem ? (
             <>
               <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
               <S.HomeHighLightsContainer>
@@ -172,7 +172,7 @@ const Home = () => {
 
           <S.listOptionsContainer>
             <S.listFiltersContainer>
-              <select value={selectedGenre} onChange={ChangeGenre}>
+              <select  value={selectedGenre} onChange={ChangeGenre}>
                 {genre.map((element) => (
                   <option key={element} value={element}>
                     {element}
@@ -237,7 +237,7 @@ const Home = () => {
             type={canvaManageType}
             updateList={updateList}
             updtListState={updtList}
-            list={Searchlist}
+            searchItem={searchItem}
           ></CanvaList>
           {/* <CanvaList list={filteredCanvas}></CanvaList> */}
         </S.HomeContent>
