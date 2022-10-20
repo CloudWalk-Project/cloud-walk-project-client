@@ -47,6 +47,9 @@ export const CardInfoNameCategory = styled.div`
     flex-direction: column;
     height: 100%;
     width: 50%;
+    .big-name{
+      font-size: 1.2rem;
+    }
   `}
 `;
 
