@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import loginService from "../../services/authService";
 import { IoIosLogOut } from "react-icons/io";
+import { userInfo } from "os";
+import { User } from "../../types/interfaces";
 
 const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
   const navigate = useNavigate();
@@ -34,6 +36,7 @@ const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
   const logOut = () => {
     localStorage.clear();
     setToken(null);
+    setLoggedUser({})
     if(props.loggedOut){
       props.loggedOut();
     }
@@ -49,7 +52,7 @@ const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
 
   const goToHome = () => {
     navigate("/");
-    props.setSearchItem()
+    // props.setSearchItem()
     setName(undefined)
   };
 
@@ -59,6 +62,10 @@ const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
 
   const goToLogin = () => {
     navigate("/login");
+  };
+
+  const goToManage = () => {
+    navigate("/manage");
   };
 
   return (
@@ -81,6 +88,10 @@ const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
           ""
         )}
         <S.About onClick={goToAbout}>Sobre nós</S.About>
+        {loggedUser.role == 'Owner'?
+          <S.Manage onClick={goToManage}> Gerenciamento </S.Manage>
+          : ""
+        }
       </S.Header1>
       <S.Header2>
         <img alt="logo" src={Logo} />

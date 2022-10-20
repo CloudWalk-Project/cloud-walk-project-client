@@ -154,3 +154,17 @@ export const User = styled.button`
     transition: 200ms ease-in;
   }
 `;
+
+export const Manage = styled.span`
+  margin-left: 3rem;
+  font-weight: bold;
+  background-color: ${theme.colors.primaryColor};
+  color: ${theme.colors.textColor};
+  border-bottom: 1px solid ${theme.colors.textColor};
+  cursor: pointer;
+  transition: all 0.4s;
+  :hover {
+    color: ${theme.colors.secondaryColor};
+    border-color: ${theme.colors.secondaryColor};
+  }
+`

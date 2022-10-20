@@ -3,7 +3,12 @@ export const colors = {
   secondaryColor: "#FF7337",
   terciaryColor: "#D8D8D8",
   background: "#1E1E1E",
+  
 
+  productDetailCartButtonGradient:"linear-gradient(171.13deg, #FF7337 6.75%, #EE4D2D 115.05%)",
+
+  productDetailGradient: "linear-gradient(180deg, #3C414D 0%, rgba(60, 65, 77, 0.41) 100%)",
+  productDetailPC: "#20232B",
 
   loginFormColor: "linear-gradient(43.38deg, rgba(56, 56, 61, 0.47) 0.52%, #231B1B 92.1%);",
   

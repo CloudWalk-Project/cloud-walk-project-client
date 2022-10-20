@@ -99,6 +99,7 @@ export const ButtonPage2 = styled.button`
   border-radius: 5px;
   width: 20%;
   font-size:2vw;
+  transition: all 0.4s;
 
   :hover{
     background: #ffad8a;
@@ -111,7 +112,7 @@ export const ButtonPage2 = styled.button`
 export const centerbutton = styled.div`
   display: flex;
   flex-direction: row;
-  align-itens: center;
+  align-items: center;
   justify-content: flex-start;
   background: ${theme.colors.primaryColor};
   margin-left: 3rem;

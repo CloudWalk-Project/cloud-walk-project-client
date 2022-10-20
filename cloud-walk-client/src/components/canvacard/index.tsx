@@ -1,7 +1,7 @@
 import * as S from "./style";
 import './style.css'
 import { Canva } from "../../types/interfaces";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface CanvaCardProps {
   canva: Canva;
@@ -17,7 +17,7 @@ const CanvaCard = ({ canva, type }: CanvaCardProps) => {
       <S.CardInfoContainer>
         <S.CardInfoNameCategory>
           <S.CardInfoCategory>{canva.categoryName}</S.CardInfoCategory>
-          <S.CardInfoName>{canva.name}</S.CardInfoName>
+          <S.CardInfoName className={canva.name.split(" ").length > 1 ? "big-name" : "" }>{canva.name}</S.CardInfoName>
         </S.CardInfoNameCategory>
         <S.CardInfoPriceContainer>
           <S.CardInfoPrice>R$ {canva.price}</S.CardInfoPrice>

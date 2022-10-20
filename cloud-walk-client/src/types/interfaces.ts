@@ -46,6 +46,14 @@ export interface metaObj {
   take: number;
 }
 
-export interface Category {}
+export interface Category {
+  cost: number;
+  createdAt: string;
+  description: string;
+  id: number;
+  name: string;
+  price: number;
+  updatedAt: string;
+}
 
 export interface User {}

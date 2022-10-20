@@ -11,7 +11,11 @@ export const canvaService = {
       })
       .then((response) => response.data)
       .catch((error) => error.response.data),
-
+   
+      getArtById: (id:number) => api.get(`canva/${id}`)
+      .then((response)=>response)
+      .catch((error)=>error), 
+      
   createArt: (data: createUpdateCanvaObj) =>
     api
       .post("canva", data)
