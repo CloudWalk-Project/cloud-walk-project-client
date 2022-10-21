@@ -2,9 +2,10 @@ export const colors = {
   primaryColor: "#121217",
   secondaryColor: "#FF7337",
   terciaryColor: "#D8D8D8",
-  background: "#1E1E1E",
+  background: "#F9F9ED",
   
-
+  manageInactiveButton: "rgba(255, 163, 56, 0.3)",
+  
   productDetailCartButtonGradient:"linear-gradient(171.13deg, #FF7337 6.75%, #EE4D2D 115.05%)",
 
   productDetailGradient: "linear-gradient(180deg, #3C414D 0%, rgba(60, 65, 77, 0.41) 100%)",

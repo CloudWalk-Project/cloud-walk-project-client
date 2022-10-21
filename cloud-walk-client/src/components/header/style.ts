@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
   background-color: ${theme.colors.primaryColor};
   align-items: center;
   box-sizing: border-box;
+  z-index: 1;
 `;
 
 export const Header1 = styled.div`
@@ -122,15 +123,6 @@ export const Login = styled.button`
     transition: 200ms ease-in;
     border-color: ${theme.colors.textColor};
   }
-  /* ::after{
-    content: "";
-    position: absolute;
-    background-color: white;
-    width: 2px;
-    border-radius: .1rem;
-    height: 90%;
-    left: 55px;
-  } */
 `;
 
 export const Register = styled.button`
