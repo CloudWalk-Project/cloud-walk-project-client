@@ -7,7 +7,7 @@ import {
 } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { api } from "../../service";
+import { api } from "../../services/api";
 import { User } from "../../types/interfaces";
 
 interface AuthProviderProps {

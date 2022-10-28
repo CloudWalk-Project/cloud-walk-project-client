@@ -6,7 +6,7 @@ import {
   useEffect,
 } from "react";
 import { User } from "../../types/interfaces";
-import { api } from "../../service";
+import { api } from "../../services/api";
 import { useAuth } from "../auth";
 
 interface UsersProviderProps {

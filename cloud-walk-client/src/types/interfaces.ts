@@ -56,4 +56,11 @@ export interface Category {
   updatedAt: string;
 }
 
-export interface User {}
+export interface User {
+  id: number;
+  name: string;
+  image: string;
+  email: string;
+  recoverPasswordToken: null;
+  role: string;
+}

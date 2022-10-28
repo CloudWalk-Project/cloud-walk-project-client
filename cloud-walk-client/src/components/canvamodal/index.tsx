@@ -57,7 +57,7 @@ const CanvaModal = (props: {
     if (thumbnail) {
       formData.append("file", thumbnail[0], thumbnail[0].name);
       imageResponse = await uploadService.uploadImage(formData);
-      values.image = imageResponse.data.url
+      values.image = imageResponse.data.url;
     }
 
     if (inStock == "true") {
@@ -106,7 +106,6 @@ const CanvaModal = (props: {
       ? props.setCanvaContent.image
       : null;
   }, [thumbnail]);
-
 
   return (
     <S.CanvaModalConatiner>
@@ -206,7 +205,11 @@ const CanvaModal = (props: {
                   name="inStock"
                   type="radio"
                   required
-                  defaultChecked={props.setCanvaContent? props.setCanvaContent.inStock:false}
+                  defaultChecked={
+                    props.setCanvaContent
+                      ? props.setCanvaContent.inStock
+                      : false
+                  }
                   value={"true"}
                 />
                 Sim
@@ -216,7 +219,11 @@ const CanvaModal = (props: {
                   name="inStock"
                   type="radio"
                   required
-                  defaultChecked={props.setCanvaContent? !props.setCanvaContent.inStock:false}
+                  defaultChecked={
+                    props.setCanvaContent
+                      ? !props.setCanvaContent.inStock
+                      : false
+                  }
                   value={"false"}
                 />
                 Não
