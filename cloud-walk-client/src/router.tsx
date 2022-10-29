@@ -4,16 +4,17 @@ import Login from "./pages/login";
 import Manage from "./pages/manage";
 import Product from "./pages/product-details";
 import About from "./pages/about";
-
+import Password from "./pages/passwordrecover";
 
 const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login/>} />
-      <Route path="/manage" element={<Manage/>} />
-      <Route path="/product/:id" element={<Product/>} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/manage" element={<Manage />} />
+      <Route path="/product/:id" element={<Product />} />
       <Route path="/about" element={<About />} />
+      <Route path="/password" element={<Password />} />
     </Routes>
   );
 };
