@@ -129,7 +129,6 @@ ${({theme})=>css`
   :hover{
     border-radius: .5rem;
     transform: scale(1.1);
-    font-weight: 600;
   }  
 `}
 `
