@@ -1,11 +1,11 @@
 import * as S from "./style";
 import { Canva, metaObj } from "../../types/interfaces";
 import CanvaCard from "../CanvaCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { canvaService } from "../../services/productsService";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import CanvaModal from "../CanvaModal";
+import { SearchContext } from "../../contexts/SearchContext";
 
 const CanvasList = (props: {
   updtListState: boolean;
@@ -15,79 +15,24 @@ const CanvasList = (props: {
   canvaToDelete: Function;
   searchItem:string|undefined;
 }) => {
-  useEffect(() => {
-    if(props.searchItem){
-     getSearchedProducts(1)
-     console.log(props.searchItem)
-    }
-    else {
-      getAllProducts(1);
-    }
-
-  }, []);
+  
+ const { metaData, searchResult, nextPage } = useContext(SearchContext)
 
   useEffect(() => {
-    getAllProducts(1);
+    // getAllProducts(1);
   }, [props.updtListState]);
-
-  useEffect(() => {
-    if(props.searchItem){
-      getSearchedProducts(1)
-    }
-    else{
-      getAllProducts(1)
-    }
-  }, [props.searchItem]);
   
-  const [products, setProducts] = useState<Canva[]>([]);
-  const [metaData, setMetaData] = useState<metaObj>({
-    hasNextPage: false,
-    hasPreviousPage: false,
-    itemCount: 10,
-    orderByColumn: "id",
-    page: 1,
-    pageCount: 0,
-    take: 20,
-  });
-  
-
-  const getSearchedProducts = async (page:number)=>{
-    const response = await canvaService.searchArt(props.searchItem , page)
-    setProducts(response.data)
-    setMetaData(response.meta)
-  }
-
-
-  const getAllProducts = async (page: number) => {
-    const response = await canvaService.getAllArts(page);
-    setMetaData(response.meta);
-    if (response.data) {
-      setProducts(response.data);
-    }
-    if (props.updtListState) {
-      props.updateList();
-    }
-  };
-
-
-
   const handleClick = (selectedItem: { selected: number }) => {
     const page = selectedItem.selected + 1;
-    if(props.searchItem){
-      getSearchedProducts(page)
-      console.log('CAIU')
-    }
-    else{
-      getAllProducts(page);
-    }
+    nextPage(page)
   };
 
 
   return (
     <>
       <S.CanvasListContainer>
-        {products.length > 0 && props.type == ""
-          ? products.map((element) => (
+        {searchResult.length > 0 && props.type == ""
+          ? searchResult.map((element) => (
               <Link
                 key={`product-${element.id}-link`}
                 className="product-link"
@@ -96,8 +41,8 @@ const CanvasList = (props: {
                 <CanvaCard type={props.type} canva={element} key={element.id} />
               </Link>
             ))
-          : products.length > 0 && props.type == "update"
-          ? products.map((element) => (
+          : searchResult.length > 0 && props.type == "update"
+          ? searchResult.map((element) => (
               <div
                 className="updt-mode-container"
                 onClick={() => props.openUpdtModal(element)}
@@ -105,8 +50,8 @@ const CanvasList = (props: {
                 <CanvaCard type={props.type} canva={element} key={element.id} />
               </div>
             ))
-          : products.length > 0 && props.type == "delete"
-          ? products.map((element) => (
+          : searchResult.length > 0 && props.type == "delete"
+          ? searchResult.map((element) => (
               <div
                 className="updt-mode-container"
                 onClick={() => props.canvaToDelete(element)}

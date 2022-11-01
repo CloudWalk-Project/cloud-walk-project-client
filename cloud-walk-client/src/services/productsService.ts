@@ -47,6 +47,7 @@ export const canvaService = {
             categoryName,
             genre,
             page,
+            take: 20,
         },
       })
       .then((response) => response)

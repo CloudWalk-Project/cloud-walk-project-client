@@ -15,7 +15,7 @@ const Header = (props: { loggedOut?: Function;  }) => {
 
   const pathName = location.pathname;
  
-  const { handleSubmit } = useContext(SearchContext)
+  const { handleSubmit, clearResult } = useContext(SearchContext)
 
   const [token, setToken] = useState(localStorage.getItem("jwt"));
   
@@ -55,7 +55,7 @@ const Header = (props: { loggedOut?: Function;  }) => {
 
   const goToHome = () => {
     navigate("/");
-    // props.setSearchItem()
+    clearResult()
   };
 
   const goToAbout = () => {
