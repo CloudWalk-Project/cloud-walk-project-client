@@ -57,7 +57,7 @@ const Product = () => {
           </S.BtnAlign>
         </S.Right>
       </S.center>
-      <Footer />
+      {/* <Footer /> */}
     </S.Product>
   );
 };

@@ -5,6 +5,7 @@ export const deleteModalMainContainer = styled.section`
  position: absolute;
  display: flex;
  top: 0;
+ right: 0;
  z-index: 2;
  background: rgba(39, 39, 39, 0.72);
  height: 100vh;
