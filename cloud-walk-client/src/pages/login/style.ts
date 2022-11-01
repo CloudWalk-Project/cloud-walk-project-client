@@ -118,22 +118,21 @@ export const loginFormSendButtonContainer = styled.div`
 `;
 
 export const loginFormSendButton = styled.button`
-  ${({ theme }) => css`
-    height: 40%;
-    width: 80%;
-    font-size: 2rem;
-    font-weight: 300;
-    color: ${theme.colors.textColor};
-    background: ${theme.colors.loginFormButtonColor};
-    transition: all 0.3s;
-    cursor: pointer;
-    :hover {
-      border-radius: 0.5rem;
-      transform: scale(1.1);
-      font-weight: 600;
-    }
-  `}
-`;
+${({theme})=>css`
+  height: 40%;
+  width: 80%;
+  font-size: 2rem;
+  font-weight: 300;
+  color: ${theme.colors.textColor};
+  background: ${theme.colors.loginFormButtonColor};
+  transition: all 0.3s;
+  cursor: pointer;
+  :hover{
+    border-radius: .5rem;
+    transform: scale(1.1);
+  }  
+`}
+`
 
 export const loginRegisterContainer = styled.section`
   ${({}) => css`
