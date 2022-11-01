@@ -9,7 +9,6 @@ export const HeaderContainer = styled.header`
   background-color: ${theme.colors.primaryColor};
   align-items: center;
   box-sizing: border-box;
-  z-index: 1;
 `;
 
 export const Header1 = styled.div`
@@ -26,11 +25,9 @@ export const Header1 = styled.div`
     margin-left: 2rem;
   }
   img {
-    cursor: pointer;
     width: 5rem;
     margin-left: 2rem;
     margin-right: 3rem;
-    cursor: pointer;
   }
 `;
 
@@ -42,12 +39,11 @@ export const SearchInputContainer = styled.form`
   display: flex;
   justify-content: left;
   align-items: center;
-  color: ${theme.colors.primaryColor};
 
   input {
     background-color: ${theme.colors.terciaryColor};
     width: 21.875rem;
-    color: ${theme.colors.primaryColor};
+    color: ${theme.colors.textColor};
     font-size: 0.9rem;
     height: 1.6rem;
     padding-left: 0.75rem;
@@ -70,11 +66,6 @@ export const About = styled.button`
   color: ${theme.colors.textColor};
   border-bottom: 1px solid ${theme.colors.textColor};
   cursor: pointer;
-  transition: all 0.4s;
-  :hover {
-    color: ${theme.colors.secondaryColor};
-    border-color: ${theme.colors.secondaryColor};
-  }
 `;
 
 export const Header2 = styled.div`
@@ -84,7 +75,7 @@ export const Header2 = styled.div`
   align-items: center;
 
   img {
-    width: 80%;
+    width: 90%;
     margin-top: 3rem;
   }
 `;
@@ -101,62 +92,15 @@ export const Header3 = styled.div`
     margin-left: 1rem;
     margin-right: 1rem;
   }
-
-  .log-out {
-    cursor: pointer;
-    margin-left: 1rem;
-    height: 2rem;
-    width: 3rem;
-  }
 `;
 
 export const Login = styled.button`
-  position: relative;
-  padding-right: 20px;
-  margin-right: 1rem;
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
-  border-right: 1px solid;
   cursor: pointer;
-  &:hover {
-    color: ${theme.colors.secondaryColor};
-    transition: 200ms ease-in;
-    border-color: ${theme.colors.textColor};
-  }
 `;
-
 export const Register = styled.button`
   background-color: ${theme.colors.primaryColor};
   color: ${theme.colors.textColor};
-  padding-left: 9px;
   cursor: pointer;
-  &:hover {
-    color: ${theme.colors.secondaryColor};
-    transition: 200ms ease-in;
-  }
 `;
-
-export const User = styled.button`
-  background-color: ${theme.colors.primaryColor};
-  color: ${theme.colors.textColor};
-  padding-left: 9px;
-  cursor: pointer;
-  &:hover {
-    color: ${theme.colors.secondaryColor};
-    transition: 200ms ease-in;
-  }
-`;
-
-export const Manage = styled.span`
-  margin-left: 3rem;
-  font-weight: bold;
-  background-color: ${theme.colors.primaryColor};
-  color: ${theme.colors.textColor};
-  border-bottom: 1px solid ${theme.colors.textColor};
-  cursor: pointer;
-  transition: all 0.4s;
-  :hover {
-    color: ${theme.colors.secondaryColor};
-    border-color: ${theme.colors.secondaryColor};
-  }
-`

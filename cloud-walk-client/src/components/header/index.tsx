@@ -1,113 +1,55 @@
 import * as S from "./style";
 import Icon from "../../assets/imgs/Icon.svg";
 import Logo from "../../assets/imgs/Logo.svg";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import loginService from "../../services/authService";
-import { IoIosLogOut } from "react-icons/io";
-import { userInfo } from "os";
-import { User } from "../../types/interfaces";
+import { IoMdMenu } from "react-icons/io";
 
-const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
+const Header = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const pathName = location.pathname;
-
-  const [name, setName] = useState<string|undefined>();
-
-  const search = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    props.setSearchItem(name)
-  };
-
-  const [token, setToken] = useState(localStorage.getItem("jwt"));
-
-  const [loggedUser, setLoggedUser] = useState<any>({});
-
-  const getLoggedUser = async () => {
-    const response = await loginService.loggedUser();
-    if (response) {
-      setLoggedUser(response);
-    }
-  };
-
-  const logOut = () => {
-    localStorage.clear();
-    setToken(null);
-    setLoggedUser({})
-    if(props.loggedOut){
-      props.loggedOut();
-    }
-  };
-
-  useEffect(() => {
-    if (token) {
-      getLoggedUser();
-    }
-  }, [token]);
 
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
-  const goToHome = () => {
-    navigate("/");
-    // props.setSearchItem()
-    setName(undefined)
-  };
+  // const handlehome = () => {
+  //   navigate("/");
+  // };
 
-  const goToAbout = () => {
+  const handleabout = () => {
     navigate("/about");
   };
 
-  const goToLogin = () => {
-    navigate("/login");
-  };
-
-  const goToManage = () => {
-    navigate("/manage");
-  };
+  // const handlesettings = () => {
+  //   navigate("/settings");
+  // };
 
   return (
     <S.HeaderContainer>
       <S.Header1>
-        <img onClick={goToHome} alt="Name" src={Icon} />
-        {pathName != "/login" ? (
-          <S.SearchInputContainer onSubmit={search}>
+        <p>
+          <IoMdMenu color="#fff" size="2rem" />
+        </p>
+        <img alt="Name" src={Icon} />
+        <S.SearchInputContainer>
+          <form>
             <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Procure sua arte"
+              value={searchInputValue}
+              onChange={(e) => setSearchInputValue(e.target.value)}
             />
-            <button className="search-button" type="submit">
+            <button>
               <FaSearch color="#555" />
             </button>
-          </S.SearchInputContainer>
-        ) : (
-          ""
-        )}
-        <S.About onClick={goToAbout}>Sobre nós</S.About>
-        {loggedUser.role == 'Owner'?
-          <S.Manage onClick={goToManage}> Gerenciamento </S.Manage>
-          : ""
-        }
+          </form>
+        </S.SearchInputContainer>
+        <S.About>Sobre nós</S.About>
       </S.Header1>
       <S.Header2>
         <img alt="logo" src={Logo} />
       </S.Header2>
       <S.Header3>
-        {!token ? (
-          <>
-            <S.Login onClick={goToLogin}>Entrar</S.Login>
-            <S.Register>Cadastre-se</S.Register>
-          </>
-        ) : (
-          <>
-            Bem vindo, {loggedUser.name}
-            <IoIosLogOut onClick={logOut} className="log-out" />
-          </>
-        )}
+        <S.Login>Entrar</S.Login>
+        <p>|</p>
+        <S.Register>Cadastre-se</S.Register>
       </S.Header3>
     </S.HeaderContainer>
   );
