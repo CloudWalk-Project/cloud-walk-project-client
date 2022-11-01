@@ -48,12 +48,28 @@ export interface metaObj {
 
 export interface Category {
   cost: number;
-  createdAt: string;
+  createdAt?: string;
   description: string;
-  id: number;
+  id?: number;
   name: string;
   price: number;
-  updatedAt: string;
+  updatedAt?: string;
 }
 
-export interface User {}
+export interface User {
+  id: number;
+  name: string;
+  image: string;
+  email: string;
+  recoverPasswordToken: null;
+  role: string;
+}
+
+export interface createUpdateUser{
+  name:string;
+  email:string;
+  image:string;
+  password:string;
+  confirmPassword:string;
+  role:string;
+}

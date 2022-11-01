@@ -87,7 +87,7 @@ export const canvaLabel = styled.label`
   position: relative;
   z-index: 0;
   top: 0.8rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: ${theme.colors.textColor};
   transition: all 0.4s;
 `;

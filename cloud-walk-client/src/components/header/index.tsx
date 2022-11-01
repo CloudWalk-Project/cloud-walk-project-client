@@ -2,29 +2,26 @@ import * as S from "./style";
 import Icon from "../../assets/imgs/Icon.svg";
 import Logo from "../../assets/imgs/Logo.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import loginService from "../../services/authService";
 import { IoIosLogOut } from "react-icons/io";
-import { userInfo } from "os";
-import { User } from "../../types/interfaces";
+import { SearchContext } from "../../contexts/SearchContext";
 
-const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
+
+const Header = (props: { loggedOut?: Function;  }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const pathName = location.pathname;
-
-  const [name, setName] = useState<string|undefined>();
-
-  const search = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    props.setSearchItem(name)
-  };
+ 
+  const { handleSubmit } = useContext(SearchContext)
 
   const [token, setToken] = useState(localStorage.getItem("jwt"));
-
+  
   const [loggedUser, setLoggedUser] = useState<any>({});
+  
+  const [searchContent,setSearchContent] = useState<string>("")
 
   const getLoggedUser = async () => {
     const response = await loginService.loggedUser();
@@ -32,6 +29,11 @@ const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
       setLoggedUser(response);
     }
   };
+  
+    const search = (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      handleSubmit(searchContent)
+    };
 
   const logOut = () => {
     localStorage.clear();
@@ -40,6 +42,7 @@ const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
     if(props.loggedOut){
       props.loggedOut();
     }
+    goToHome()
   };
 
   useEffect(() => {
@@ -53,7 +56,6 @@ const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
   const goToHome = () => {
     navigate("/");
     // props.setSearchItem()
-    setName(undefined)
   };
 
   const goToAbout = () => {
@@ -72,12 +74,12 @@ const Header = (props: { loggedOut?: Function; setSearchItem?: any }) => {
     <S.HeaderContainer>
       <S.Header1>
         <img onClick={goToHome} alt="Name" src={Icon} />
-        {pathName != "/login" ? (
+        {pathName == "/" ? (
           <S.SearchInputContainer onSubmit={search}>
             <input
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              required
+              onChange={(e) => setSearchContent(e.target.value)}
               placeholder="Procure sua arte"
             />
             <button className="search-button" type="submit">

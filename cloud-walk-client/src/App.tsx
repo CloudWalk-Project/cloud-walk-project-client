@@ -1,22 +1,23 @@
-import { Toaster } from "react-hot-toast";
 import Router from "./router";
 import "./App.css";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
 import theme from "./assets/styles/theme";
-import Login from "./pages/login";
-import Category from "./pages/category";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import React from "react";
+import { SearchProvider } from "./contexts/SearchContext";
 
 const App = () => {
   return (
     <>
+     <SearchProvider>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Router />
         </BrowserRouter>
       </ThemeProvider>
+      </SearchProvider>
       <ToastContainer
         position="top-right"
         autoClose={3000}

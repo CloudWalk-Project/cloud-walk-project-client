@@ -5,13 +5,15 @@ import Footer from "../../components/Footer";
 import { BsGear } from "react-icons/bs";
 import CanvaList from "../../components/Canvalist";
 import CanvaHighLights from "../../components/CanvaHighLights";
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState, useContext } from "react";
 import { Canva, categoriesObj } from "../../types/interfaces";
 import loginService from "../../services/authService";
 import { canvaService } from "../../services/productsService";
 import CanvaModal from "../../components/CanvaModal";
 import { categoriesService } from "../../services/categoriesService";
 import DeleteModal from "../../components/DeleteModal";
+import { SearchContext } from "../../contexts/SearchContext";
+
 
 const Home = () => {
   useEffect(() => {
@@ -31,7 +33,7 @@ const Home = () => {
 
   const [canvas, setCanvas] = useState<Canva[]>([]);
 
-  const [searchItem, setSearchItem] = useState<string|undefined>();
+  const [searchItem, setSearchItem] = useState<string | undefined>();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -55,6 +57,10 @@ const Home = () => {
   const [canvaManageType, setCanvaManageType] = useState<string>("");
 
   const [settingsActive, setSettingsActive] = useState<string>("");
+  
+  const { handleFilterChanges } = useContext(SearchContext)
+
+  
 
   const getLoggedUser = async () => {
     const response = await loginService.loggedUser();
@@ -64,7 +70,7 @@ const Home = () => {
   };
 
   const getCategories = async () => {
-    const response = await categoriesService.getAllCategories();
+    const response = await categoriesService.getAllCategories(1);
     setCategories(response.data.data);
   };
 
@@ -82,29 +88,22 @@ const Home = () => {
   genre = genre.filter((c, index) => {
     return genre.indexOf(c) === index;
   });
-  genre = ["Gênero", ...genre];
+  genre = [ ...genre];
 
   let categorieslist: string[] = categories.map((elem) => elem.name);
   categorieslist = categorieslist.filter((c, index) => {
     return categorieslist.indexOf(c) === index;
   });
-  categorieslist = ["Categorias", ...categorieslist];
+  categorieslist = [ ...categorieslist];
 
-  const [selectedGenre, setSelectedGenre] = useState<string>("Todos");
-  const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
-
-  let [filteredCanvas, setfilteredCanvas] = useState<Canva[]>([]);
-
-  // useEffect(() => {
-  //   setfilteredCanvas(Searchlist);
-  // }, [Searchlist]);
-
-  const ChangeGenre = (event: any) => {
-    setSelectedGenre(event.target.value);
-  };
-  const ChangeCategory = (event: any) => {
-    setSelectedCategory(event.target.value);
-  };
+  const [selectedGenre, setSelectedGenre] = useState<string>();
+  const [selectedCategory, setSelectedCategory] = useState<string>();
+  
+  
+  useEffect(()=>{
+    if(selectedCategory !='Categorias' )
+    handleFilterChanges(selectedGenre,selectedCategory)
+  },[selectedCategory, selectedGenre])
 
   const changeManageType = (type: string) => {
     if (type == canvaManageType) {
@@ -156,93 +155,102 @@ const Home = () => {
 
   return (
     <>
-      <S.home>
-        <Header loggedOut={userLoggedOut} setSearchItem={setSearchItem} />
-        <S.HomeContent>
-          {!searchItem ? (
-            <>
-              <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
-              <S.HomeHighLightsContainer>
-                <CanvaHighLights></CanvaHighLights>
-              </S.HomeHighLightsContainer>
-            </>
-          ) : (
-            ""
-          )}
-
-          <S.listOptionsContainer>
-            <S.listFiltersContainer>
-              <select  value={selectedGenre} onChange={ChangeGenre}>
-                {genre.map((element) => (
-                  <option key={element} value={element}>
-                    {element}
-                  </option>
-                ))}
-                ;
-              </select>
-
-              <select value={selectedCategory} onChange={ChangeCategory}>
-                {categorieslist.map((element) => {
-                  return (
-                    <option key={element} value={element}>
-                      {element}
-                    </option>
-                  );
-                })}
-                ;
-              </select>
-            </S.listFiltersContainer>
-            {loggedUserRole == "Owner" ? (
-              <S.adminSettingsContainer>
-                <S.adminOptions className={settingsActive}>
-                  <S.adminOptionsSpan
-                    id="add"
-                    onClick={(event: any) =>
-                      handleManageActions(event.target.id)
-                    }
-                    className={`span-add-${canvaManageType}`}
-                  >
-                    ADICIONAR
-                  </S.adminOptionsSpan>
-                  <S.adminOptionsSpan
-                    id="update"
-                    onClick={(event: any) => changeManageType(event.target.id)}
-                    className={`span-update-${canvaManageType}`}
-                  >
-                    ATUALIZAR
-                  </S.adminOptionsSpan>
-                  <S.adminOptionsSpan
-                    id="delete"
-                    onClick={(event: any) => changeManageType(event.target.id)}
-                    className={`span-delete-${canvaManageType}`}
-                  >
-                    DELETAR
-                  </S.adminOptionsSpan>
-                </S.adminOptions>
-                <S.gearContainer>
-                  <BsGear
-                    onClick={changeSettingsMode}
-                    className={`gear-${settingsActive} gear`}
-                  />
-                </S.gearContainer>
-              </S.adminSettingsContainer>
+     
+        <S.home>
+          <Header loggedOut={userLoggedOut} />
+          <S.HomeContent>
+            {!searchItem ? (
+              <>
+                <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
+                <S.HomeHighLightsContainer>
+                  <CanvaHighLights></CanvaHighLights>
+                </S.HomeHighLightsContainer>
+              </>
             ) : (
               ""
             )}
-          </S.listOptionsContainer>
 
-          <CanvaList
-            canvaToDelete={handleCanvaToDelete}
-            openUpdtModal={openUpdateModal}
-            type={canvaManageType}
-            updateList={updateList}
-            updtListState={updtList}
-            searchItem={searchItem}
-          ></CanvaList>
-          {/* <CanvaList list={filteredCanvas}></CanvaList> */}
-        </S.HomeContent>
-        <Footer />
-      </S.home>
+            <S.listOptionsContainer>
+              <S.listFiltersContainer>
+                <select name="genre" defaultValue={"Gêneros"}  onChange={(event)=>setSelectedGenre(event.target.value)}>
+                  <option key={'Gêneros'} value={undefined}>Gêneros</option>
+                  {genre.map((element) => (
+                    
+                    <option key={element} value={element}>
+                      {element}
+                    </option>
+                  ))}
+                  ;
+                </select>
+
+                <select name="categoryName" defaultValue={"Categorias"}  onChange={(event)=>setSelectedCategory(event.target.value)}>
+                <option key={'Categorias'} value={undefined}>Categorias</option>
+                  {categorieslist.map((element) => {
+                    return (
+                      <option key={element} value={element}>
+                        {element}
+                      </option>
+                    );
+                  })}
+                  ;
+                </select>
+              </S.listFiltersContainer>
+              {loggedUserRole == "Owner" ? (
+                <S.adminSettingsContainer>
+                  <S.adminOptions className={settingsActive}>
+                    <S.adminOptionsSpan
+                      id="add"
+                      onClick={(event: any) =>
+                        handleManageActions(event.target.id)
+                      }
+                      className={`span-add-${canvaManageType}`}
+                    >
+                      ADICIONAR
+                    </S.adminOptionsSpan>
+                    <S.adminOptionsSpan
+                      id="update"
+                      onClick={(event: any) =>
+                        changeManageType(event.target.id)
+                      }
+                      className={`span-update-${canvaManageType}`}
+                    >
+                      ATUALIZAR
+                    </S.adminOptionsSpan>
+                    <S.adminOptionsSpan
+                      id="delete"
+                      onClick={(event: any) =>
+                        changeManageType(event.target.id)
+                      }
+                      className={`span-delete-${canvaManageType}`}
+                    >
+                      DELETAR
+                    </S.adminOptionsSpan>
+                  </S.adminOptions>
+                  <S.gearContainer>
+                    <BsGear
+                      onClick={changeSettingsMode}
+                      className={`gear-${settingsActive} gear`}
+                    />
+                  </S.gearContainer>
+                </S.adminSettingsContainer>
+              ) : (
+                ""
+              )}
+            </S.listOptionsContainer>
+
+            <CanvaList
+              canvaToDelete={handleCanvaToDelete}
+              openUpdtModal={openUpdateModal}
+              type={canvaManageType}
+              updateList={updateList}
+              updtListState={updtList}
+              searchItem={searchItem}
+            ></CanvaList>
+            {/* <CanvaList list={filteredCanvas}></CanvaList> */}
+          </S.HomeContent>
+          <Footer />
+        </S.home>
+     
       {isModalOpen ? (
         <CanvaModal
           canvaId={canvaId}
@@ -257,6 +265,7 @@ const Home = () => {
       )}
       {isDeleteModalOpen ? (
         <DeleteModal
+          type={"canva"}
           updtList={updateList}
           closeModal={handleDeleteModal}
           item={toDeleteCanva}

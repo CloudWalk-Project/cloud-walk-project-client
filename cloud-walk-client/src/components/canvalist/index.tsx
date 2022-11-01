@@ -118,7 +118,7 @@ const CanvasList = (props: {
 
       <S.PaginationContainer>
         <ReactPaginate
-          pageCount={metaData.pageCount}
+          pageCount={metaData? metaData.pageCount : 0}
           nextLabel={">"}
           previousLabel={"<"}
           breakLabel={"..."}

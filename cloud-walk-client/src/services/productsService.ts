@@ -35,22 +35,20 @@ export const canvaService = {
       .catch((error) => error),
 
   searchArt: (
-    name?: string,
-    page?: number,
+    page: number,
+    search?: string,
     categoryName?: string,
     genre?: string,
-    id?: number
   ) =>
     api
-      .get(`search`, {
+      .get('search', {
         params: {
-            name,
+            search,
             categoryName,
             genre,
-            id,
             page,
         },
       })
-      .then((response) => response.data)
-      .catch((error) => error.response.data),
+      .then((response) => response)
+      .catch((error) => error),
 };
