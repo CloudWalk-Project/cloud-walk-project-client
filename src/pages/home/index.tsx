@@ -100,17 +100,20 @@ const Home = () => {
     console.log(loggedUserRole);
   };
 
-  let genre: string[] = canvas.map((elem) => elem.genre);
-  genre = genre.filter((c, index) => {
-    return genre.indexOf(c) === index;
-  });
-  genre = [...genre];
+   let genre = ['a'] 
+   let categorieslist = ['a'] 
 
-  let categorieslist: string[] = categories.map((elem) => elem.name);
-  categorieslist = categorieslist.filter((c, index) => {
-    return categorieslist.indexOf(c) === index;
-  });
-  categorieslist = [...categorieslist];
+  // let genre: string[] = canvas.map((elem) => elem.genre);
+  // genre = genre.filter((c, index) => {
+  //   return genre.indexOf(c) === index;
+  // });
+  // genre = [...genre];
+
+  // let categorieslist: string[] = categories.map((elem) => elem.name);
+  // categorieslist = categorieslist.filter((c, index) => {
+  //   return categorieslist.indexOf(c) === index;
+  // });
+  // categorieslist = [...categorieslist];
 
   const changeManageType = (type: string) => {
     if (type == canvaManageType) {
