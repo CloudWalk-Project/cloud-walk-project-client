@@ -11,7 +11,6 @@ import { loginObj, User } from "../../types/interfaces";
 import loginService from "../../services/authService";
 
 import { toast } from "react-toastify";
-import { useUsers } from "../../contexts/users";
 import RecoverPasswordModal from "../../components/Passwordmodal";
 
 const Login = () => {
