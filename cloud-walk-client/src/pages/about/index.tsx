@@ -30,7 +30,7 @@ const About = () => {
     },
     {
       name: "Henrique Gomes",
-      image: "https://avatars.githubusercontent.com/u/97991367?v=4",
+      image: "https://media-exp1.licdn.com/dms/image/C4E03AQEN2crn7v5tNQ/profile-displayphoto-shrink_200_200/0/1657803823402?e=1672876800&v=beta&t=0JqCJyxtZhEu2BLqhZrA7w4M0pnN_8ZSR92MkUWPSQ4",
       git: "https://github.com/Henriqueggperes",
       link: "https://www.linkedin.com/in/henriqueggp-48931422a/",
       stack: "Front-end (Product Owner - Oráculo dos MVPS )",
