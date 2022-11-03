@@ -3,7 +3,7 @@ import theme from "../../assets/styles/theme";
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: 3.4rem;
+  height: 5vh;
   display: flex;
   color: ${theme.colors.textColor};
   background-color: ${theme.colors.primaryColor};

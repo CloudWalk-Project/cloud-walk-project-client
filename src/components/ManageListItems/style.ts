@@ -62,6 +62,8 @@ export const itemCardManageContainer = styled.div`
   .icon {
     cursor: pointer;
     transition: all 0.4s;
+    height: 3.4rem;
+    width: 3.4rem;
     :hover{
       transform: scale(1.05);
     }
