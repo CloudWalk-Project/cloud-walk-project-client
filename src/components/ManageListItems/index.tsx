@@ -8,7 +8,7 @@ import { userService } from "../../services/userService";
 import { RiEdit2Fill } from "react-icons/ri";
 import { RiDeleteBack2Line } from "react-icons/ri";
 import DeleteModal from "../DeleteModal";
-import UserModal from "../usermodal";
+import UserModal from "../UserModal";
 import { HiViewGridAdd } from "react-icons/hi";
 import UpdateRole from "../UpdateRole";
 import CategoryModal from "../CategoryModal";
