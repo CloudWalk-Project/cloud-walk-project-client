@@ -7,10 +7,12 @@ import regImage from "./../../assets/imgs/registerImage.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { loginObj } from "../../types/interfaces";
+import { loginObj, User } from "../../types/interfaces";
 import loginService from "../../services/authService";
 
 import { toast } from "react-toastify";
+import { useUsers } from "../../contexts/users";
+import RecoverPasswordModal from "../../components/Passwordmodal";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,6 +21,12 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(!openModal);
+  };
 
   const handleChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({
@@ -31,7 +39,7 @@ const Login = () => {
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await loginService.login(values);
-    console.log(response)
+    console.log(response);
     if (response.token) {
       localStorage.setItem("jwt", response.token);
       navigate("/");
@@ -42,7 +50,7 @@ const Login = () => {
 
   return (
     <S.loginContainer>
-      <Header/>
+      <Header />
       <S.loginContent>
         <S.loginFormContainer>
           <S.loginForm onSubmit={handleLogin}>
@@ -63,7 +71,9 @@ const Login = () => {
                 </S.loginFormInputLabel>
               </S.loginFormInputs>
               <S.loginFormInputs>
-                <S.loginFormForgotPasswordSpan>
+                <S.loginFormForgotPasswordSpan
+                  onClick={() => setOpenModal(true)}
+                >
                   Esqueceu a senha?
                 </S.loginFormForgotPasswordSpan>
                 <S.loginFormInput
@@ -103,6 +113,7 @@ const Login = () => {
           </S.loginRegisterButtonContainer>
         </S.loginRegisterContainer>
       </S.loginContent>
+      {openModal && <RecoverPasswordModal handleOpenModal={handleOpenModal} />}
     </S.loginContainer>
   );
 };

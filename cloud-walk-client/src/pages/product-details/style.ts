@@ -3,13 +3,14 @@ import theme from "../../assets/styles/theme";
 
 export const Product = styled.div`
   ${() => css`
+  display: flex;
     background-color: ${theme.colors.primaryColor};
     color: ${theme.colors.textColor};
-    display: flex;
-    align-itens: center;
-    justify-content:center;
+    /* align-items: center; */
     flex-direction: column;
     justify-content: space-evenly;
+    height: 100vh;
+    width: 100vw;
   `}
 `;
 
@@ -21,9 +22,10 @@ export const center = styled.div`
     align-items: center;
     justify-content:center;
     flex-direction: row;
-    margin-top: 2rem;
     justify-content: center;
-    height: 100vh;
+    height: 95%;
+    width: 100%;
+    overflow: hidden;
   `}
   @media only screen and (max-width: 800px) {
     flex-direction: column;
