@@ -1,4 +1,4 @@
-import * as S from "./style";
+import * as S from './style'
 import Icon from "../../assets/imgs/Icon.svg";
 import Logo from "../../assets/imgs/Logo.svg";
 import { useLocation, useNavigate } from "react-router-dom";
