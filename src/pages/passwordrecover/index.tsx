@@ -29,9 +29,7 @@ const Password = () => {
     event.preventDefault();
     const response = await api
       .patch(`update_password`, data)
-      .then((response) => {
-        response;
-      })
+      .then((response) => response)
       .catch((error) => error);
 
     if (response.data) {
