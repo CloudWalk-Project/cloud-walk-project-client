@@ -1,6 +1,6 @@
 import { toNamespacedPath } from "node:path/win32";
 import { Dispatch, SetStateAction, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { toast } from 'react-toastify'
 import {
   ErrorMessage,
   Input,
@@ -38,9 +38,9 @@ const RecoverPasswordModal = ({
 
     if (response.data) {
       handleOpenModal();
-      toast.success("Enviado e-mail com sucesso.");
+      toast.success('Se o e-mail estiver registrado. A alteração será enviada')
     } else {
-      toast.error("Não conseguiu enviar email.");
+      toast.error('Insira um e-mail válido!')
     }
   };
 
@@ -52,19 +52,21 @@ const RecoverPasswordModal = ({
         <h2>Recuperar Senha</h2>
         <div>
           <Input
+            required 
             onChange={(event: any) => setdata({ email: event.target.value })}
             placeholder="Email do usuário"
           />
         </div>
-        <div>
+        <div className="button-container">
+        <Button className="btn send" text="Enviar" type="submit" />
           <Button
             onClick={() => {
               handleOpenModal();
             }}
             text="Cancelar"
             variant="cancel"
+            className="btn cancel"
           />
-          <Button text="Enviar" type="submit" />
         </div>
       </PasswordModalContainer>
     </ModalOverlay>

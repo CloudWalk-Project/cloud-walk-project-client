@@ -149,7 +149,7 @@ export const gearContainer = styled.div`
     height: 100%;
     width: 50%;
     transition: all 0.4s;
-    color: ${theme.colors.textColor};
+    color: ${theme.colors.secondaryColor};
   }
   .gear-active {
     transform: rotate(-180deg);

@@ -57,6 +57,8 @@ const Home = () => {
 
   const [settingsActive, setSettingsActive] = useState<string>("");
 
+  const [searchContent, setSearchContent] = useState("");
+
   const { handleFilterChanges, searchResult } = useContext(SearchContext);
 
   const [filter, setFilter] = useState({
@@ -72,6 +74,10 @@ const Home = () => {
           ? undefined
           : event.target.value,
     });
+  };
+
+  const getSearchContent = (content: any) => {
+    setSearchContent(content);
   };
 
   useEffect(() => {
@@ -163,12 +169,18 @@ const Home = () => {
   return (
     <>
       <S.home>
-        <Header loggedOut={userLoggedOut} />
+        <Header getSearchContent={getSearchContent} loggedOut={userLoggedOut} />
         <S.HomeContent>
-          <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
-          <S.HomeHighLightsContainer>
-            <CanvaHighLights></CanvaHighLights>
-          </S.HomeHighLightsContainer>
+          {searchContent == "" ? (
+            <>
+              <S.HighLightsHeading>DESTAQUES</S.HighLightsHeading>
+              <S.HomeHighLightsContainer>
+                <CanvaHighLights></CanvaHighLights>
+              </S.HomeHighLightsContainer>
+            </>
+          ) : (
+            ""
+          )}
 
           <S.listOptionsContainer>
             <S.listFiltersContainer>

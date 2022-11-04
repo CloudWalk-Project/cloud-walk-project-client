@@ -14,9 +14,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
     border-radius: 8px;
     background-color: ${theme.colors.primaryColor};
     color: ${theme.colors.textColor};
-    box-shadow: 0px 8px 24px rgba(105, 234, 118, 0.2);
-    cursor: pointer;
-    font-family: ${theme.constants.bodyFontFamily};
     font-weight: 500;
 
     ${variant === "disabled" &&

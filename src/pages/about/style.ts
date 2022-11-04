@@ -61,12 +61,16 @@ export const introduction = styled.section`
         align-items: flex-start;
         height: 95%;
         width: 100%;
+        a{
+          height: 100%;
+          width: 15%;
+        }
         .teamMate-card {
           padding-top: 1rem;
           display: flex;
           flex-direction: column;
           height: 100%;
-          width: 15%;
+          width: 100%;
           cursor: pointer;
           span{
             display: flex;

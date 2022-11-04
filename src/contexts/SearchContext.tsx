@@ -61,7 +61,6 @@ export const SearchProvider = ({ children }: any) => {
   const handleFilterChanges = async (genre?: string, category?: string, ) => {
     searchValues.genre = genre;
     searchValues.categoryName = category;
-    console.log(`cat: ${category} gen:${genre}`);
     const response = await canvaService.searchArt(
       1,
       searchValues.search,
