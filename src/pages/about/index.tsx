@@ -23,7 +23,9 @@ const About = () => {
       git: "https://github.com/wandersonDeve",
       link: "https://www.linkedin.com/in/wandersongsantos/",
       stack: "Back-end (Destruidor de Bugs)",
-      bio: "",
+      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
+
+      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
     },
     {
       name: "Marcelo Santos",
@@ -31,7 +33,9 @@ const About = () => {
       git: "https://github.com/DJMarshallSantos",
       link: "https://www.linkedin.com/in/marcelo-a-santos-76141b85/",
       stack: "Back-end (Desbravador de Testes)",
-      bio: "",
+      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
+
+      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
     },
     {
       name: "Henrique Gomes",
@@ -40,7 +44,9 @@ const About = () => {
       git: "https://github.com/Henriqueggperes",
       link: "https://www.linkedin.com/in/henriqueggp-48931422a/",
       stack: "Front-end (Product Owner - Oráculo dos MVPS )",
-      bio: "",
+      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
+
+      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
     },
     {
       name: "Amaro Francisco",
@@ -48,7 +54,9 @@ const About = () => {
       git: "https://github.com/Amaro13",
       link: "https://www.linkedin.com/in/amaroribeiro/",
       stack: "Front-end (Forjador de Wireframes)",
-      bio: "",
+      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
+
+      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
     },
     {
       name: "Paulo Gabriel",
@@ -57,7 +65,9 @@ const About = () => {
       git: "https://github.com/PauloGLemos",
       link: "https://www.linkedin.com/in/pauloglemos/",
       stack: "Front-end (Artesão de Componnents)",
-      bio: "",
+      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
+
+      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
     },
   ];
 

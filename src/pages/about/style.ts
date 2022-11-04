@@ -9,6 +9,10 @@ export const About = styled.section`
     height: auto;
     width: 100%;
     overflow: auto;
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
   `}
 `;
 

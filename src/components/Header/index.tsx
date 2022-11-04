@@ -57,7 +57,8 @@ const Header = (props: { loggedOut?: Function; getSearchContent:Function  }) => 
     navigate("/");
     clearResult()
     setSearchContent("")
-    props.getSearchContent(searchContent)
+    props.getSearchContent("")
+    console.log(searchContent)
   };
 
   const goToAbout = () => {
