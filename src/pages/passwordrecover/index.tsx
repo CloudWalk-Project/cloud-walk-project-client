@@ -6,6 +6,7 @@ import Button from "../../components/button";
 import { useParams, useNavigate } from "react-router";
 import { api } from "../../services/api";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 interface update {
   password: any;
@@ -34,6 +35,9 @@ const Password = () => {
 
     if (response.data) {
       navigate("/login");
+      toast.success("Senha atualizada com sucesso.");
+    } else {
+      toast.error("Não foi possível atualizar a senha.");
     }
   };
 

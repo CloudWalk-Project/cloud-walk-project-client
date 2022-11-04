@@ -7,16 +7,18 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import { SearchProvider } from "./contexts/SearchContext";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
     <>
-     <SearchProvider>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
-      </ThemeProvider>
+      <Toaster position="bottom-center" reverseOrder={false} />
+      <SearchProvider>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </ThemeProvider>
       </SearchProvider>
       <ToastContainer
         position="top-right"

@@ -1,5 +1,11 @@
+import { toNamespacedPath } from "node:path/win32";
 import { Dispatch, SetStateAction, useState } from "react";
-import { Input, ModalOverlay } from "../../assets/styles/inputform";
+import toast, { Toaster } from "react-hot-toast";
+import {
+  ErrorMessage,
+  Input,
+  ModalOverlay,
+} from "../../assets/styles/inputform";
 import { api } from "../../services/api";
 import Button from "../button";
 import { PasswordModalContainer } from "./style";
@@ -19,11 +25,23 @@ const RecoverPasswordModal = ({
     email: "",
   });
 
-  const handleRecoverPassword = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleRecoverPassword = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
-    api.patch(`/recovery-password`, data).then(() => {
+    const response = await api
+      .patch(`/recovery-password`, data)
+      .then((response) => response)
+      .catch((error) => error);
+
+    console.log(response);
+
+    if (response.data) {
       handleOpenModal();
-    });
+      toast.success("Enviado e-mail com sucesso.");
+    } else {
+      toast.error("Não conseguiu enviar email.");
+    }
   };
 
   return (
