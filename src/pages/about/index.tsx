@@ -30,7 +30,8 @@ const About = () => {
     },
     {
       name: "Henrique Gomes",
-      image: "https://media-exp1.licdn.com/dms/image/C4E03AQEN2crn7v5tNQ/profile-displayphoto-shrink_200_200/0/1657803823402?e=1672876800&v=beta&t=0JqCJyxtZhEu2BLqhZrA7w4M0pnN_8ZSR92MkUWPSQ4",
+      image:
+        "https://media-exp1.licdn.com/dms/image/C4E03AQEN2crn7v5tNQ/profile-displayphoto-shrink_200_200/0/1657803823402?e=1672876800&v=beta&t=0JqCJyxtZhEu2BLqhZrA7w4M0pnN_8ZSR92MkUWPSQ4",
       git: "https://github.com/Henriqueggperes",
       link: "https://www.linkedin.com/in/henriqueggp-48931422a/",
       stack: "Front-end (Product Owner - Oráculo dos MVPS )",
@@ -117,11 +118,15 @@ const About = () => {
                   Donec at odio sit amet lectus porta volutpat ut in orci.
                 </p>
                 <div className="contact">
-                  <a href={item.git} className="git-container">
+                  <a href={item.git} className="git-container" target="_blank">
                     <AiFillGithub className="git" />
                     {item.git}
                   </a>
-                  <a href={item.link} className="linkedin-container">
+                  <a
+                    href={item.link}
+                    className="linkedin-container"
+                    target="_blank"
+                  >
                     <AiOutlineLinkedin className="linkedin" />
                     {item.link}
                   </a>

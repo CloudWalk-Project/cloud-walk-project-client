@@ -74,6 +74,7 @@ export const PasswordFormInput = styled.input`
     transition: all 0.3s;
   `}
 `;
+export const Token = styled.input``;
 
 export const PasswordFormSendButton = styled.div`
   ${({ theme }) => css`
