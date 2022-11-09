@@ -5,6 +5,7 @@ import Manage from "./pages/manage";
 import Product from "./pages/product-details";
 import About from "./pages/about";
 import Password from "./pages/passwordrecover";
+import Report from "./pages/report";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
       <Route path="/product/:id" element={<Product />} />
       <Route path="/about" element={<About />} />
       <Route path="/password/:id" element={<Password />} />
+      <Route path="/report" element={<Report />} />
     </Routes>
   );
 };

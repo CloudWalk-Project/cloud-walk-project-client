@@ -65,11 +65,33 @@ export interface User {
   role: string;
 }
 
-export interface createUpdateUser{
-  name:string;
-  email:string;
-  image:string;
-  password:string;
-  confirmPassword:string;
-  role:string;
+export interface createUpdateUser {
+  name: string;
+  email: string;
+  image: string;
+  password: string;
+  confirmPassword: string;
+  role: string;
+}
+
+export interface createUpdateUser {
+  name: string;
+  email: string;
+  image: string;
+  password: string;
+  confirmPassword: string;
+  role: string;
+}
+
+export interface Update {
+  id: number;
+  oldPrice: number;
+  newPrice: number;
+  userId: number;
+  canvaId: number;
+  createdAt?: Date;
+  user: string;
+  canva: string;
+  atStatus: string;
+  statusMessage: string;
 }
