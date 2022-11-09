@@ -87,5 +87,9 @@ export const reportContent = styled.div`
       text-align: center;
       letter-spacing: 1px;
     }
+
+    #who {
+      text-align: center;
+    }
   `}
 `;

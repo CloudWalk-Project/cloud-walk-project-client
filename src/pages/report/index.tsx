@@ -5,13 +5,13 @@ import { mockedUpdate } from "../../mocks/update";
 
 const Report = () => {
   const updates = mockedUpdate;
-
+  const numberofups = updates.length;
   const downloadPdfDocument = () => {
     const input = document.getElementById("testId");
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/jpeg");
       const pdf = new jsPDF();
-      pdf.addImage(imgData, "JPEG", 0, 0, 210, 100);
+      pdf.addImage(imgData, "JPEG", 0, 0, 210, 33 * numberofups);
       pdf.save(`Report.pdf`);
     });
   };
@@ -27,7 +27,6 @@ const Report = () => {
           <table>
             <thead>
               <tr>
-                <th scope="col">Usuário</th>
                 <th scope="col">Canva</th>
                 <th scope="col">Preço Antigo</th>
                 <th scope="col">Preço Atual</th>
@@ -38,8 +37,7 @@ const Report = () => {
             <tbody>
               {updates.map((element) => (
                 <tr>
-                  <th scope="row">{element.user}</th>
-                  <td>{element.canva}</td>
+                  <th scope="row">{element.canva}</th>
                   <td>{element.oldPrice}</td>
                   <td>{element.newPrice}</td>
                   <td>{element.atStatus}</td>
@@ -49,10 +47,13 @@ const Report = () => {
             </tbody>
             <tfoot>
               <tr>
-                <th scope="row" colSpan="3">
-                  Total de atualizações
+                <th scope="row" colSpan="3" id="who">
+                  Atualizado por: {updates[0].user}
                 </th>
-                <td colSpan="3">{updates.length}</td>
+                <th scope="row" colSpan="1">
+                  Total de atualizações:
+                </th>
+                <td colSpan="1">{updates.length}</td>
               </tr>
             </tfoot>
           </table>
