@@ -9,7 +9,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { SearchContext } from "../../contexts/SearchContext";
 
 
-const Header = (props: { loggedOut?: Function; getSearchContent:Function  }) => {
+const Header = (props: { loggedOut?: Function; getSearchContent?:Function  }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -33,7 +33,9 @@ const Header = (props: { loggedOut?: Function; getSearchContent:Function  }) => 
     const search = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       handleSubmit(searchContent)
-      props.getSearchContent(searchContent)
+      if(props.getSearchContent){
+        props.getSearchContent(searchContent)
+      }
     };
 
   const logOut = () => {
@@ -57,7 +59,9 @@ const Header = (props: { loggedOut?: Function; getSearchContent:Function  }) => 
     navigate("/");
     clearResult()
     setSearchContent("")
-    props.getSearchContent("")
+    if(props.getSearchContent){
+      props.getSearchContent("")
+    }
     console.log(searchContent)
   };
 

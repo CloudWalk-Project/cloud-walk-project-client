@@ -33,7 +33,7 @@ const Manage = () => {
   
   return (
     <S.Manage>
-      <Header  getSearchContent={()=>{}} loggedOut={()=>{}}/>
+      <Header/>
       <S.manageContent>
         <S.manageListHolder>
           <h1>Gerenciamento</h1>

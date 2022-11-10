@@ -8,12 +8,14 @@ const Report = () => {
   const numberofups = updates.length;
   const downloadPdfDocument = () => {
     const input = document.getElementById("testId");
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/jpeg");
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, "JPEG", 0, 0, 210, 33 * numberofups);
-      pdf.save(`Report.pdf`);
-    });
+    if (input) {
+      html2canvas(input).then((canvas: any) => {
+        const imgData = canvas.toDataURL("image/jpeg");
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, "JPEG", 0, 0, 210, 33 * numberofups);
+        pdf.save(`Report.pdf`);
+      });
+    }
   };
 
   return (
@@ -47,13 +49,13 @@ const Report = () => {
             </tbody>
             <tfoot>
               <tr>
-                <th scope="row" colSpan="3" id="who">
+                <th scope="row" colSpan={3} id="who">
                   Atualizado por: {updates[0].user}
                 </th>
-                <th scope="row" colSpan="1">
+                <th scope="row" colSpan={1}>
                   Total de atualizações:
                 </th>
-                <td colSpan="1">{updates.length}</td>
+                <td colSpan={1}>{updates.length}</td>
               </tr>
             </tfoot>
           </table>
