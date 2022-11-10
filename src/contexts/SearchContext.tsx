@@ -61,6 +61,7 @@ export const SearchProvider = ({ children }: any) => {
   const handleFilterChanges = async (genre?: string, category?: string, ) => {
     searchValues.genre = genre;
     searchValues.categoryName = category;
+    
     const response = await canvaService.searchArt(
       1,
       searchValues.search,
@@ -74,9 +75,11 @@ export const SearchProvider = ({ children }: any) => {
       toast.error(response.response.data.message);
     }
     console.log(response);
+    
   };
 
   const nextPage = async (page:number)=>{
+    setLoading(true)
     console.log(page)
     const response = await canvaService.searchArt(
         page,
@@ -91,6 +94,7 @@ export const SearchProvider = ({ children }: any) => {
         toast.error(response.response.data.message);
       }
       console.log(response);
+      setLoading(false)
   }
 
   const clearResult = async ()=>{
@@ -110,6 +114,7 @@ export const SearchProvider = ({ children }: any) => {
   }
 
   const handleSubmit = async (searchValue: string) => {
+    setLoading(true)
     searchValues.search = searchValue;
     setSearchValues({
       ...searchValues,
@@ -130,6 +135,7 @@ export const SearchProvider = ({ children }: any) => {
       toast.error(response.response.data.message);
     }
     console.log(response);
+    setLoading(false)
   };
 
   return (

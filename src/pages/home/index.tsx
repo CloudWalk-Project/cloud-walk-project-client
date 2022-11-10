@@ -13,13 +13,13 @@ import CanvaModal from "../../components/CanvaModal";
 import { categoriesService } from "../../services/categoriesService";
 import DeleteModal from "../../components/DeleteModal";
 import { SearchContext } from "../../contexts/SearchContext";
+import Loading from "../../components/Loading";
 
 const Home = () => {
   useEffect(() => {
     if (token) {
       getLoggedUser();
     }
-    getAllProducts();
     getCategories();
   }, []);
   const token = localStorage.getItem("jwt");
@@ -59,7 +59,7 @@ const Home = () => {
 
   const [searchContent, setSearchContent] = useState("");
 
-  const { handleFilterChanges, searchResult } = useContext(SearchContext);
+  const { handleFilterChanges, searchResult, loading } = useContext(SearchContext);
 
   const [filter, setFilter] = useState({
     genre: "",
@@ -96,15 +96,13 @@ const Home = () => {
     setCategories(response.data.data);
   };
 
-  const getAllProducts = async () => {
-    const response = await canvaService.getAllArts(1);
-    setCanvas(response.data);
-  };
+  
 
   const userLoggedOut = () => {
     setLoggedUserRole("");
     console.log(loggedUserRole);
   };
+
 
   let genre: string[] = canvas.map((elem) => elem.genre);
   genre = genre.filter((c, index) => {
@@ -255,16 +253,19 @@ const Home = () => {
             ) : (
               ""
             )}
-          </S.listOptionsContainer>
-
-          <CanvaList
-            canvaToDelete={handleCanvaToDelete}
-            openUpdtModal={openUpdateModal}
-            type={canvaManageType}
-            updateList={updateList}
-            updtListState={updtList}
-            searchItem={searchItem}
-          ></CanvaList>
+          </S.listOptionsContainer>   
+        {loading?
+         <Loading/>
+         :  
+        <CanvaList
+        canvaToDelete={handleCanvaToDelete}
+        openUpdtModal={openUpdateModal}
+        type={canvaManageType}
+        updateList={updateList}
+        updtListState={updtList}
+        searchItem={searchItem}
+        ></CanvaList>
+       } 
           {/* <CanvaList list={filteredCanvas}></CanvaList> */}
         </S.HomeContent>
         <Footer />

@@ -58,6 +58,8 @@ export const listFiltersContainer = styled.div`
     position: relative;
     width: 10rem;
     margin-left: 2rem;
+    border-top-right-radius: .5rem;
+    border-top-left-radius: .5rem;
     background-color: ${theme.colors.secondaryColor};
     color: ${theme.colors.textColor};
     font-size: 1.5rem;
@@ -76,7 +78,7 @@ export const filterButton = styled.div`
   display: flex;
   cursor: pointer;
   background-color: #d8d8d8;
-  margin-right: 2rem;
+  border-radius: .5rem;
   height: 100%;
   width: 10rem;
   transition: all 0.4s;
@@ -149,7 +151,7 @@ export const gearContainer = styled.div`
     height: 100%;
     width: 50%;
     transition: all 0.4s;
-    color: ${theme.colors.secondaryColor};
+    color: ${theme.colors.textColor};
   }
   .gear-active {
     transform: rotate(-180deg);

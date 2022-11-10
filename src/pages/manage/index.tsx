@@ -33,7 +33,7 @@ const Manage = () => {
   
   return (
     <S.Manage>
-      <Header/>
+      <Header  getSearchContent={()=>{}} loggedOut={()=>{}}/>
       <S.manageContent>
         <S.manageListHolder>
           <h1>Gerenciamento</h1>
@@ -41,6 +41,7 @@ const Manage = () => {
             <div className="list-options">
               <button onClick={(event)=>handleListOptions(event)} className={`list-categoryOP-${listOption}`} name="categories"> Categorias </button>
               <button onClick={(event)=>handleListOptions(event)} className={`list-userOP-${listOption}`} name="users"> Usuários </button>
+              <button onClick={(event)=>handleListOptions(event)} className={`list-attOP-${listOption}`} name="att"> Atts. Em Massa </button>
             </div>
           </S.listHeader>
           <S.manageList>

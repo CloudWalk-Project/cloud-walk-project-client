@@ -7,12 +7,15 @@ export const Card = styled.section`
     height: 350px;
     width: 350px;
     transition: all 0.4s;
-    .update{
+    .update {
       filter: grayscale(1);
     }
-    .types{
-  filter: grayscale(0%);
-}
+    .types {
+      filter: grayscale(0%);
+    }
+    :hover{
+      transform: scale(1.05);
+    }
   `}
 `;
 export const CardImg = styled.img`
@@ -22,7 +25,7 @@ export const CardImg = styled.img`
   `}
 `;
 export const CardInfoContainer = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     position: relative;
     display: flex;
     box-sizing: border-box;
@@ -31,8 +34,8 @@ export const CardInfoContainer = styled.div`
     width: 100%;
     ::after {
       content: "";
-      background: ${theme.colors.textColor} ;
-      border-radius: .2rem;
+      background: ${theme.colors.textColor};
+      border-radius: 0.2rem;
       position: absolute;
       bottom: 5%;
       left: 0;
@@ -47,7 +50,7 @@ export const CardInfoNameCategory = styled.div`
     flex-direction: column;
     height: 100%;
     width: 50%;
-    .big-name{
+    .big-name {
       font-size: 1.2rem;
     }
   `}
@@ -87,7 +90,7 @@ export const CardInfoPriceContainer = styled.div`
 `;
 
 export const CardInfoPrice = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     display: flex;
     flex-direction: column;
     color: ${theme.colors.secondaryColor};

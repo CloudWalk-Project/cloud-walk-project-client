@@ -85,6 +85,7 @@ export const introduction = styled.section`
           img{
             height: auto;
             width: 100%;
+            border-radius: 10rem;
           }
         }
       }
@@ -143,6 +144,7 @@ background-color: ${theme.colors.primaryColor};
   img{
     height: 60%;
     width: 60%;
+    border-radius: 20rem;
   }
   span{
     margin-top: 1rem;

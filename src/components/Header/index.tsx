@@ -96,7 +96,7 @@ const Header = (props: { loggedOut?: Function; getSearchContent:Function  }) => 
         {loggedUser.role == 'Owner'?
           <S.Manage onClick={goToManage}> Gerenciamento </S.Manage>
           : ""
-        }
+           }
       </S.Header1>
       <S.Header2>
         <img alt="logo" src={Logo} />
