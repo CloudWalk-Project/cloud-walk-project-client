@@ -23,8 +23,13 @@ export const uploadService = {
 
   getAllBacthes: () =>
     api
-      .get("upload/status",{
-      })
+      .get("upload/status", {})
+      .then((response) => response)
+      .catch((error) => error),
+
+  getBatchById: (id: number) =>
+    api
+      .get(`upload/status/${id}`)
       .then((response) => response)
       .catch((error) => error),
 };

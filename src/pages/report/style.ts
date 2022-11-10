@@ -23,7 +23,7 @@ export const reportButton = styled.button`
     background-color: #4caf50;
     border-radius: 5px;
     margin-left: 47%;
-    margin-bottom: 5px;
+    margin-top: 5px;
     color: white;
   `}
 `;
@@ -37,8 +37,8 @@ export const reportContent = styled.div`
     background-color: ${theme.colors.baseForm};
     text-align: center;
 
-    .h2 {
-      color: ${theme.colors.primaryColor};
+    h2 {
+      color: ${theme.colors.secondaryColor};
     }
     table {
       table-layout: fixed;
@@ -54,6 +54,9 @@ export const reportContent = styled.div`
 
     th {
       letter-spacing: 2px;
+      b{
+        color: ${theme.colors.textColor};
+      }
     }
 
     td {

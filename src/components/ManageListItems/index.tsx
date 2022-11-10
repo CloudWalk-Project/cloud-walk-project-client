@@ -15,6 +15,7 @@ import { batchUpdt } from "../../mocks/batchUpdt";
 import { FaEye } from "react-icons/fa";
 import BatchUpdateModal from "../BatchUpdateModal";
 import { uploadService } from "../../services/uploadService";
+import { useNavigate } from "react-router-dom";
 
 const ManageList = (props: { option: string }) => {
   useEffect(() => {
@@ -42,6 +43,7 @@ const ManageList = (props: { option: string }) => {
   const [userModal, setUserModal] = useState<boolean>(false);
   const [categoryModal, setCategoryModal] = useState<boolean>(false);
   const [batchModal, setBatchModal] = useState<boolean>(false);
+  const navigate = useNavigate()
 
   const handleCreateModal = () => {
     if (props.option == "users") {
@@ -133,6 +135,10 @@ const ManageList = (props: { option: string }) => {
     setLoading(false);
   };
 
+  const goToReport = (id:number) =>{
+    navigate(`/report/${id}`)
+  }
+
   return (
     <>
       <S.addIconContainer className="add-icon-container">
@@ -170,7 +176,7 @@ const ManageList = (props: { option: string }) => {
                     />
                   </>
                 ) : (
-                  <FaEye className="info-button icon" />
+                  <FaEye onClick={()=>goToReport(item.id)} className="info-button icon" />
                 )}
               </S.itemCardManageContainer>
             </S.listItemCard>
