@@ -54,13 +54,15 @@ export const listHeader = styled.div`
       border-top-right-radius: 0.5rem;
       background: ${theme.colors.manageInactiveButton};
       transition: all 0.3s;
+      overflow: hidden;
       :hover {
         background-color: ${theme.colors.secondaryColor};
         color: ${theme.colors.textColor};
       }
     }
     .list-categoryOP-categories,
-    .list-userOP-users {
+    .list-userOP-users,
+    .list-attOP-att {
       height: 80%;
       background-color: ${theme.colors.secondaryColor};
       color: ${theme.colors.textColor};

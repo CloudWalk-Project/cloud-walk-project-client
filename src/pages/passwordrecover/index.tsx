@@ -52,7 +52,7 @@ const Password = () => {
 
   return (
     <S.PasswordContainer>
-      <Header />
+      <Header getSearchContent={()=>{}} />
       <S.PasswordForm>
         <S.PasswordFormHeading>
           Bem vindo, insira sua nova senha:

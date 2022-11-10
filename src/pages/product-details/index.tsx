@@ -33,7 +33,7 @@ const Product = () => {
 
   return (
     <S.Product>
-      <Header />
+      <Header getSearchContent={()=>{}} />
       <S.center>
         <S.Left>
           <div className="left-name-heading">
