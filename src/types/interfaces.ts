@@ -95,3 +95,14 @@ export interface Update {
   atStatus: string;
   statusMessage: string;
 }
+
+export interface reportObj {
+  canva_id: number;
+  canva_name: string;
+  created_at: string;
+  id: number;
+  new_price: number;
+  old_price: number;
+  status_message: string;
+  user_name: string;
+}
