@@ -96,6 +96,9 @@ Instale as dependências
 
 ## Stack utilizada ⚙
 
+**Linguagens:** 
+  <img align="center" alt="TypeScript" src="https://img.shields.io/badge/-Typescript-blue?style=for-the-badge&logo=typescript&message=TypeScript&color=blue&logoColor=white">  
+
 **FrameWorks:** 
  <img align="center" alt="ReactJs" src="https://img.shields.io/badge/-ReactJs-informational?style=for-the-badge&logo=react&message==white&logoColor=white"> 
  
