@@ -3,6 +3,8 @@ import * as T from "../types/interfaces";
 import TheDepths from "../assets/imgs/TheDepths.jpg";
 import DemonGod from "../assets/imgs/DemonGod.jpg";
 import LoneWolf from "../assets/imgs/LoneWolf.jpg";
+import NewEra from "./../assets/imgs/NewEra.jpg"
+import RoughWaters from "./../assets/imgs/RoughWaters.jpg"
 
 export const mockedCanva: T.Canva[] = [
   {
@@ -48,7 +50,19 @@ export const mockedCanva: T.Canva[] = [
     genre: "Malevolent",
     description: "The worshipped god of all demons.",
     inStock: true,
-    image: DemonGod,
+    image: NewEra,
+    categoryName: "Banner",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 5,
+    name: "Obey",
+    price: 600,
+    genre: "Malevolent",
+    description: "The worshipped god of all demons.",
+    inStock: true,
+    image: RoughWaters,
     categoryName: "Banner",
     createdAt: new Date(),
     updatedAt: new Date(),

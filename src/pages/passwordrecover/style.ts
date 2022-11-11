@@ -1,22 +1,24 @@
 import styled, { css } from "styled-components";
+import theme from "../../assets/styles/theme";
 
 export const PasswordContainer = styled.main`
-  ${({ theme }) => css`
+
     height: 100vh;
     width: 100vw;
-    /* justify-content: center; */
+    justify-content: center;
+    align-items: center;
     background-color: ${theme.colors.primaryColor};
-  `}
+
 `;
 
 export const PasswordForm = styled.div`
-  ${({ theme }) => css`
+
     height: 40%;
     width: 30%;
     margin-top: 10%;
     margin-left: 30%;
-    background: ${theme.colors.baseForm};
-  `}
+    background: ${theme.colors.loginFormColor};
+
 `;
 
 export const PasswordFormHeading = styled.div`
@@ -26,7 +28,8 @@ export const PasswordFormHeading = styled.div`
     height: 40%;
     width: 90%;
     padding-left: 10%;
-    font-weight: 1;
+    font-weight: bold;
+    font-size: 1.5rem;
     justify-content: center;
     color: ${theme.colors.textColor};
   `}

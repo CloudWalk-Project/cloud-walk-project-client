@@ -15,6 +15,11 @@ export const StyledButton = styled.button<StyledButtonProps>`
     background-color: ${theme.colors.primaryColor};
     color: ${theme.colors.textColor};
     font-weight: 500;
+    transition: all 0.4s;
+    :hover{
+      background-color: ${theme.colors.secondaryColor};
+      
+    }
 
     ${variant === "disabled" &&
     css`

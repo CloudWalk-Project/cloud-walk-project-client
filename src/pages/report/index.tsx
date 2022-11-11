@@ -75,6 +75,9 @@ const Report = () => {
         <Loading />
       ) : (
         <S.reportContainer>
+          <S.reportButton onClick={downloadPdfDocument}>
+            Download Pdf
+          </S.reportButton>
           <S.reportContent id="testId">
             <h2>Resultados</h2>
             <table>
@@ -108,9 +111,6 @@ const Report = () => {
               </tfoot>
             </table>
           </S.reportContent>
-          <S.reportButton onClick={downloadPdfDocument}>
-            Download Pdf
-          </S.reportButton>
         </S.reportContainer>
       )}
     </S.reportMain>

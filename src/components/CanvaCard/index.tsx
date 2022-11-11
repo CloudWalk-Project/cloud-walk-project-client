@@ -17,7 +17,7 @@ const CanvaCard = ({ canva, type }: CanvaCardProps) => {
       <S.CardInfoContainer>
         <S.CardInfoNameCategory>
           <S.CardInfoCategory>{canva.categoryName}</S.CardInfoCategory>
-          <S.CardInfoName className={canva.name.split(" ").length > 1 ? "big-name" : "" }>{canva.name}</S.CardInfoName>
+          <S.CardInfoName className={canva.name.split(" ").length > 1 ? "big-name" : "" }>{canva.name.split(" ")[0]} {canva.name.split(" ")[1]}</S.CardInfoName>
         </S.CardInfoNameCategory>
         <S.CardInfoPriceContainer>
           <S.CardInfoPrice>R$ {canva.price}</S.CardInfoPrice>

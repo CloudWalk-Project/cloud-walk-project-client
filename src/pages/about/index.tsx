@@ -13,9 +13,13 @@ const About = () => {
       git: "https://github.com/vinhas93",
       link: "https://www.linkedin.com/in/vinhasdaniel/",
       stack: "Back-end (Scrum Master - Domador de MVPS)",
-      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
+      bio: `Olá, tudo bem? 😃
 
-      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
+      Seja bem vindo(a) ao meu perfil. Aqui vamos ver um pouco sobre mim e minha carreira. Vamos lá 🐎🐎
+      
+      Sou um profissional da área de TI, com o objetivo de construir soluções integradas para a sociedade através da tecnologia 👨🏼‍💻.
+      
+      Cursando graduação em Análise e Desenvolvimento de Sistemas, capacitação em Desenvolvimento Web BackEnd e diversos cursos livres relacionados a soft e hard skills 📚📖📚.`,
     },
     {
       name: "Wanderson Santos",
@@ -23,9 +27,11 @@ const About = () => {
       git: "https://github.com/wandersonDeve",
       link: "https://www.linkedin.com/in/wandersongsantos/",
       stack: "Back-end (Destruidor de Bugs)",
-      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
+      bio: `Sou Desenvolvedor de software backend NodeJs.
 
-      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
+      Possuo os seguintes conhecimentos:
+      -Linguagens -> Javascript, Typescript, Python
+      -Banco de dados -> MariaDB, MySQL, PostgreSQL, MongoDb`,
     },
     {
       name: "Marcelo Santos",
@@ -33,9 +39,15 @@ const About = () => {
       git: "https://github.com/DJMarshallSantos",
       link: "https://www.linkedin.com/in/marcelo-a-santos-76141b85/",
       stack: "Back-end (Desbravador de Testes)",
-      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
-
-      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
+      bio: `Mais de 30 anos de experiência no setor do ensino de idiomas. 
+      Trabalho a 8 anos na inFlux - Escola de Idiomas Roo/MT, onde atuo a 5 anos como coordenador de metodologia. 
+      Com funções do tipo:
+      .Entrevistar candidatos para recrutamento;
+      .Treinar os mesmo com base a metodologia da escola;
+      .Aplicar semestralmente PDCA visando a constante melhoria da qualidade do serviço oferecido;
+      .Elaborar atas para reuniões semestrais;
+      .Ensinar os idiomas inglês e espanhol para todos os níveis.
+      `,
     },
     {
       name: "Henrique Gomes",
@@ -44,9 +56,7 @@ const About = () => {
       git: "https://github.com/Henriqueggperes",
       link: "https://www.linkedin.com/in/henriqueggp-48931422a/",
       stack: "Front-end (Product Owner - Oráculo dos MVPS )",
-      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
-
-      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
+      bio: `Olá e console.log("Seja bem vindo!"). Meu nome é Henrique e sou um desenvolvedor Web FullStack Júnior. Traço um caminho árduo para que eu me torne o profissional excepcional que desejo ser, mas não há obstáculos que me assustem. Sigo o meu sonho de me desenvolver cada vez mais e provar do que sou capaz, não só para as pessoas em minha volta mas também para mim mesmo. 🚀`,
     },
     {
       name: "Amaro Francisco",
@@ -54,9 +64,11 @@ const About = () => {
       git: "https://github.com/Amaro13",
       link: "https://www.linkedin.com/in/amaroribeiro/",
       stack: "Front-end (Forjador de Wireframes)",
-      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
-
-      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
+      bio: `Atualmente desenvolvendo com Typescript, ReactJs , NestJs, HTML e CSS.
+      Possuo experiência profissional com VBA, ABAP, SQL e outras linguagens de programação.
+      Fiz intercâmbio na Irlanda e consegui desenvolver um nível fluente de inglês com a convivência.
+      Formado no curso de engenharia de produção com experiência na área. 
+      No meio acadêmico, realizei e publiquei a pesquisa científica: Construção do perfil do estudante da FeMASS.`,
     },
     {
       name: "Paulo Gabriel",
@@ -65,9 +77,7 @@ const About = () => {
       git: "https://github.com/PauloGLemos",
       link: "https://www.linkedin.com/in/pauloglemos/",
       stack: "Front-end (Artesão de Componnents)",
-      bio: `Poucas coisas na vida são tão gratificantes quanto o desenvolvimento pessoal. Adquirir novos conhecimentos, buscar maiores desafios e adaptar o comportamento, são primordiais nessa jornada infinita.
-
-      Não é um processo linear, sempre haverão momentos em que veremos a necessidade de voltar alguns passos para reestruturar os planos.`,
+      bio: `Recently graduated in Digital Games by FIAP, looking for opportunities in the area. I have notions of C#, C++, HTML, CSS, Unity, Bootstrap, Java, A-Frame, entre outros. Além de Photoshop e InDesign.`,
     },
   ];
 
@@ -80,7 +90,7 @@ const About = () => {
 
   return (
     <>
-      <Header getSearchContent={()=>{}} />
+      <Header getSearchContent={() => {}} />
       <S.About className="body">
         <S.introduction>
           <div className="box">
@@ -107,7 +117,7 @@ const About = () => {
               </p>
             </div>
             <div className="team-container">
-              <h1>Integrantes</h1>
+              <h1>Os Tech Thinkers</h1>
               <div className="teamMates-holder">
                 {teamMates.map((item, index) => (
                   <a href={`#${index}`}>

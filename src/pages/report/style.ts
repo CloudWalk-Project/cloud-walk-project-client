@@ -5,16 +5,20 @@ export const reportMain = styled.main`
     height: 100vh;
     width: 100vw;
     background-color: ${theme.colors.primaryColor};
+    overflow: auto;
+    margin: 0;
+    padding: 0;
   `}
 `;
 export const reportContainer = styled.div`
   ${({}) => css`
-    position: fixed;
-    top: 20%;
-    left: 5%;
-    margin-top: -65px;
-    margin-left: -100px;
-    border-radius: 7px;
+    /* position: fixed; */
+    /* top: 20%;
+    left: 5%; */
+    /* margin-top: -65px;
+    margin-left: -100px; */
+    height: 50%;
+    width: 100%;
   `}
 `;
 
@@ -36,15 +40,16 @@ export const reportContent = styled.div`
     font-style: sans-serif;
     background-color: ${theme.colors.baseForm};
     text-align: center;
-
     h2 {
       color: ${theme.colors.secondaryColor};
     }
     table {
+      height: fit-content;
       table-layout: fixed;
       width: 100%;
       border-collapse: collapse;
       border: 1px solid ${theme.colors.textColor};
+      overflow: auto;
     }
     th,
     td {

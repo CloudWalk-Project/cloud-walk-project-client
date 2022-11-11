@@ -47,6 +47,8 @@ export const listOptionsContainer = styled.div`
   box-sizing: border-box;
   height: 4rem;
   width: 100%;
+  border-bottom: 2.5px solid;
+  border-image: linear-gradient(90deg, #FF7337 0%, rgba(18, 18, 23, 0) 88.26%) 1;
 `;
 
 export const listFiltersContainer = styled.div`
@@ -57,7 +59,7 @@ export const listFiltersContainer = styled.div`
   select {
     position: relative;
     width: 10rem;
-    margin-left: 2rem;
+    margin-right: 1rem;
     border-top-right-radius: .5rem;
     border-top-left-radius: .5rem;
     background-color: ${theme.colors.secondaryColor};

@@ -9,10 +9,12 @@ export const About = styled.section`
     height: auto;
     width: 100%;
     overflow: auto;
+    text-align: justify;
     a{
       text-decoration: none;
       color: inherit;
     }
+
   `}
 `;
 
@@ -112,6 +114,8 @@ background-color: ${theme.colors.primaryColor};
     .bio{
       height: 50%;
       font-size: 1.5rem;
+      overflow: auto;
+      text-align: justify;
     }
     .contact{
       display: flex;

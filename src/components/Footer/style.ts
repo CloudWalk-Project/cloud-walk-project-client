@@ -37,7 +37,12 @@ export const Heading = styled.p`
   font-size: 1rem;
   color: ${theme.colors.textColor};
   margin-bottom: 1rem;
-  font-weight: bold;
+  a{
+    text-decoration: none;
+    color: ${theme.colors.secondaryColor};
+    font-weight: bold;
+
+  }
 `;
 
 export const FooterLink = styled.a`
