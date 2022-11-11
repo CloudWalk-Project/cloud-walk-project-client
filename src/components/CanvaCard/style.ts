@@ -4,7 +4,7 @@ export const Card = styled.section`
   ${({}) => css`
     display: flex;
     flex-direction: column;
-    height: 350px;
+    height: 550px;
     width: 350px;
     transition: all 0.4s;
     .update {
@@ -30,7 +30,7 @@ export const CardInfoContainer = styled.div`
     display: flex;
     box-sizing: border-box;
     padding-left: 1rem;
-    height: 20%;
+    height: 15%;
     width: 100%;
     ::after {
       content: "";
@@ -48,10 +48,10 @@ export const CardInfoNameCategory = styled.div`
   ${({}) => css`
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 90%;
     width: 50%;
     .big-name {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   `}
 `;
@@ -64,6 +64,7 @@ export const CardInfoCategory = styled.span`
     font-weight: bold;
     height: 50%;
     width: 100%;
+    font-size: 1.3rem;
   `}
 `;
 

@@ -13,10 +13,7 @@ const About = () => {
       git: "https://github.com/vinhas93",
       link: "https://www.linkedin.com/in/vinhasdaniel/",
       stack: "Back-end (Scrum Master - Domador de MVPS)",
-      bio: `Olá, tudo bem? 😃
-
-      Seja bem vindo(a) ao meu perfil. Aqui vamos ver um pouco sobre mim e minha carreira. Vamos lá 🐎🐎
-      
+      bio: `
       Sou um profissional da área de TI, com o objetivo de construir soluções integradas para a sociedade através da tecnologia 👨🏼‍💻.
       
       Cursando graduação em Análise e Desenvolvimento de Sistemas, capacitação em Desenvolvimento Web BackEnd e diversos cursos livres relacionados a soft e hard skills 📚📖📚.`,

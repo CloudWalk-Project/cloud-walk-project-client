@@ -30,7 +30,8 @@ export const HighLightsHeading = styled.h1`
   height: fit-content;
   width: 100%;
   font-size: 2.5rem;
-  border-bottom: 1px solid white;
+  border-bottom: 2px solid ;
+  border-image: linear-gradient(90deg, #FFFF 0%, rgba(18, 18, 23, 0) 78.26%) 1;
 `;
 
 export const HomeHighLightsContainer = styled.section`
