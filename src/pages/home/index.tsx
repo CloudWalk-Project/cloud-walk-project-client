@@ -254,9 +254,7 @@ const Home = () => {
               ""
             )}
           </S.listOptionsContainer>   
-        {loading?
-         <Loading/>
-         :  
+      
         <CanvaList
         canvaToDelete={handleCanvaToDelete}
         openUpdtModal={openUpdateModal}
@@ -265,7 +263,6 @@ const Home = () => {
         updtListState={updtList}
         searchItem={searchItem}
         ></CanvaList>
-       } 
           {/* <CanvaList list={filteredCanvas}></CanvaList> */}
         </S.HomeContent>
         <Footer />

@@ -129,10 +129,11 @@ const ManageList = (props: { option: string }) => {
     console.log(response.data[0].user);
     if (response.data) {
       setItems(response.data);
+      setLoading(false);
     } else {
       toast.error(response.data.message);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const goToReport = (id:number) =>{

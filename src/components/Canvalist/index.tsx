@@ -18,9 +18,9 @@ const CanvasList = (props: {
   
  const { metaData, searchResult, nextPage, handleFilterChanges} = useContext(SearchContext)
 
-  useEffect(() => {
-    getAllProducts();
-  }, [props.updtListState]);
+  // useEffect(() => {
+  //   getAllProducts();
+  // }, [props.updtListState]);
   
   const handleClick = (selectedItem: { selected: number }) => {
     const page = selectedItem.selected + 1;
